@@ -1,0 +1,18 @@
+da fare:
+post sulla galleria - dopo aver fatto gli utenti per poterne salvare l'id del creatore
+post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro - 
+Aggiungere idProduct in post per collegarli...
+
+ricerca per tipologie e soggetti
+//
+Domande da fare:
+1 jquery manca da ogni nuovo progetto...
+2 utilizzo dei partial: dopo il submit del partial come aggiorno solo il partial senza aggiornare tutta la layout?
+  cosa scrivere nel return del partial
+3 validazioni remote... ok in creazione problemi nell'edit
+
+-- OK FATTO --
+registra utente e controllo su img
+controllo Remote su username e mail per registrazione
+UTENTE: GESTITO TUTTO
+implementare autorizzazioni e ruoli

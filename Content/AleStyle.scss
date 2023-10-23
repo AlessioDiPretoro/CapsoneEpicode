@@ -1,0 +1,194 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+//colors Orange
+$orangeMain: cadetblue;
+$orangeDark: #d45b2d;
+$orangeDark2: #b74c0c;
+$orangeLight: #ff8757;
+$orangeLight2: #ff9e73;
+$orangeShadeLight: #f6a57a;
+$orangeShadeDark: #a73d0a;
+$orangeTextBgWhite: #ffffff;
+$orangeTextBgDark: #000000;
+
+//colors Blue
+$blueMain: cadetblue;
+$blueMainBG: #c1dce1 ;
+$blueDark: #3A5F77;
+$blueDark2: #2E3D4B;
+$blueLigth: #5F9EA0;
+$blueLigth2: #4B6A76;
+$blueLigther: #8DC0C9;
+$blueGreen: #5F8C5F;
+$blueGrey: #556B6B;
+$blueBrown: #5F4B24;
+
+//black Ale
+$blackBg: #121212;
+$greyDarkText: #6f6f6f;
+$greyTextSpotify: #a7a7a7;
+//random color for card in gallery
+$cardBgRandom-1: $blueMain;
+$cardBgRandom-2: $blueDark;
+$cardBgRandom-3: $blueDark2;
+$cardBgRandom-4: $blueLigth;
+$cardBgRandom-5: $blueLigth2;
+$cardBgRandom-6: $blueLigther;
+$cardBgRandom-7: $blueGreen;
+$cardBgRandom-8: $blueGrey;
+$cardBgRandom-9: $blueBrown;
+
+//btn setups
+$btnDefBg: $blueMain;
+$btnColWhite: #ffffff;
+
+body {
+    background: $blueMainBG;
+
+    * {
+        font-family: 'Libre Baskerville', serif;
+        color: $greyDarkText;
+    }
+}
+
+main{
+    img{
+        border-radius: 20px;
+    }
+}
+
+h1 {
+    margin: 0.5em;
+}
+
+h2 {
+    font-weight: 600;
+    text-align: center;
+}
+
+h4 {
+    font-weight: 600;
+    text-align: center;
+}
+
+input, select {
+    border-radius: 250px !important;
+}
+
+.form-group {
+    margin-bottom: 0.5em;
+
+    .col-md-10 {
+        display: flex;
+        align-items: center;
+    }
+
+    ::placeholder {
+        color: #636363;
+    }
+
+    .input-icon {
+        width: 25px;
+    }
+}
+
+nav {
+    background: $blueMain;
+
+    .dropdown-menu {
+        background: $blueMain;
+
+        .dropdown-item {
+            color: white;
+        }
+
+        .dropdown-item:hover {
+            color: $orangeDark;
+            border-radius: 50px;
+        }
+    }
+}
+
+footer {
+    background: $blueMain;
+    color: $btnColWhite;
+    padding: 0.5em;
+
+    a {
+        color: $btnColWhite;
+    }
+}
+
+.btn-default {
+    background: $btnDefBg;
+    color: $btnColWhite;
+    width: 100%;
+    margin-top: 0.3em;
+}
+
+.btn-default:hover {
+    background: darken($btnDefBg, 10%);
+    color: $btnColWhite;
+}
+
+.btn-default + .btn-default {
+    background: darken($btnDefBg, 20%);
+}
+
+.btn-default + .btn-default:hover {
+    background: darken($btnDefBg, 10%);
+    color: $btnColWhite;
+}
+
+.card-img-top {
+    height: 40vh;
+    object-fit: cover;
+    margin-top: 0.5em;
+    border-radius: 15px;
+}
+
+.card-text-cutter {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-big-top {
+    border-radius: 20px;
+    height: 65vh;
+    //max-height: 80vh;
+    object-fit: contain;
+}
+
+.card-small-bottom {
+    width: 100%;
+    border-radius: 20px;
+    height: 20vh;
+    object-fit: cover;
+}
+
+.galleryCard {
+    background-image: linear-gradient(to bottom, white,white, $blueLigther);
+    //background: $blueLigther;
+    border: 10px solid $blueMain;
+    border-radius: 30px;
+    text-transform: capitalize;
+}
+.detailCard {
+    text-transform: capitalize;
+}
+th td {
+    padding: 0;
+}
+
+tr td:nth-child(n+2):not(:last-child) {
+    max-width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.img-table {
+    max-width: 40px;
+    max-height: 40px;
+}

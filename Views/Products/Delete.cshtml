@@ -1,0 +1,104 @@
+﻿@model Stones.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductCategory.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductCategory.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo5)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
