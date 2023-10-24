@@ -173,24 +173,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310230853473_InitialCreate.cs" />
-    <Compile Include="Migrations\202310230853473_InitialCreate.designer.cs">
-      <DependentUpon>202310230853473_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202310231520183_InitialCreate.cs" />
+    <Compile Include="Migrations\202310231520183_InitialCreate.designer.cs">
+      <DependentUpon>202310231520183_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310231004112_PhotoStringLengh.cs" />
-    <Compile Include="Migrations\202310231004112_PhotoStringLengh.designer.cs">
-      <DependentUpon>202310231004112_PhotoStringLengh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310231244404_RolesNotRequired.cs" />
-    <Compile Include="Migrations\202310231244404_RolesNotRequired.designer.cs">
-      <DependentUpon>202310231244404_RolesNotRequired.cs</DependentUpon>
+    <Compile Include="Migrations\202310241324145_NoTitleInPosts.cs" />
+    <Compile Include="Migrations\202310241324145_NoTitleInPosts.designer.cs">
+      <DependentUpon>202310241324145_NoTitleInPosts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DetailOrder.cs" />
     <Compile Include="Models\ModelDbContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\PostVisibility.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductSubject.cs" />
@@ -348,14 +343,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310230853473_InitialCreate.resx">
-      <DependentUpon>202310230853473_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310231520183_InitialCreate.resx">
+      <DependentUpon>202310231520183_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310231004112_PhotoStringLengh.resx">
-      <DependentUpon>202310231004112_PhotoStringLengh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310231244404_RolesNotRequired.resx">
-      <DependentUpon>202310231244404_RolesNotRequired.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310241324145_NoTitleInPosts.resx">
+      <DependentUpon>202310241324145_NoTitleInPosts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,7 +17,7 @@ namespace Stones.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var post = db.Post.Include(p => p.PostVisibility).Include(p => p.Users);
+            var post = db.Post.Include(p => p.Users);
             return View(post.ToList());
         }
 
@@ -39,8 +39,7 @@ namespace Stones.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
-            ViewBag.idVisibility = new SelectList(db.PostVisibility, "id", "id");
-            ViewBag.idUser = new SelectList(db.Users, "id", "username");
+            string idProduct = RouteData.Values["id"] as string;
             return View();
         }
 
@@ -49,10 +48,11 @@ namespace Stones.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,idUser,idVisibility,idUserResponse,isActive,title,body,date,dateEdit")] Post post)
+        public ActionResult Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
         {
             if (ModelState.IsValid)
             {
+                post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
                 post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
                 post.isActive = true;
                 post.date = DateTime.Now;
@@ -61,8 +61,6 @@ namespace Stones.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idVisibility = new SelectList(db.PostVisibility, "id", "id", post.idVisibility);
-            ViewBag.idUser = new SelectList(db.Users, "id", "username", post.idUser);
             return View(post);
         }
 
@@ -78,7 +76,6 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idVisibility = new SelectList(db.PostVisibility, "id", "id", post.idVisibility);
             ViewBag.idUser = new SelectList(db.Users, "id", "username", post.idUser);
             return View(post);
         }
@@ -88,7 +85,7 @@ namespace Stones.Controllers
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,idUser,idVisibility,idUserResponse,isActive,title,body,date,dateEdit")] Post post)
+        public ActionResult Edit([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +93,6 @@ namespace Stones.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idVisibility = new SelectList(db.PostVisibility, "id", "id", post.idVisibility);
             ViewBag.idUser = new SelectList(db.Users, "id", "username", post.idUser);
             return View(post);
         }

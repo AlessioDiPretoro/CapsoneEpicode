@@ -7,13 +7,13 @@ namespace Stones.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class NoTitleInPosts : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NoTitleInPosts));
         
         string IMigrationMetadata.Id
         {
-            get { return "202310230853473_InitialCreate"; }
+            get { return "202310241324145_NoTitleInPosts"; }
         }
         
         string IMigrationMetadata.Source

@@ -13,6 +13,7 @@ namespace Stones.Models
         public Product()
         {
             DetailOrder = new HashSet<DetailOrder>();
+            Post = new HashSet<Post>();
         }
 
         public int id { get; set; }
@@ -42,6 +43,9 @@ namespace Stones.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailOrder> DetailOrder { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Post> Post { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }
 

@@ -8,6 +8,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Stones.Models;
 
 namespace Stones.Controllers
@@ -95,6 +96,9 @@ namespace Stones.Controllers
                 users.role = "User";
                 db.Users.Add(users);
                 db.SaveChanges();
+
+                FormsAuthentication.SetAuthCookie(users.username, true);
+
                 return RedirectToAction("Index", "Home");
             }
             else

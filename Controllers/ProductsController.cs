@@ -216,6 +216,7 @@ namespace Stones.Controllers
             return View(product.ToList());
         }
 
+        //restituiva la lista di subCategorie dopo aver seleziona la categoria principale, modificata la logica
         //public JsonResult GetSubCatByCat(int IdCategoria)
         //{
         //    ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");

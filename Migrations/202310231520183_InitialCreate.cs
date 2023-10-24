@@ -58,7 +58,7 @@
                         prov = c.String(maxLength: 2),
                         phone = c.String(maxLength: 20),
                         imgProfile = c.String(maxLength: 50),
-                        role = c.String(nullable: false, maxLength: 50),
+                        role = c.String(maxLength: 50),
                         points = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id);
@@ -69,8 +69,8 @@
                     {
                         id = c.Int(nullable: false, identity: true),
                         idUser = c.Int(nullable: false),
-                        idVisibility = c.Int(),
-                        idUserResponse = c.Int(),
+                        idProduct = c.Int(),
+                        idPostResponse = c.Int(),
                         isActive = c.Boolean(nullable: false),
                         title = c.String(nullable: false, maxLength: 50),
                         body = c.String(nullable: false),
@@ -78,21 +78,10 @@
                         dateEdit = c.DateTime(storeType: "date"),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.PostVisibility", t => t.idVisibility)
+                .ForeignKey("dbo.Product", t => t.idProduct)
                 .ForeignKey("dbo.Users", t => t.idUser)
                 .Index(t => t.idUser)
-                .Index(t => t.idVisibility);
-            
-            CreateTable(
-                "dbo.PostVisibility",
-                c => new
-                    {
-                        id = c.Int(nullable: false, identity: true),
-                        allUsers = c.Boolean(nullable: false),
-                        onlyFriends = c.Boolean(nullable: false),
-                        groups = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.id);
+                .Index(t => t.idProduct);
             
             CreateTable(
                 "dbo.Product",
@@ -104,11 +93,11 @@
                         descripton = c.String(),
                         idCategory = c.Int(),
                         idSubject = c.Int(),
-                        photo1 = c.String(maxLength: 50),
-                        photo2 = c.String(maxLength: 50),
-                        photo3 = c.String(maxLength: 50),
-                        photo4 = c.String(maxLength: 50),
-                        photo5 = c.String(maxLength: 50),
+                        photo1 = c.String(),
+                        photo2 = c.String(),
+                        photo3 = c.String(),
+                        photo4 = c.String(),
+                        photo5 = c.String(),
                     })
                 .PrimaryKey(t => t.id)
                 .ForeignKey("dbo.ProductCategory", t => t.idCategory)
@@ -140,16 +129,16 @@
         
         public override void Down()
         {
+            DropForeignKey("dbo.Post", "idUser", "dbo.Users");
             DropForeignKey("dbo.Product", "idSubject", "dbo.ProductSubject");
             DropForeignKey("dbo.Product", "idCategory", "dbo.ProductCategory");
+            DropForeignKey("dbo.Post", "idProduct", "dbo.Product");
             DropForeignKey("dbo.DetailOrder", "idProduct", "dbo.Product");
-            DropForeignKey("dbo.Post", "idUser", "dbo.Users");
-            DropForeignKey("dbo.Post", "idVisibility", "dbo.PostVisibility");
             DropForeignKey("dbo.Order", "idBuyer", "dbo.Users");
             DropForeignKey("dbo.DetailOrder", "idOrder", "dbo.Order");
             DropIndex("dbo.Product", new[] { "idSubject" });
             DropIndex("dbo.Product", new[] { "idCategory" });
-            DropIndex("dbo.Post", new[] { "idVisibility" });
+            DropIndex("dbo.Post", new[] { "idProduct" });
             DropIndex("dbo.Post", new[] { "idUser" });
             DropIndex("dbo.Order", new[] { "idBuyer" });
             DropIndex("dbo.DetailOrder", new[] { "idProduct" });
@@ -157,7 +146,6 @@
             DropTable("dbo.ProductSubject");
             DropTable("dbo.ProductCategory");
             DropTable("dbo.Product");
-            DropTable("dbo.PostVisibility");
             DropTable("dbo.Post");
             DropTable("dbo.Users");
             DropTable("dbo.Order");

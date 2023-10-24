@@ -5,7 +5,6 @@ namespace Stones.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Web.Mvc;
 
     public partial class Users
     {
@@ -18,12 +17,10 @@ namespace Stones.Models
 
         public int id { get; set; }
 
-        [Remote("IsUsernameValid", "Validations", ErrorMessage = "Username già presente, sceglierne uno differente")]
         [Required]
         [StringLength(50)]
         public string username { get; set; }
 
-        [Remote("IsEmailValid", "Validations", ErrorMessage = "Email già presente")]
         [Required]
         [StringLength(50)]
         public string email { get; set; }

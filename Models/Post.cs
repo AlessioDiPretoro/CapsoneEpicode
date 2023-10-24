@@ -13,15 +13,11 @@ namespace Stones.Models
 
         public int idUser { get; set; }
 
-        public int? idVisibility { get; set; }
+        public int? idProduct { get; set; }
 
-        public int? idUserResponse { get; set; }
+        public int? idPostResponse { get; set; }
 
         public bool isActive { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string title { get; set; }
 
         [Required]
         public string body { get; set; }
@@ -32,7 +28,7 @@ namespace Stones.Models
         [Column(TypeName = "date")]
         public DateTime? dateEdit { get; set; }
 
-        public virtual PostVisibility PostVisibility { get; set; }
+        public virtual Product Product { get; set; }
 
         public virtual Users Users { get; set; }
     }

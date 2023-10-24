@@ -15,7 +15,6 @@ namespace Stones.Models
         public virtual DbSet<DetailOrder> DetailOrder { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Post> Post { get; set; }
-        public virtual DbSet<PostVisibility> PostVisibility { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<ProductSubject> ProductSubject { get; set; }
@@ -37,11 +36,6 @@ namespace Stones.Models
                 .HasForeignKey(e => e.idOrder)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PostVisibility>()
-                .HasMany(e => e.Post)
-                .WithOptional(e => e.PostVisibility)
-                .HasForeignKey(e => e.idVisibility);
-
             modelBuilder.Entity<Product>()
                 .Property(e => e.price)
                 .HasPrecision(19, 4);
@@ -51,6 +45,11 @@ namespace Stones.Models
                 .WithRequired(e => e.Product)
                 .HasForeignKey(e => e.idProduct)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Post)
+                .WithOptional(e => e.Product)
+                .HasForeignKey(e => e.idProduct);
 
             modelBuilder.Entity<ProductCategory>()
                 .HasMany(e => e.Product)
