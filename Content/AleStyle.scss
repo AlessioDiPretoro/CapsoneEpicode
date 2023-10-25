@@ -13,7 +13,7 @@ $orangeTextBgDark: #000000;
 
 //colors Blue
 $blueMain: cadetblue;
-$blueMainBG: #c1dce1 ;
+$blueMainBG: #c1dce1;
 $blueDark: #3A5F77;
 $blueDark2: #2E3D4B;
 $blueLigth: #5F9EA0;
@@ -51,8 +51,8 @@ body {
     }
 }
 
-main{
-    img{
+main {
+    img {
         border-radius: 20px;
     }
 }
@@ -169,11 +169,11 @@ footer {
 
 .galleryCard {
     background-image: linear-gradient(to bottom, white,white, $blueLigther);
-    //background: $blueLigther;
     border: 10px solid $blueMain;
     border-radius: 30px;
     text-transform: capitalize;
 }
+
 .detailCard {
     text-transform: capitalize;
 }
@@ -189,11 +189,11 @@ footer {
         height: fit-content;
         margin-right: 0.5em;
     }
-    p{
+
+    p {
         margin: 0;
     }
 }
-
 
 th td {
     padding: 0;

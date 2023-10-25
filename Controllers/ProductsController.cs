@@ -44,10 +44,10 @@ namespace Stones.Controllers
 
             foreach (Post post in posts)
             {
-               List<PostResponse> responsePosts = db.PostResponse
-                            .Where(p => p.idPost == post.id && p.isActive)
-                            .OrderByDescending(p => p.date)
-                            .ToList();
+                List<PostResponse> responsePosts = db.PostResponse
+                             .Where(p => p.idPost == post.id && p.isActive)
+                             .OrderByDescending(p => p.date)
+                             .ToList();
 
                 responses.Add(post.id, responsePosts);
             }
@@ -233,10 +233,29 @@ namespace Stones.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Gallery()
+        public ActionResult Gallery(FormCollection categories, FormCollection subjects)
         {
-            var product = db.Product.Include(p => p.ProductCategory);
-            return View(product.ToList());
+            List<string> selCat = categories.GetValues("category")?.ToList();
+            List<string> selSub = subjects.GetValues("subject")?.ToList();
+            List<Product> product = db.Product.Include(p => p.ProductCategory).ToList();
+
+            if (selCat != null && selCat.Count > 0)
+            {
+                product = product.Where(x => selCat.Contains(x.idCategory.ToString())).ToList();
+            }
+            if (selSub != null && selSub.Count > 0)
+            {
+                product = product.Where(x => selSub.Contains(x.idSubject.ToString())).ToList();
+            }
+
+            if (product.Count == 0)
+            {
+                ViewBag.NoResults = "Spiacente ma non esistono prodotti con le caratteristiche ricercate";
+            }
+
+            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
+            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+            return View(product);
         }
 
         //restituiva la lista di subCategorie dopo aver seleziona la categoria principale, modificata la logica
