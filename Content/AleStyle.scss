@@ -163,7 +163,7 @@ footer {
 .card-small-bottom {
     width: 100%;
     border-radius: 20px;
-    height: 20vh;
+    max-height: 20vh;
     object-fit: cover;
 }
 

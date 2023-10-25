@@ -163,6 +163,7 @@
     <Compile Include="Controllers\CustomProceduresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
+    <Compile Include="Controllers\PostResponsesController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ProductCategoriesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -173,25 +174,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310231520183_InitialCreate.cs" />
-    <Compile Include="Migrations\202310231520183_InitialCreate.designer.cs">
-      <DependentUpon>202310231520183_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202310251047304_InitialCreate.cs" />
+    <Compile Include="Migrations\202310251047304_InitialCreate.designer.cs">
+      <DependentUpon>202310251047304_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310241324145_NoTitleInPosts.cs" />
-    <Compile Include="Migrations\202310241324145_NoTitleInPosts.designer.cs">
-      <DependentUpon>202310241324145_NoTitleInPosts.cs</DependentUpon>
+    <Compile Include="Migrations\202310251059129_DateTimeTime.cs" />
+    <Compile Include="Migrations\202310251059129_DateTimeTime.designer.cs">
+      <DependentUpon>202310251059129_DateTimeTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310251107058_ResponsePostDateActive.cs" />
+    <Compile Include="Migrations\202310251107058_ResponsePostDateActive.designer.cs">
+      <DependentUpon>202310251107058_ResponsePostDateActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310251141061_PostResponsesUserName.cs" />
+    <Compile Include="Migrations\202310251141061_PostResponsesUserName.designer.cs">
+      <DependentUpon>202310251141061_PostResponsesUserName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DetailOrder.cs" />
     <Compile Include="Models\ModelDbContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostResponse.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductSubject.cs" />
-    <Compile Include="Models\ProductWithPostsViewModel.cs" />
-    <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\_ProductWithPostsViewModel.cs" />
+    <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\_LoginUser.cs" />
     <Compile Include="Models\_Photos.cs" />
     <Compile Include="Models\_ProcedureResponse.cs" />
@@ -315,7 +325,11 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Posts\CreateResponsePost.cshtml" />
+    <Content Include="Views\PostResponses\Create.cshtml" />
+    <Content Include="Views\PostResponses\Delete.cshtml" />
+    <Content Include="Views\PostResponses\Details.cshtml" />
+    <Content Include="Views\PostResponses\Edit.cshtml" />
+    <Content Include="Views\PostResponses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -345,11 +359,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310231520183_InitialCreate.resx">
-      <DependentUpon>202310231520183_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310251047304_InitialCreate.resx">
+      <DependentUpon>202310251047304_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310241324145_NoTitleInPosts.resx">
-      <DependentUpon>202310241324145_NoTitleInPosts.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310251059129_DateTimeTime.resx">
+      <DependentUpon>202310251059129_DateTimeTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310251107058_ResponsePostDateActive.resx">
+      <DependentUpon>202310251107058_ResponsePostDateActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310251141061_PostResponsesUserName.resx">
+      <DependentUpon>202310251141061_PostResponsesUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

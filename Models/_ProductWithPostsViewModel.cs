@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Stones.Models
 {
-    public class ProductWithPostsViewModel
+    public class _ProductWithPostsViewModel
     {
         public Product Product { get; set; }
         public List<Post> Posts { get; set; }
 
-        //public List<Post> Response { get; set; }
-        //public Dictionary<int, List<Post>> Responses { get; set; }
+        //public List<PostResponse> Responses { get; set; }
+        public Dictionary<int, List<PostResponse>> Responses { get; set; }
     }
 }

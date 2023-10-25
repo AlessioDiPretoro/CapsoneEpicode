@@ -10,116 +10,115 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
-    public class PostsController : Controller
+    public class PostResponsesController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
 
-        // GET: Posts
+        // GET: PostResponses
         public ActionResult Index()
         {
-            var post = db.Post.Include(p => p.Users);
-            return View(post.ToList());
+            var postResponse = db.PostResponse.Include(p => p.Post);
+            return View(postResponse.ToList());
         }
 
-        // GET: Posts/Details/5
+        // GET: PostResponses/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Post.Find(id);
-            if (post == null)
+            PostResponse postResponse = db.PostResponse.Find(id);
+            if (postResponse == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(postResponse);
         }
 
-        // GET: Posts/Create
+        // GET: PostResponses/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Posts/Create
+        // POST: PostResponses/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
+        public ActionResult Create([Bind(Include = "id,idPost,body,idUser,Username,date,dateEdit,isActive")] PostResponse postResponse)
         {
             if (ModelState.IsValid)
             {
-                post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
-                post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
-                post.isActive = true;
-                post.date = DateTime.Now;
-                db.Post.Add(post);
+                postResponse.idPost = Convert.ToInt16(RouteData.Values["id"]);
+                Users poster = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault();
+                postResponse.idUser = poster.id;
+                postResponse.Username = poster.username;
+                postResponse.isActive = true;
+                postResponse.date = DateTime.Now;
+                db.PostResponse.Add(postResponse);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(post);
+            return View(postResponse);
         }
 
-        // GET: Posts/Edit/5
+        // GET: PostResponses/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Post.Find(id);
-            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano editare altri post)
+            PostResponse postResponse = db.PostResponse.Find(id);
             int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
-            if (post.idUser != idUser)
+            if (postResponse.idUser != idUser)
             {
                 return RedirectToAction("Index", "Home");
             }
-            if (post == null)
+            if (postResponse == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(postResponse);
         }
 
-        // POST: Posts/Edit/5
+        // POST: PostResponses/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,idUser,idProduct,isActive,body,date,dateEdit")] Post post)
-        //idUserResponse,
+        public ActionResult Edit(PostResponse postResponse)
         {
             if (ModelState.IsValid)
             {
-                post.dateEdit = DateTime.Now;
-                db.Entry(post).State = EntityState.Modified;
+                postResponse.dateEdit = DateTime.Now;
+                db.Entry(postResponse).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(post);
+            return View(postResponse);
         }
 
-        // GET: Posts/Delete/5 // NON LO USO, impostata variabile isActive per nascondere i commenti
+        // GET: PostResponses/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Post.Find(id);
-            if (post == null)
+            PostResponse postResponse = db.PostResponse.Find(id);
+            if (postResponse == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(postResponse);
         }
 
-        // POST: Posts/Delete/5
+        // POST: PostResponses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Post.Find(id);
-            db.Post.Remove(post);
+            PostResponse postResponse = db.PostResponse.Find(id);
+            db.PostResponse.Remove(postResponse);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

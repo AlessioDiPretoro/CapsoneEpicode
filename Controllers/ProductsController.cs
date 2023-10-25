@@ -34,17 +34,18 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
+            //ordina in maniera decrescente i post
             List<Post> posts = db.Post
          .Where(p => p.idProduct == id && p.isActive)
          .OrderByDescending(p => p.date)
          .ToList();
 
-            Dictionary<int, List<Post>> responses = new Dictionary<int, List<Post>>();
+            Dictionary<int, List<PostResponse>> responses = new Dictionary<int, List<PostResponse>>();
 
             foreach (Post post in posts)
             {
-                var responsePosts = db.Post
-                            .Where(p => p.idPostResponse == post.id && p.isActive)
+               List<PostResponse> responsePosts = db.PostResponse
+                            .Where(p => p.idPost == post.id && p.isActive)
                             .OrderByDescending(p => p.date)
                             .ToList();
 
@@ -52,7 +53,7 @@ namespace Stones.Controllers
             }
 
             // Crea un modello che includa sia il prodotto che i post e le risposte
-            var productWithPosts = new ProductWithPostsViewModel
+            var productWithPosts = new _ProductWithPostsViewModel
             {
                 Product = product,
                 Posts = posts,

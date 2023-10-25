@@ -1,4 +1,4 @@
-﻿@model Stones.Models.ProductWithPostsViewModel
+﻿@model Stones.Models._ProductWithPostsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-    @*commenti e risposte ai commenti*@
+    @*commenti*@
     @foreach (Stones.Models.Post post in Model.Posts)
     {
 
@@ -73,7 +73,7 @@
                     <div>
 
                         <p>@post.Users.username</p>
-                        <p>@post.date.ToShortDateString()</p>
+                        <p>@post.date</p>
                     </div>
                 </div>
                 @if (User.Identity.Name == post.Users.username)
@@ -91,18 +91,45 @@
             <p> @post.body  </p>
             <div class="d-flex justify-content-end">
 
-                @Html.ActionLink("Rispondi", "CreateResponsePost", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
+                @Html.ActionLink("Rispondi", "Create", "PostResponses", new { id = post.id }, new { @class = "btn btn-default w-auto" })
             </div>
             @*risposte ai commenti*@
-            @foreach(var response in Model.Responses)
+
+            @foreach (var resp in Model.Responses)
+            {
+                if (resp.Key == post.id && resp.Value.Count > 0)
                 {
-                    <div>@response.Key</div>
+                    foreach (var res in resp.Value)
+                    {
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <div>
+
+                                <p><b>@res.Username</b> - @res.date </p>
+                                <p>@res.body</p>
+                            </div>
+                            @if (User.Identity.Name == res.Username)
+                            {
+                                <div class="nav-item dropdown btn btn-default w-auto">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ...
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Modifica", "Edit", "PostResponses", new { id = res.id }, new { @class = "btn btn-edit w-auto" })</li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    }
                 }
+            }
         </div>
     }
 </div>
 
 @section scripts{
+    @*cliccando sull'immagine piccola viene visualizzata sulla card principale*@
     <script type="text/javascript">
         $(document).ready(function () {
 

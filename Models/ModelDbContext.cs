@@ -15,6 +15,7 @@ namespace Stones.Models
         public virtual DbSet<DetailOrder> DetailOrder { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<PostResponse> PostResponse { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductCategory> ProductCategory { get; set; }
         public virtual DbSet<ProductSubject> ProductSubject { get; set; }
@@ -34,6 +35,12 @@ namespace Stones.Models
                 .HasMany(e => e.DetailOrder)
                 .WithRequired(e => e.Order)
                 .HasForeignKey(e => e.idOrder)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Post>()
+                .HasMany(e => e.PostResponse)
+                .WithRequired(e => e.Post)
+                .HasForeignKey(e => e.idPost)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()

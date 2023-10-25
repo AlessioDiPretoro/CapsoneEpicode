@@ -72,7 +72,6 @@
                         idProduct = c.Int(),
                         idPostResponse = c.Int(),
                         isActive = c.Boolean(nullable: false),
-                        title = c.String(nullable: false, maxLength: 50),
                         body = c.String(nullable: false),
                         date = c.DateTime(nullable: false, storeType: "date"),
                         dateEdit = c.DateTime(storeType: "date"),
@@ -82,6 +81,19 @@
                 .ForeignKey("dbo.Users", t => t.idUser)
                 .Index(t => t.idUser)
                 .Index(t => t.idProduct);
+            
+            CreateTable(
+                "dbo.PostResponse",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        idPost = c.Int(nullable: false),
+                        body = c.String(nullable: false),
+                        idUser = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.Post", t => t.idPost)
+                .Index(t => t.idPost);
             
             CreateTable(
                 "dbo.Product",
@@ -134,10 +146,12 @@
             DropForeignKey("dbo.Product", "idCategory", "dbo.ProductCategory");
             DropForeignKey("dbo.Post", "idProduct", "dbo.Product");
             DropForeignKey("dbo.DetailOrder", "idProduct", "dbo.Product");
+            DropForeignKey("dbo.PostResponse", "idPost", "dbo.Post");
             DropForeignKey("dbo.Order", "idBuyer", "dbo.Users");
             DropForeignKey("dbo.DetailOrder", "idOrder", "dbo.Order");
             DropIndex("dbo.Product", new[] { "idSubject" });
             DropIndex("dbo.Product", new[] { "idCategory" });
+            DropIndex("dbo.PostResponse", new[] { "idPost" });
             DropIndex("dbo.Post", new[] { "idProduct" });
             DropIndex("dbo.Post", new[] { "idUser" });
             DropIndex("dbo.Order", new[] { "idBuyer" });
@@ -146,6 +160,7 @@
             DropTable("dbo.ProductSubject");
             DropTable("dbo.ProductCategory");
             DropTable("dbo.Product");
+            DropTable("dbo.PostResponse");
             DropTable("dbo.Post");
             DropTable("dbo.Users");
             DropTable("dbo.Order");

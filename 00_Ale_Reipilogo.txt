@@ -5,6 +5,9 @@ da fare:
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
 //
 
+IN LAVORAZIONE RIPARTIRE DA:
+modifica risposta post, va in errore....
+
 Domande da fare:
 1 jquery manca da ogni nuovo progetto...
 2 utilizzo dei partial: dopo il submit del partial come aggiorno solo il partial senza aggiornare tutta la layout?
