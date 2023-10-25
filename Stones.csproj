@@ -174,23 +174,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310251047304_InitialCreate.cs" />
-    <Compile Include="Migrations\202310251047304_InitialCreate.designer.cs">
-      <DependentUpon>202310251047304_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310251059129_DateTimeTime.cs" />
-    <Compile Include="Migrations\202310251059129_DateTimeTime.designer.cs">
-      <DependentUpon>202310251059129_DateTimeTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310251107058_ResponsePostDateActive.cs" />
-    <Compile Include="Migrations\202310251107058_ResponsePostDateActive.designer.cs">
-      <DependentUpon>202310251107058_ResponsePostDateActive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202310251141061_PostResponsesUserName.cs" />
-    <Compile Include="Migrations\202310251141061_PostResponsesUserName.designer.cs">
-      <DependentUpon>202310251141061_PostResponsesUserName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DetailOrder.cs" />
     <Compile Include="Models\ModelDbContext.cs" />
     <Compile Include="Models\Order.cs" />
@@ -357,20 +340,6 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202310251047304_InitialCreate.resx">
-      <DependentUpon>202310251047304_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310251059129_DateTimeTime.resx">
-      <DependentUpon>202310251059129_DateTimeTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310251107058_ResponsePostDateActive.resx">
-      <DependentUpon>202310251107058_ResponsePostDateActive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310251141061_PostResponsesUserName.resx">
-      <DependentUpon>202310251141061_PostResponsesUserName.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

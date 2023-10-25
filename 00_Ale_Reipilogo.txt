@@ -1,19 +1,31 @@
-da fare:
-
+IN LAVORAZIONE RIPARTIRE DA:
+abilitare migrazioni?
+// -- da fare: --\\
+ordini e dettagli ordini con carrello
 90 gestione ruoli: Admin & User
-99 gestire le eliminazioni dei record...
+91 gestire le eliminazioni dei record...
+92 agguingere pagamento paypall
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
 //
 
-IN LAVORAZIONE RIPARTIRE DA:
-
-Domande da fare:
+//-- Domande da fare: --\\
 1 jquery manca da ogni nuovo progetto...
 2 utilizzo dei partial: dopo il submit del partial come aggiorno solo il partial senza aggiornare tutta la layout?
   cosa scrivere nel return del partial
 3 validazioni remote... ok in creazione problemi nell'edit
 4 dropdownFor in edit product non prende il valore dell'item
 5 edit product = problema con il prezzo e le virgole!!!
+6 carrello su DB o solo in locale?
+
+//-- Controllers: --\\
+DetailOrder,		da iniziare
+Order,				da iniziare
+Post,				FINITO
+PostResponse,		FINITO
+Product,			FINITO
+ProductCategory,	FINITO
+ProductSubject,		FINITO
+Users				FINITO
 
 -- OK FATTO --
 registra utente e controllo su img
@@ -23,6 +35,7 @@ implementare autorizzazioni e ruoli
 post sulla galleria - dopo aver fatto gli utenti per poterne salvare l'id del creatore
 Aggiungere idProduct in post per collegarli...
 post - creazione ed edit OK
+post - foto user
 ricerca per tipologie e soggetti
 edit gategory e subject
 edit USER

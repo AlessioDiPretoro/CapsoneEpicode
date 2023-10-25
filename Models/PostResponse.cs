@@ -16,13 +16,16 @@ namespace Stones.Models
         [Required]
         public string body { get; set; }
 
+        public int idUser { get; set; }
+
         public bool isActive { get; set; }
+
         public DateTime date { get; set; }
+
         public DateTime? dateEdit { get; set; }
 
-        public int idUser { get; set; }
-        public string Username { get; set; }
-
         public virtual Post Post { get; set; }
+
+        public virtual Users Users { get; set; }
     }
 }

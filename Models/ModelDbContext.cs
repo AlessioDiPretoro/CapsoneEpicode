@@ -79,6 +79,12 @@ namespace Stones.Models
                 .WithRequired(e => e.Users)
                 .HasForeignKey(e => e.idUser)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.PostResponse)
+                .WithRequired(e => e.Users)
+                .HasForeignKey(e => e.idUser)
+                .WillCascadeOnDelete(false);
         }
     }
 }

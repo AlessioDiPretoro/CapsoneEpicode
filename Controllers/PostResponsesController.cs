@@ -52,7 +52,7 @@ namespace Stones.Controllers
                 postResponse.idPost = Convert.ToInt16(RouteData.Values["id"]);
                 Users poster = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault();
                 postResponse.idUser = poster.id;
-                postResponse.Username = poster.username;
+                //postResponse.Username = poster.username;
                 postResponse.isActive = true;
                 postResponse.date = DateTime.Now;
                 db.PostResponse.Add(postResponse);

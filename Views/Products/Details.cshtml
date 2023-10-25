@@ -105,13 +105,13 @@
                         <hr />
                         <div class="d-flex justify-content-between">
                             <div class="d-flex">
-                                @*<img src="~/Content//imgProfiles/@res." alt="Immagine profilo" class="rounded-circle" />*@
+                                <img src="~/Content//imgProfiles/@res.Users.imgProfile" alt="Immagine profilo" class="rounded-circle" />
                                 <div>
-                                    <p><b>@res.Username</b> - @res.date </p>
+                                    <p><b>@res.Users.username</b> - @res.date </p>
                                     <p>@res.body</p>
                                 </div>
                             </div>
-                            @if (User.Identity.Name == res.Username)
+                            @if (User.Identity.Name == res.Users.username)
                             {
                                 <div class="nav-item dropdown btn btn-default w-auto">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
