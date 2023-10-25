@@ -9,5 +9,8 @@ namespace Stones.Models
     {
         public Product Product { get; set; }
         public List<Post> Posts { get; set; }
+
+        //public List<Post> Response { get; set; }
+        public Dictionary<int, List<Post>> Responses { get; set; }
     }
 }

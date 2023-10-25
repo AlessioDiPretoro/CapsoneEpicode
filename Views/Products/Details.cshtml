@@ -62,6 +62,7 @@
             </div>
         </div>
     </div>
+    @*commenti e risposte ai commenti*@
     @foreach (Stones.Models.Post post in Model.Posts)
     {
 
@@ -90,10 +91,11 @@
             <p> @post.body  </p>
             <div class="d-flex justify-content-end">
 
-                @Html.ActionLink("Rispondi", "Create", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
+                @Html.ActionLink("Rispondi", "CreateResponsePost", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
             </div>
-        </div>
+            @*risposte ai commenti*@
 
+        </div>
     }
 </div>
 

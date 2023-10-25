@@ -39,7 +39,6 @@ namespace Stones.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
-            string idProduct = RouteData.Values["id"] as string;
             return View();
         }
 
@@ -51,6 +50,28 @@ namespace Stones.Controllers
             if (ModelState.IsValid)
             {
                 post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
+                post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+                post.isActive = true;
+                post.date = DateTime.Now;
+                db.Post.Add(post);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(post);
+        }
+
+        public ActionResult CreateResponsePost(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateResponsePost(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+                post.idPostResponse = Convert.ToInt16(RouteData.Values["id"]);
                 post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
                 post.isActive = true;
                 post.date = DateTime.Now;
@@ -98,7 +119,7 @@ namespace Stones.Controllers
             return View(post);
         }
 
-        // GET: Posts/Delete/5
+        // GET: Posts/Delete/5 // NON LO USO, impostata variabile isActive per nascondere i commenti
         public ActionResult Delete(int? id)
         {
             if (id == null)

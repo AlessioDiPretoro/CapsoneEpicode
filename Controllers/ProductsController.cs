@@ -34,16 +34,29 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            var posts = db.Post
-        .Where(p => p.idProduct == id && p.isActive)
-        .OrderByDescending(p => p.date)
-        .ToList();
+            List<Post> posts = db.Post
+         .Where(p => p.idProduct == id && p.isActive)
+         .OrderByDescending(p => p.date)
+         .ToList();
 
-            // Crea un modello che includa sia il prodotto che i post
+            Dictionary<int, List<Post>> responses = new Dictionary<int, List<Post>>();
+
+            foreach (Post post in posts)
+            {
+                var responsePosts = db.Post
+                            .Where(p => p.idPostResponse == post.id && p.isActive)
+                            .OrderByDescending(p => p.date)
+                            .ToList();
+
+                responses.Add(post.id, responsePosts);
+            }
+
+            // Crea un modello che includa sia il prodotto che i post e le risposte
             var productWithPosts = new ProductWithPostsViewModel
             {
                 Product = product,
-                Posts = posts
+                Posts = posts,
+                Responses = responses
             };
 
             return View(productWithPosts);
@@ -59,8 +72,6 @@ namespace Stones.Controllers
         }
 
         // POST: Products/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product, HttpPostedFileBase photo1, HttpPostedFileBase photo2, HttpPostedFileBase photo3, HttpPostedFileBase photo4, HttpPostedFileBase photo5)
@@ -130,8 +141,6 @@ namespace Stones.Controllers
         }
 
         // POST: Products/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product, HttpPostedFileBase photo1, HttpPostedFileBase photo2, HttpPostedFileBase photo3, HttpPostedFileBase photo4, HttpPostedFileBase photo5)
