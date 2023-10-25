@@ -94,7 +94,10 @@
                 @Html.ActionLink("Rispondi", "CreateResponsePost", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
             </div>
             @*risposte ai commenti*@
-
+            @foreach(var response in Model.Responses)
+                {
+                    <div>@response.Key</div>
+                }
         </div>
     }
 </div>

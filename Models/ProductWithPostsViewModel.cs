@@ -11,6 +11,6 @@ namespace Stones.Models
         public List<Post> Posts { get; set; }
 
         //public List<Post> Response { get; set; }
-        public Dictionary<int, List<Post>> Responses { get; set; }
+        //public Dictionary<int, List<Post>> Responses { get; set; }
     }
 }
