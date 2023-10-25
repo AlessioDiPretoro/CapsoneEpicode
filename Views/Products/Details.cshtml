@@ -104,27 +104,29 @@
 
                         <hr />
                         <div class="d-flex justify-content-between">
-                            <div>
-
-                                <p><b>@res.Username</b> - @res.date </p>
-                                <p>@res.body</p>
-                            </div>
-                            @if (User.Identity.Name == res.Username)
-                            {
-                                <div class="nav-item dropdown btn btn-default w-auto">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        ...
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>@Html.ActionLink("Modifica", "Edit", "PostResponses", new { id = res.id }, new { @class = "btn btn-edit w-auto" })</li>
-                                    </ul>
+                            <div class="d-flex">
+                                @*<img src="~/Content//imgProfiles/@res." alt="Immagine profilo" class="rounded-circle" />*@
+                                <div>
+                                    <p><b>@res.Username</b> - @res.date </p>
+                                    <p>@res.body</p>
                                 </div>
+                                </div>
+                                @if (User.Identity.Name == res.Username)
+                                {
+                                    <div class="nav-item dropdown btn btn-default w-auto">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            ...
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Modifica", "Edit", "PostResponses", new { id = res.id }, new { @class = "btn btn-edit w-auto" })</li>
+                                        </ul>
+                                    </div>
+                                }
+                            </div>
+                            }
+                            }
                             }
                         </div>
-                    }
-                }
-            }
-        </div>
     }
 </div>
 

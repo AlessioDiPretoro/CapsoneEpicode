@@ -127,7 +127,7 @@ namespace Stones.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "username,email,password,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
+        public ActionResult Edit([Bind(Include = "id,username,email,password,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
         {
             if (ModelState.IsValid)
             {

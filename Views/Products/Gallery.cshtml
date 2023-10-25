@@ -19,6 +19,7 @@
                         <input type="checkbox" name="category" value="@i.Value" /> @i.Text
                     </div>
                 }
+                <hr />
                 <p>Filtra per soggetti</p>
                 foreach (SelectListItem i in ViewBag.idSubject)
                 {
@@ -26,7 +27,8 @@
                         <input type="checkbox" name="subject" value="@i.Value" /> @i.Text
                     </div>
                 }
-                <input type="submit" value="Filtra" class="btn btn-default" />
+                <hr />
+                <input type="submit" value="Applica filtri" class="btn btn-default" />
             }
         </div>
         <div class="col-12 col-md-10">

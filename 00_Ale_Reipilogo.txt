@@ -1,5 +1,5 @@
 da fare:
-2 ricerca per tipologie e soggetti
+
 90 gestione ruoli: Admin & User
 99 gestire le eliminazioni dei record...
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
@@ -23,3 +23,6 @@ implementare autorizzazioni e ruoli
 post sulla galleria - dopo aver fatto gli utenti per poterne salvare l'id del creatore
 Aggiungere idProduct in post per collegarli...
 post - creazione ed edit OK
+ricerca per tipologie e soggetti
+edit gategory e subject
+edit USER
