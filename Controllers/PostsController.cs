@@ -44,8 +44,6 @@ namespace Stones.Controllers
         }
 
         // POST: Posts/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
@@ -72,6 +70,12 @@ namespace Stones.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Post post = db.Post.Find(id);
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano editare altri post)
+            int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            if (post.idUser != idUser)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (post == null)
             {
                 return HttpNotFound();
@@ -80,8 +84,6 @@ namespace Stones.Controllers
         }
 
         // POST: Posts/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
