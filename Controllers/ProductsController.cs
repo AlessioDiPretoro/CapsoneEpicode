@@ -34,7 +34,20 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            return View(product);
+            var posts = db.Post
+        .Where(p => p.idProduct == id && p.isActive)
+        .OrderByDescending(p => p.date)
+        .ToList();
+
+            // Crea un modello che includa sia il prodotto che i post
+            var productWithPosts = new ProductWithPostsViewModel
+            {
+                Product = product,
+                Posts = posts
+            };
+
+            return View(productWithPosts);
+            //return View(product);
         }
 
         // GET: Products/Create

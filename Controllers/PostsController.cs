@@ -76,7 +76,6 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idUser = new SelectList(db.Users, "id", "username", post.idUser);
             return View(post);
         }
 
@@ -89,11 +88,11 @@ namespace Stones.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.dateEdit = DateTime.Now;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idUser = new SelectList(db.Users, "id", "username", post.idUser);
             return View(post);
         }
 

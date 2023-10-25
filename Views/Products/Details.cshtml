@@ -1,4 +1,4 @@
-﻿@model Stones.Models.Product
+﻿@model Stones.Models.ProductWithPostsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -9,68 +9,91 @@
 <div>
     <hr />
     <div class="card mb-3 detailCard">
-        <h2 class="card-title text-center m-3">@Model.name.ToUpper()</h2>
+        <h2 class="card-title text-center m-3">@Model.Product.name.ToUpper()</h2>
 
-        <img src="~/Content/imgProducts/@Model.photo1" class="card-big-top" alt="@Model.name">
+        <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top" alt="@Model.Product.name">
 
         <div class="row row-cols-5 m-0 mt-2 justify-content-center">
             <div class="col p-1">
-                <img src="~/Content/imgProducts/@Model.photo1" class="card-small-bottom" alt="@Model.photo2">
+                <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-small-bottom" alt="@Model.Product.photo2">
             </div>
-            @if (Model.photo2 != null)
+            @if (Model.Product.photo2 != null)
             {
                 <div class="col p-1">
 
-                    <img src="~/Content/imgProducts/@Model.photo2" class="card-small-bottom" alt="@Model.photo2">
+                    <img src="~/Content/imgProducts/@Model.Product.photo2" class="card-small-bottom" alt="@Model.Product.photo2">
                 </div>
             }
-            @if (Model.photo3 != null)
+            @if (Model.Product.photo3 != null)
             {
                 <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.photo3" class="card-small-bottom" alt="@Model.photo3">
+                    <img src="~/Content/imgProducts/@Model.Product.photo3" class="card-small-bottom" alt="@Model.Product.photo3">
                 </div>
             }
-            @if (Model.photo4 != null)
+            @if (Model.Product.photo4 != null)
             {
                 <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.photo4" class="card-small-bottom" alt="@Model.photo4">
+                    <img src="~/Content/imgProducts/@Model.Product.photo4" class="card-small-bottom" alt="@Model.Product.photo4">
                 </div>
             }
-            @if (Model.photo5 != null)
+            @if (Model.Product.photo5 != null)
             {
                 <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.photo5" class="card-small-bottom" alt="@Model.photo5">
+                    <img src="~/Content/imgProducts/@Model.Product.photo5" class="card-small-bottom" alt="@Model.Product.photo5">
                 </div>
             }
         </div>
         <div class="card-body">
             <div class="d-flex justify-content-between">
-                <h3 class="card-title">Titolo: @Model.name</h3>
-                <h3 class="card-text">@Model.price.ToString("C2")</h3>
+                <h3 class="card-title">Titolo: @Model.Product.name</h3>
+                <h3 class="card-text">@Model.Product.price.ToString("C2")</h3>
             </div>
-            @if (@Model.descripton != null)
+            @if (@Model.Product.descripton != null)
             {
-                <p class="card-text">Descrizione: @Html.Encode(Model.descripton)</p>
+                <p class="card-text">Descrizione: @Html.Encode(Model.Product.descripton)</p>
             }
-            <p class="card-text">Categoria: @Model.ProductCategory.name</p>
-            <p class="card-text">Soggetto: @Model.ProductSubject.name</p>
+            <p class="card-text">Categoria: @Model.Product.ProductCategory.name</p>
+            <p class="card-text">Soggetto: @Model.Product.ProductSubject.name</p>
             <p class="card-text"><small class="text-body-secondary">Visto 200 volte</small></p>
             <div class="d-flex gap-5">
 
                 @Html.ActionLink("Acquista", "AddCart", "Cart", new { area = "" }, new { @class = "btn btn-default" })
-                @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
-    @foreach (Stones.Models.Post post in Model.Post)
+    @foreach (Stones.Models.Post post in Model.Posts)
     {
+
         <div class="post">
-            <div class="d-flex justify-content-between align-items-baseline">
-                <p>@post.date.ToShortDateString()</p>
-                @Html.ActionLink("Rispondi", "Create", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="d-flex">
+                    <img src="~/Content//imgProfiles/@post.Users.imgProfile" alt="Immagine profilo" class="rounded-circle" />
+                    <div>
+
+                        <p>@post.Users.username</p>
+                        <p>@post.date.ToShortDateString()</p>
+                    </div>
+                </div>
+                @if (User.Identity.Name == post.Users.username)
+                {
+                    <div class="nav-item dropdown btn btn-default w-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Modifica", "Edit", "Posts", new { id = post.id }, new { @class = "btn btn-edit w-auto" })</li>
+                        </ul>
+                    </div>
+                }
             </div>
             <p> @post.body  </p>
+            <div class="d-flex justify-content-end">
+
+                @Html.ActionLink("Rispondi", "Create", "Posts", new { id = post.id }, new { @class = "btn btn-default w-auto" })
+            </div>
         </div>
+
     }
 </div>
 

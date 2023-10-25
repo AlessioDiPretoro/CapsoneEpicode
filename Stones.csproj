@@ -189,6 +189,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\ProductSubject.cs" />
+    <Compile Include="Models\ProductWithPostsViewModel.cs" />
     <Compile Include="Models\SiteRole.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\_LoginUser.cs" />
