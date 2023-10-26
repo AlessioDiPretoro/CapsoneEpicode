@@ -1,6 +1,9 @@
+\SQLEXPRESS
 IN LAVORAZIONE RIPARTIRE DA:
-abilitare migrazioni?
+aste - manca solo gestirne la chiusura...Windows Task Scheduler??
+
 // -- da fare: --\\
+abilitare migrazioni?
 ordini e dettagli ordini con carrello
 90 gestione ruoli: Admin & User
 91 gestire le eliminazioni dei record...
@@ -16,8 +19,12 @@ ordini e dettagli ordini con carrello
 4 dropdownFor in edit product non prende il valore dell'item
 5 edit product = problema con il prezzo e le virgole!!!
 6 carrello su DB o solo in locale?
+7 aste? se le faccio necessito di un controllo sempre attivo sugli orari delle aste per chiuderle...
+8 auctionsDetails.idAuction = Convert.ToInt16(RouteData.Values["id"]);
 
 //-- Controllers: --\\
+Auctions			FINITO
+AuctionsDetails		FINITO  ma aggiungere chiusura dell'asta e trasformazione in ordine da pagare...
 DetailOrder,		da iniziare
 Order,				da iniziare
 Post,				FINITO

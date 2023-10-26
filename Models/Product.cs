@@ -12,6 +12,7 @@ namespace Stones.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            AuctionsProducts = new HashSet<AuctionsProducts>();
             DetailOrder = new HashSet<DetailOrder>();
             Post = new HashSet<Post>();
         }
@@ -40,6 +41,11 @@ namespace Stones.Models
         public string photo4 { get; set; }
 
         public string photo5 { get; set; }
+
+        public bool isAvaiable { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AuctionsProducts> AuctionsProducts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailOrder> DetailOrder { get; set; }

@@ -12,6 +12,8 @@ namespace Stones.Models
         {
         }
 
+        public virtual DbSet<AuctionsDetails> AuctionsDetails { get; set; }
+        public virtual DbSet<AuctionsProducts> AuctionsProducts { get; set; }
         public virtual DbSet<DetailOrder> DetailOrder { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Post> Post { get; set; }
@@ -23,6 +25,20 @@ namespace Stones.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AuctionsDetails>()
+                .Property(e => e.price)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<AuctionsProducts>()
+                .Property(e => e.startPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<AuctionsProducts>()
+                .HasMany(e => e.AuctionsDetails)
+                .WithRequired(e => e.AuctionsProducts)
+                .HasForeignKey(e => e.idAuction)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<DetailOrder>()
                 .Property(e => e.priceCad)
                 .HasPrecision(19, 4);
@@ -48,6 +64,12 @@ namespace Stones.Models
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()
+                .HasMany(e => e.AuctionsProducts)
+                .WithRequired(e => e.Product)
+                .HasForeignKey(e => e.idProduct)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
                 .HasMany(e => e.DetailOrder)
                 .WithRequired(e => e.Product)
                 .HasForeignKey(e => e.idProduct)
@@ -67,6 +89,17 @@ namespace Stones.Models
                 .HasMany(e => e.Product)
                 .WithOptional(e => e.ProductSubject)
                 .HasForeignKey(e => e.idSubject);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.AuctionsDetails)
+                .WithRequired(e => e.Users)
+                .HasForeignKey(e => e.idUser)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.AuctionsProducts)
+                .WithOptional(e => e.Users)
+                .HasForeignKey(e => e.idWinner);
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.Order)

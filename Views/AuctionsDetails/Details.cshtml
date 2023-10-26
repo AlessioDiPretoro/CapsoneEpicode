@@ -1,0 +1,50 @@
+﻿@model Stones.Models.AuctionsDetails
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AuctionsDetails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuctionsProducts.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuctionsProducts.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

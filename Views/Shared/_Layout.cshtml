@@ -23,6 +23,7 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Galleria", "Gallery", "Products", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Aste", "Auctions", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Registrati", "Create", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Login", "Login", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
                     @if (User.Identity.IsAuthenticated)
@@ -34,6 +35,8 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Profilo", "Details", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                                 <li>@Html.ActionLink("LogOut", "Logout", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("Le tue aste", "UserAuctions", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+
                             </ul>
                         </li>
                     }
@@ -62,6 +65,15 @@
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Aggiungi", "Create", "ProductSubjects", new { area = "" }, new { @class = "nav-link" })</li>
                             <li>@Html.ActionLink("Mostra tutti", "Index", "ProductSubjects", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Aste
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Aggiungi", "Create", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Mostra tutte", "Index", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
                         </ul>
                     </li>
                 </ul>

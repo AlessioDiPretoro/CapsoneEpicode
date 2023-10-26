@@ -110,7 +110,7 @@ namespace Stones.Controllers
                     if (resp.ErrorMessage != null) { ViewBag.ErrorMessage = resp.ErrorMessage; }
                     else { product.photo5 = resp.SuccessMessage; }
                 }
-
+                product.isAvaiable = true;
                 db.Product.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");

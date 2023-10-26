@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Stones.Models.AuctionsProducts>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.name)
+        </th>
+        <th>
+            Aggiudicata da
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

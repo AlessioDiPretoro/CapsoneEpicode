@@ -11,6 +11,8 @@ namespace Stones.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            AuctionsDetails = new HashSet<AuctionsDetails>();
+            AuctionsProducts = new HashSet<AuctionsProducts>();
             Order = new HashSet<Order>();
             Post = new HashSet<Post>();
             PostResponse = new HashSet<PostResponse>();
@@ -57,6 +59,12 @@ namespace Stones.Models
         public string role { get; set; }
 
         public int points { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AuctionsDetails> AuctionsDetails { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AuctionsProducts> AuctionsProducts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

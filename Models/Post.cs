@@ -21,8 +21,6 @@ namespace Stones.Models
 
         public int? idProduct { get; set; }
 
-        public int? idPostResponse { get; set; }
-
         public bool isActive { get; set; }
 
         [Required]

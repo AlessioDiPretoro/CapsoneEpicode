@@ -46,7 +46,17 @@
         <div class="card-body">
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Titolo: @Model.Product.name</h3>
-                <h3 class="card-text">@Model.Product.price.ToString("C2")</h3>
+
+                @if (Model.Product.isAvaiable)
+                {
+
+                    <h5 class="card-title text-nowrap">@Model.Product.price.ToString("C2")</h5>
+                }
+                else
+                {
+                    <h5 class="card-title text-nowrap">Venduto</h5>
+
+                }
             </div>
             @if (@Model.Product.descripton != null)
             {

@@ -45,7 +45,16 @@
                             <div class="d-flex justify-content-between">
 
                                 <h5 class="card-title card-text-cutter">@p.name</h5>
+                                @if (p.isAvaiable)
+                {
+
                                 <h5 class="card-title text-nowrap">@p.price.ToString("C2")</h5>
+}
+else
+                {
+                            <h5 class="card-title text-nowrap text-decoration-line-through">@p.price.ToString("C2")</h5>
+
+                }
                             </div>
                             <p class="card-text card-text-cutter flex-grow-1">@p.descripton</p>
                             @Html.ActionLink("Dettagli", "Details", "Products", new { id = p.id }, new { @class = "btn btn-default" })

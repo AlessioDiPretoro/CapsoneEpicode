@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Stones.Models.AuctionsProducts>
+@{
+    ViewBag.Title = "Auctions";
+}
+
+<h2>Aste attive</h2>
+<div class="row">
+    <div class="col-12 col-md-2 mb-3">
+        @using (Html.BeginForm())
+        {
+            <p>Filtra per materiali</p>
+
+            foreach (SelectListItem i in ViewBag.idCategory)
+            {
+                <div>
+                    <input type="checkbox" name="category" value="@i.Value" /> @i.Text
+                </div>
+            }
+            <hr />
+            <p>Filtra per soggetti</p>
+            foreach (SelectListItem i in ViewBag.idSubject)
+            {
+                <div>
+                    <input type="checkbox" name="subject" value="@i.Value" /> @i.Text
+                </div>
+            }
+            <hr />
+            <input type="submit" value="Applica filtri" class="btn btn-default" />
+        }
+    </div>
+    <div class="col-12 col-md-10">
+
+        <div class="row row-cols-1 row-cols-md-3 gap-4 justify-content-center galleryCont">
+
+            @foreach (Stones.Models.AuctionsProducts p in Model)
+            {
+                <div class="card galleryCard" style="width: 18rem;">
+                    <a href="@Url.Action("Details", "Products", new { id = p.Product.id })">
+                        <img src="~/Content/imgProducts/@p.Product.photo1" class="card-img-top" alt="@p.Product.name">
+                    </a>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+
+                            <h5 class="card-title card-text-cutter">@p.Product.name</h5>
+                            @if (p.isActive)
+                            {
+
+                                <h5 class="card-title text-nowrap">@p.startPrice.ToString("C2")</h5>
+                            }
+                            else
+                            {
+                                <h5 class="card-title text-nowrap text-decoration-line-through">@p.startPrice.ToString("C2")</h5>
+
+                            }
+                        </div>
+                        <p class="card-text flex-grow-1">Valida fino al: @p.dataEnd</p>
+                        @if (p.AuctionsDetails.Count > 0)
+                        {
+                            decimal price = 0;
+                            string usernameOffert = "";
+                            foreach (Stones.Models.AuctionsDetails a in p.AuctionsDetails)
+                            {
+                                if (a.price > price)
+                                {
+                                    price = a.price;
+                                    usernameOffert = a.Users.username;
+                                }
+                            }
+                            <div>Prezzo Massimo offerto: @price.ToString("C2")</div>
+
+                            if (usernameOffert == User.Identity.Name)
+                            {
+                                <div><b class="btn btn-success">E' la tua offerta quella vincente!!!</b></div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="btn btn-warning">Nessuna offerta presente, affrettati ad essere il primo</div>
+                        }
+                        @*@Html.ActionLink("Dettagli", "Details", "Products", new { id = p.id }, new { @class = "btn btn-default" })*@
+                        @*@Html.ActionLink("Commenta", "Create", "Posts", new { id = p.id }, new { @class = "btn btn-default" })*@
+                        @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.NoResults != null)
+        {
+            <div><p class="text-center">@ViewBag.NoResults</p></div>
+        }
+    </div>
+</div>

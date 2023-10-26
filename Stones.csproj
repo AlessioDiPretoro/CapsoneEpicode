@@ -160,6 +160,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuctionsDetailsController.cs" />
+    <Compile Include="Controllers\AuctionsProductsController.cs" />
     <Compile Include="Controllers\CustomProceduresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
@@ -174,6 +176,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuctionsDetails.cs" />
+    <Compile Include="Models\AuctionsProducts.cs" />
     <Compile Include="Models\DetailOrder.cs" />
     <Compile Include="Models\ModelDbContext.cs" />
     <Compile Include="Models\Order.cs" />
@@ -313,6 +317,18 @@
     <Content Include="Views\PostResponses\Details.cshtml" />
     <Content Include="Views\PostResponses\Edit.cshtml" />
     <Content Include="Views\PostResponses\Index.cshtml" />
+    <Content Include="Views\AuctionsProducts\Create.cshtml" />
+    <Content Include="Views\AuctionsProducts\Delete.cshtml" />
+    <Content Include="Views\AuctionsProducts\Details.cshtml" />
+    <Content Include="Views\AuctionsProducts\Edit.cshtml" />
+    <Content Include="Views\AuctionsProducts\Index.cshtml" />
+    <Content Include="Views\AuctionsProducts\Auctions.cshtml" />
+    <Content Include="Views\AuctionsDetails\Create.cshtml" />
+    <Content Include="Views\AuctionsDetails\Delete.cshtml" />
+    <Content Include="Views\AuctionsDetails\Details.cshtml" />
+    <Content Include="Views\AuctionsDetails\Edit.cshtml" />
+    <Content Include="Views\AuctionsDetails\Index.cshtml" />
+    <Content Include="Views\AuctionsDetails\UserAuctions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
