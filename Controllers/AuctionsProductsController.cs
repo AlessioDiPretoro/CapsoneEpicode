@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Quartz;
 using Stones.Models;
 
 namespace Stones.Controllers
@@ -13,6 +14,12 @@ namespace Stones.Controllers
     public class AuctionsProductsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
+        private readonly _AuctionScheduler _auctionScheduler;
+
+        public AuctionsProductsController()
+        {
+            _auctionScheduler = new _AuctionScheduler(); // Inizializzazione di AuctionScheduler
+        }
 
         // GET: AuctionsProducts
         public ActionResult Index()
@@ -44,8 +51,6 @@ namespace Stones.Controllers
         }
 
         // POST: AuctionsProducts/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,idProduct,dataStart,dataEnd,startPrice,isActive")] AuctionsProducts auctionsProducts)
@@ -55,6 +60,8 @@ namespace Stones.Controllers
                 auctionsProducts.isActive = true;
                 db.AuctionsProducts.Add(auctionsProducts);
                 db.SaveChanges();
+
+                _auctionScheduler.PianificaChiusuraAsta(auctionsProducts.dataEnd, auctionsProducts.id);
                 return RedirectToAction("Index");
             }
 
@@ -126,6 +133,7 @@ namespace Stones.Controllers
             base.Dispose(disposing);
         }
 
+        //mostra le aste attive e le filtra per le categorie
         public ActionResult Auctions(FormCollection categories, FormCollection subjects)
         {
             List<string> selCat = categories.GetValues("category")?.ToList();
