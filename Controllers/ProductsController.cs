@@ -15,6 +15,21 @@ namespace Stones.Controllers
     {
         private ModelDbContext db = new ModelDbContext();
 
+        public List<SelectListItem> SubjectList {
+            get {
+                List<SelectListItem> list = new List<SelectListItem>();
+
+                List<ProductSubject> l = db.ProductSubject.ToList();
+                
+                foreach (ProductSubject subject in l)
+                {
+                    list.Add(new SelectListItem { Text=subject.name, Value=subject.id.ToString() });
+                }
+
+                return list;
+            } 
+        }
+
         // GET: Products
         public ActionResult Index()
         {
@@ -134,8 +149,9 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idCategory = new SelectList(db.ProductCategory.OrderBy(x => x.name), "id", "name", product.idCategory.ToString());
+            ViewBag.idCategory = new SelectList(db.ProductCategory.OrderBy(x => x.name), "id", "name", product.idCategory);
             ViewBag.idSubject = new SelectList(db.ProductSubject.OrderBy(x => x.name), "id", "name", product.idSubject);
+            ViewBag.idSubjectList = SubjectList;
             _Photos _photos = new _Photos(product.photo1, product.photo2, product.photo3, product.photo4, product.photo5);
             TempData["Images"] = _photos;
             return View(product);
@@ -233,6 +249,8 @@ namespace Stones.Controllers
             base.Dispose(disposing);
         }
 
+
+        //visualizza la galleria dei prodotti disponibili ed effettua eventuali filtri
         public ActionResult Gallery(FormCollection categories, FormCollection subjects)
         {
             List<string> selCat = categories.GetValues("category")?.ToList();

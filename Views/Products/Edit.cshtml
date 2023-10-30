@@ -41,8 +41,14 @@
         <div class="form-group">
             <div class="col-md-10">
                 <span class="input-icon"><i class="fa-solid fa-list"></i></span>
-                @Html.DropDownListFor(model => model.idCategory, (SelectList)ViewBag.idCategory, new { @class = "form-control", id = "idCategory" })
-                @*@Html.DropDownList("idCategory", null, htmlAttributes: new { @class = "form-control", placeholder = "IdCategoria" })*@
+                @*@Html.DropDownListFor(model => model.idCategory, (SelectList)ViewBag.idCategory, new { @class = "form-control", id = "idCategory" })*@
+
+                <select class="form-control" id="idCategory" name="idCategory">
+                    @foreach (var category in (SelectList)ViewBag.idCategory)
+                    {
+                        <option value="@category.Value" @(category.Value == Model.idCategory.ToString() ? "selected" : null)>@category.Text</option>
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.idCategory, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,8 +56,16 @@
         <div class="form-group">
             <div class="col-md-10">
                 <span class="input-icon"><i class="fa-solid fa-list"></i></span>
-                @*@Html.DropDownListFor(model => model.idSubject, new SelectList(ViewBag.idSubject, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "idSubject" })*@
-                @Html.DropDownListFor(model => model.idSubject, (SelectList)ViewBag.idSubject, new { @class = "form-control", @id = "idSubject" })
+                @*@Html.DropDownListFor(model => model.idSubject, new SelectList(ViewBag.idSubjectList, "Value", "Text"), new { @class = "form-control" })*@
+                @*@Html.DropDownListFor(model => model.idSubject, (SelectList)ViewBag.idSubject, new { @class = "form-control" })*@
+               
+            <select class="form-control" id="idSubject" name="idSubject">
+                @foreach (var category in (SelectList)ViewBag.idSubject)
+                {
+                    <option value="@category.Value" @(category.Value == Model.idSubject.ToString() ? "selected" : null)>@category.Text</option>
+                }
+            </select>
+                
                 @Html.ValidationMessageFor(model => model.idSubject, "", new { @class = "text-danger" })
             </div>
         </div>
