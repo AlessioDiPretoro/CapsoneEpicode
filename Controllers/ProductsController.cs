@@ -67,8 +67,8 @@ namespace Stones.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+            ViewBag.idCategory = new SelectList(db.ProductCategory.OrderBy(x => x.name), "id", "name");
+            ViewBag.idSubject = new SelectList(db.ProductSubject.OrderBy(x => x.name), "id", "name");
             return View();
         }
 
@@ -116,8 +116,8 @@ namespace Stones.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+            ViewBag.idCategory = new SelectList(db.ProductCategory.OrderBy(x => x.name), "id", "name");
+            ViewBag.idSubject = new SelectList(db.ProductSubject.OrderBy(x => x.name), "id", "name");
 
             return View(product);
         }
@@ -134,8 +134,8 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+            ViewBag.idCategory = new SelectList(db.ProductCategory.OrderBy(x => x.name), "id", "name", product.idCategory.ToString());
+            ViewBag.idSubject = new SelectList(db.ProductSubject.OrderBy(x => x.name), "id", "name", product.idSubject);
             _Photos _photos = new _Photos(product.photo1, product.photo2, product.photo3, product.photo4, product.photo5);
             TempData["Images"] = _photos;
             return View(product);
@@ -193,8 +193,8 @@ namespace Stones.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name", product.idCategory);
+            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name", product.idSubject);
             return View(product);
         }
 

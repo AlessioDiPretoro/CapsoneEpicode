@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿//non usato più, serviva a gestire le sottocategorie mostrando le opzioni disponibili
+//dopo aver selezionato la prima opzione da DropDown
+$(document).ready(function () {
     $("#IdCategoria").on("change", function () {
         var IdCategoria = $(this).val();
         $.ajax({

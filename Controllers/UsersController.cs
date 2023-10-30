@@ -62,7 +62,7 @@ namespace Stones.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,username,email,password,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
+        public ActionResult Create([Bind(Include = "id,username,email,password,confirmPassword,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
         {
             if (ModelState.IsValid)
             {

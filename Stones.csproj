@@ -199,6 +199,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310301046361_InitialCreate.cs" />
+    <Compile Include="Migrations\202310301046361_InitialCreate.designer.cs">
+      <DependentUpon>202310301046361_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310301051500_UserPointsNULL.cs" />
+    <Compile Include="Migrations\202310301051500_UserPointsNULL.designer.cs">
+      <DependentUpon>202310301051500_UserPointsNULL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuctionsDetails.cs" />
     <Compile Include="Models\AuctionsProducts.cs" />
     <Compile Include="Models\DetailOrder.cs" />
@@ -382,6 +391,14 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202310301046361_InitialCreate.resx">
+      <DependentUpon>202310301046361_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310301051500_UserPointsNULL.resx">
+      <DependentUpon>202310301051500_UserPointsNULL.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
