@@ -1,10 +1,10 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 body {
-  background: #c1dce1;
+  background: #f5f5f7;
 }
 body * {
   font-family: "Libre Baskerville", serif;
-  color: #6f6f6f;
+  color: #1d1d1f;
 }
 
 main img {
@@ -44,60 +44,63 @@ input, select {
 }
 
 nav {
-  background: cadetblue;
+  background: #121212;
 }
 nav .dropdown-menu {
-  background: cadetblue;
+  background: #121212;
 }
 nav .dropdown-menu .dropdown-item {
   color: white;
 }
-nav .dropdown-menu .dropdown-item:hover {
-  color: #d45b2d;
-  border-radius: 50px;
-}
 
 footer {
-  background: cadetblue;
+  background: #121212;
   color: #ffffff;
   padding: 0.5em;
 }
-footer a {
+footer a, footer p {
   color: #ffffff;
 }
 
 .btn-default {
-  background: cadetblue;
+  background: #454545;
   color: #ffffff;
   width: 100%;
   margin-top: 0.3em;
 }
 
 .btn-default:hover {
-  background: #4c7e80;
+  background: #040405;
   color: #ffffff;
 }
 
 .btn-default + .btn-default {
-  background: #395f60;
+  background: black;
 }
 
 .btn-default + .btn-default:hover {
-  background: #4c7e80;
+  background: #040405;
   color: #ffffff;
 }
 
 .card-img-top {
-  height: 40vh;
   object-fit: cover;
   margin-top: 0.5em;
   border-radius: 15px;
+  height: 60vh;
+  max-height: -webkit-fill-available;
+  padding-top: 5em;
 }
 
 .card-text-cutter {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.card-abs {
+  position: absolute;
+  width: 15rem;
 }
 
 .card-big-top {
@@ -114,10 +117,26 @@ footer a {
 }
 
 .galleryCard {
-  background-image: linear-gradient(to bottom, white, white, #8DC0C9);
-  border: 10px solid cadetblue;
   border-radius: 30px;
   text-transform: capitalize;
+}
+
+.galleryCard:hover {
+  transform: scale(1.03);
+}
+
+.galleryCard:nth-child(odd) {
+  background-color: black;
+}
+.galleryCard:nth-child(odd) h5, .galleryCard:nth-child(odd) p {
+  color: white;
+}
+
+.galleryCard:nth-child(even) {
+  background-color: white;
+}
+.galleryCard:nth-child(even) h5, .galleryCard:nth-child(even) p {
+  color: black;
 }
 
 .detailCard {

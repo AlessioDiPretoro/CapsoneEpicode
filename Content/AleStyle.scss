@@ -27,6 +27,8 @@ $blueBrown: #5F4B24;
 $blackBg: #121212;
 $greyDarkText: #6f6f6f;
 $greyTextSpotify: #a7a7a7;
+$silver: #f5f5f7;
+$blackTxt: #1d1d1f;
 //random color for card in gallery
 $cardBgRandom-1: $blueMain;
 $cardBgRandom-2: $blueDark;
@@ -39,15 +41,17 @@ $cardBgRandom-8: $blueGrey;
 $cardBgRandom-9: $blueBrown;
 
 //btn setups
-$btnDefBg: $blueMain;
+$btnDefBg: $blackTxt;
+//$btnDefBg: $blueMain;
 $btnColWhite: #ffffff;
 
 body {
-    background: $blueMainBG;
+    //background: $blueMainBG;
+    background: $silver;
 
     * {
         font-family: 'Libre Baskerville', serif;
-        color: $greyDarkText;
+        color: $blackTxt;
     }
 }
 
@@ -93,34 +97,33 @@ input, select {
 }
 
 nav {
-    background: $blueMain;
+    background: $blackBg;
 
     .dropdown-menu {
-        background: $blueMain;
+        background: $blackBg;
 
         .dropdown-item {
             color: white;
         }
-
-        .dropdown-item:hover {
-            color: $orangeDark;
-            border-radius: 50px;
-        }
+        //.dropdown-item:hover {
+        //    color: $orangeDark;
+        //    border-radius: 50px;
+        //}
     }
 }
 
 footer {
-    background: $blueMain;
+    background: $blackBg;
     color: $btnColWhite;
     padding: 0.5em;
 
-    a {
+    a, p {
         color: $btnColWhite;
     }
 }
 
 .btn-default {
-    background: $btnDefBg;
+    background: lighten($blackBg, 20%);
     color: $btnColWhite;
     width: 100%;
     margin-top: 0.3em;
@@ -141,16 +144,23 @@ footer {
 }
 
 .card-img-top {
-    height: 40vh;
     object-fit: cover;
     margin-top: 0.5em;
     border-radius: 15px;
+    height: 60vh;
+    max-height: -webkit-fill-available;
+    padding-top: 5em;
 }
 
 .card-text-cutter {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.card-abs {
+    position: absolute;
+    width: 15rem;
 }
 
 .card-big-top {
@@ -168,10 +178,30 @@ footer {
 }
 
 .galleryCard {
-    background-image: linear-gradient(to bottom, white,white, $blueLigther);
-    border: 10px solid $blueMain;
+    //background-image: linear-gradient(to bottom, white,white, $blueLigther);
+    //border: 5px solid $blueMain;
     border-radius: 30px;
     text-transform: capitalize;
+}
+
+.galleryCard:hover {
+    transform: scale(1.03)
+}
+
+.galleryCard:nth-child(odd) {
+    background-color: black;
+
+    h5, p {
+        color: white;
+    }
+}
+
+.galleryCard:nth-child(even) {
+    background-color: white;
+
+    h5, p {
+        color: black;
+    }
 }
 
 .detailCard {

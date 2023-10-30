@@ -5,9 +5,12 @@ aste - manca solo gestirne la chiusura...Windows Task Scheduler??
 // -- da fare: --\\
 abilitare migrazioni?
 ordini e dettagli ordini con carrello
+
 90 gestione ruoli: Admin & User
-91 gestire le eliminazioni dei record...
-92 agguingere pagamento paypall
+92 hash password?
+93 gestire le eliminazioni dei record...
+94 agguingere pagamento paypall
+
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
 //
 
@@ -15,11 +18,14 @@ ordini e dettagli ordini con carrello
 1 jquery manca da ogni nuovo progetto...
 2 utilizzo dei partial: dopo il submit del partial come aggiorno solo il partial senza aggiornare tutta la layout?
   cosa scrivere nel return del partial
-3 validazioni remote... ok in creazione problemi nell'edit
+3 validazioni remote... ok in creazione problemi nell'edit... vedere su google
 4 dropdownFor in edit product non prende il valore dell'item
 5 edit product = problema con il prezzo e le virgole!!!
-6 carrello su DB o solo in locale?
+6 carrello IN COOKIE!!!
 7 aste? se le faccio necessito di un controllo sempre attivo sugli orari delle aste per chiuderle...
+schedulazione CRONE : tramite nuget Windows Task Scheduler nativo,
+vedere documentazione insieme a Quartz.NET
+
 8 auctionsDetails.idAuction = Convert.ToInt16(RouteData.Values["id"]);
 
 //-- Controllers: --\\
