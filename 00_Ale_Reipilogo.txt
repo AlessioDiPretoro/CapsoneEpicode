@@ -1,8 +1,9 @@
 \SQLEXPRESS
 IN LAVORAZIONE RIPARTIRE DA:
-aste - manca solo gestirne la chiusura...Windows Task Scheduler??
+aste - manca solo gestirne la chiusura...Windows Task Scheduler?? SEMBRA FUNZIONARE...
 
 // -- da fare: --\\
+confronto password in iscrizione... fare è veloce...
 abilitare migrazioni?
 ordini e dettagli ordini con carrello
 
@@ -15,10 +16,13 @@ ordini e dettagli ordini con carrello
 //
 
 //-- Domande da fare: --\\
-1 jquery manca da ogni nuovo progetto...
+1 jquery manca da ogni nuovo progetto
+  ... BOH verificare su internet
 2 utilizzo dei partial: dopo il submit del partial come aggiorno solo il partial senza aggiornare tutta la layout?
   cosa scrivere nel return del partial
-3 validazioni remote... ok in creazione problemi nell'edit... vedere su google
+  ... BOH verificare su internet
+3 validazioni remote... ok in creazione problemi nell'edit
+  ... BOH verificare su internet
 4 dropdownFor in edit product non prende il valore dell'item
 5 edit product = problema con il prezzo e le virgole!!!
 6 carrello IN COOKIE!!!
