@@ -53,7 +53,7 @@
 
                             }
                         </div>
-                        </div>
+                    </div>
                     <div class="p-3">
                         <p class="card-text flex-grow-1">Valida fino al: @p.dataEnd</p>
                         @if (p.AuctionsDetails.Count > 0)
@@ -74,13 +74,18 @@
                             {
 
 
-<div><b class="btn btn-success">E' la tua offerta quella vincente!!!</b></div>
-    }
-    else
-                    {
-                        @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
+                                <div><b class="btn btn-success">La tua offerta è quella vincente!!!</b></div>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
 
-                    }
+                            }
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
+
                         }
                         @*@Html.ActionLink("Dettagli", "Details", "Products", new { id = p.id }, new { @class = "btn btn-default" })*@
                         @*@Html.ActionLink("Commenta", "Create", "Posts", new { id = p.id }, new { @class = "btn btn-default" })*@

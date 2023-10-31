@@ -73,7 +73,7 @@ namespace Stones.Controllers
                 auctionsDetails.data = DateTime.Now;
                 db.AuctionsDetails.Add(auctionsDetails);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Auctions", "AuctionsProducts");
             }
             return View(auctionsDetails);
         }

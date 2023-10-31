@@ -1,6 +1,7 @@
 ﻿using Quartz;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.Remoting.Messaging;
@@ -12,6 +13,12 @@ namespace Stones.Models
     public class _CloseAuctionJob : IJob
     {
         private readonly ModelDbContext db = new ModelDbContext();
+        private readonly _Mailer _mailer;
+
+        public _CloseAuctionJob()
+        {
+            _mailer = new _Mailer(); // Inizializzazione di Mailer
+        }
 
         public Task Execute(IJobExecutionContext context)
         {
@@ -22,12 +29,40 @@ namespace Stones.Models
 
         private void CloseAuction(int auctionId)
         {
-            // Trova l'asta nel database per l'ID specificato e chiudila
-            var asta = db.AuctionsProducts.FirstOrDefault(a => a.id == auctionId);
+            // Trova l'asta nel database per l'ID specificato, chiude ed invia la mail al vincitore
+            AuctionsProducts auction = db.AuctionsProducts.FirstOrDefault(a => a.id == auctionId);
 
-            if (asta != null)
+            if (auction != null)
             {
-                asta.isActive = false;
+                if (auction.AuctionsDetails.Count > 0)
+                {
+                    decimal price = 0;
+                    foreach (AuctionsDetails d in auction.AuctionsDetails)
+                    {
+                        if (d.price > price)
+                        {
+                            price = d.price;
+                            auction.idWinner = d.idUser;
+                        }
+                    }
+
+                    //db.Entry(auction).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    if (auction.idWinner != null)
+                    {
+                        Users winner = db.Users.FirstOrDefault(u => u.id == auction.idWinner);
+                        _mailer.SendEmail(winner.email, "Ti sei aggiudicato l'asta",
+                            $"Complimenti hai vinto l'asta per il prodotto {auction.Product.name}." +
+                            $"<br>Ricordati di effettuare il pagamento." +
+                            $"<br><br>Mail inviata automaticamente da LePieCreazioni, non rispondere a questa mail." +
+                            $"<br><br>&#169; LePieCreazioni." +
+                            $"<br><br>&#169; ADP."
+                            );
+                    }
+                }
+
+                auction.isActive = false;
                 db.SaveChanges();
             }
         }

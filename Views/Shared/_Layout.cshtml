@@ -26,6 +26,7 @@
                     <li>@Html.ActionLink("Aste", "Auctions", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Registrati", "Create", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Login", "Login", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Mail", "SendEmail", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item dropdown">
@@ -36,7 +37,6 @@
                                 <li>@Html.ActionLink("Profilo", "Details", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                                 <li>@Html.ActionLink("LogOut", "Logout", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
                                 <li>@Html.ActionLink("Le tue aste", "UserAuctions", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
-
                             </ul>
                         </li>
                     }

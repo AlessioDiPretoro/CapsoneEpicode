@@ -57,7 +57,8 @@ namespace Stones.Controllers
                 postResponse.date = DateTime.Now;
                 db.PostResponse.Add(postResponse);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Post post = db.Post.Where(x => x.id == postResponse.idPost).FirstOrDefault();
+                return RedirectToAction($"Details/{post.idProduct}", "Products");
             }
             return View(postResponse);
         }
@@ -92,7 +93,8 @@ namespace Stones.Controllers
                 postResponse.dateEdit = DateTime.Now;
                 db.Entry(postResponse).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                Post post = db.Post.Where(x => x.id == postResponse.idPost).FirstOrDefault();
+                return RedirectToAction($"Details/{post.idProduct}", "Products");
             }
             return View(postResponse);
         }

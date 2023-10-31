@@ -7,13 +7,13 @@ using System.Net.Mail;
 
 namespace Stones.Models
 {
-    public static class _Mailer
+    public class _Mailer
     {
-        public static void SendEmail(string recipient, string subject, string body)
+        public void SendEmail(string recipient, string subject, string body)
         {
             // Indirizzo email e password dell'account Gmail
-            string fromEmail = "";
-            string password = "";
+            string fromEmail = "alessiodipretoro@gmail.com";
+            string password = "qmik iohu gfyk bjno";
 
             // Creazione dell'oggetto MailMessage
             MailMessage message = new MailMessage(fromEmail, recipient, subject, body);
