@@ -12,8 +12,8 @@ namespace Stones.Models
         public static void SendEmail(string recipient, string subject, string body)
         {
             // Indirizzo email e password dell'account Gmail
-            string fromEmail = "alessiodipretoro@gmail.com";
-            string password = "Edvige8742476";
+            string fromEmail = "";
+            string password = "";
 
             // Creazione dell'oggetto MailMessage
             MailMessage message = new MailMessage(fromEmail, recipient, subject, body);
