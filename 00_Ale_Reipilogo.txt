@@ -1,6 +1,5 @@
 \SQLEXPRESS
 IN LAVORAZIONE RIPARTIRE DA:
-aste - manca solo gestirne la chiusura...Windows Task Scheduler?? SEMBRA FUNZIONARE...
 
 // -- da fare: --\\
 
@@ -15,7 +14,6 @@ ordini e dettagli ordini con carrello - carrello IN COOKIE!!!
 //
 
 //-- Domande da fare: --\\
-4 dropdownFor in edit product non prende il valore dell'item  NON RIESCO A RISOLVERE
 
 cercare sul web... poco male...
 1 jquery manca da ogni nuovo progetto
@@ -54,4 +52,6 @@ ricerca per tipologie e soggetti
 edit gategory e subject
 edit USER
 confronto password in iscrizione
+dropdownFor in edit product non prende il valore dell'item  RISOLTO CON Ciclo foreach...
+aste - manca solo gestirne la chiusura...Windows Task Scheduler?? SEMBRA FUNZIONARE...
 aste schedulazione CRONE : tramite nuget Windows Task Scheduler nativo, vedere documentazione insieme a Quartz.NET
