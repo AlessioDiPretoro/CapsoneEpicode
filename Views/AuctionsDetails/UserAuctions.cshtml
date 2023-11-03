@@ -4,18 +4,15 @@
     ViewBag.Title = "UserAuctions";
 }
 
-<h2>Le tue aste</h2>
+<h2>Le tue offerte per le aste</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AuctionsProducts.id)
+           Codice asta
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Users.username)
+            @Html.DisplayNameFor(model => model.AuctionsProducts.Product.name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.data)
@@ -23,16 +20,16 @@
         <th>
             @Html.DisplayNameFor(model => model.price)
         </th>
-        <th></th>
+        <th>Aggiudicata</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AuctionsProducts.id)
+            @Html.DisplayFor(modelItem => item.idAuction)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Users.username)
+            @Html.DisplayFor(modelItem => item.AuctionsProducts.Product.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.data)
@@ -41,10 +38,13 @@
             @Html.DisplayFor(modelItem => item.price)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.AuctionsProducts.idWinner)
+        </td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
+        </td>*@
     </tr>
 }
 
