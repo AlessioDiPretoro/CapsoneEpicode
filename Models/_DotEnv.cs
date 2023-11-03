@@ -14,10 +14,10 @@ namespace Stones.Models
         {
             Variables = new Dictionary<string, string>();
 
-            //if (!File.Exists(filePath))
-            //{
-            //    throw new FileNotFoundException(".env file not found");
-            //}
+            if (!File.Exists(filePath))
+            {
+                throw new FileNotFoundException(".env file not found");
+            }
 
             var lines = File.ReadAllLines(filePath);
             foreach (var line in lines)
