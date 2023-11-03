@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using Stones.Models;
@@ -62,10 +63,22 @@ namespace Stones.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,username,email,password,confirmPassword,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
+        public ActionResult Create([Bind(Include = "id,username,email,password,confirmPassword,name,surname,address,cap,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
         {
             if (ModelState.IsValid)
             {
+                bool isUserValid = db.Users.All(x => x.username != users.username);
+                if (!isUserValid)
+                {
+                    ViewBag.ErrorMessage = "Username già presente, sceglierne uno differente.";
+                    return View(users);
+                }
+                bool isEmailValid = db.Users.All(x => x.email != users.email);
+                if (!isEmailValid)
+                {
+                    ViewBag.ErrorMessage = "Email già presente, controllare o usarne una differente.";
+                    return View(users);
+                }
                 Match match = Regex.Match(users.username, pattern);
                 if (match.Success)
                 {
@@ -113,7 +126,6 @@ namespace Stones.Controllers
             if (id == null)
             {
                 id = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
-                // return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Users users = db.Users.Find(id);
             if (users == null)
@@ -127,16 +139,10 @@ namespace Stones.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,username,email,password,name,surname,address,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
+        public ActionResult Edit([Bind(Include = "password,confirmPassword,name,surname,address,cap,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
         {
             if (ModelState.IsValid)
             {
-                Match match = Regex.Match(users.username, pattern);
-                if (match.Success)
-                {
-                    ViewBag.ErrorMessage = "Username non corretto, contiene caratteri speciali.";
-                    return View(users);
-                }
                 string folder = Server.MapPath("~/Content/imgProfiles");
                 if (imgProfile != null)
                 {

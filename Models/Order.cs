@@ -28,6 +28,10 @@ namespace Stones.Models
         [StringLength(10)]
         public string prov { get; set; }
 
+        [StringLength(5)]
+        [Display(Name = "CAP")]
+        public string cap { get; set; }
+
         [StringLength(50)]
         public string phone { get; set; }
 

@@ -11,9 +11,10 @@ namespace Stones.Models
     {
         public void SendEmail(string recipient, string subject, string body)
         {
+            _DotEnv.Load();
             // Indirizzo email e password dell'account Gmail
-            string fromEmail = "alessiodipretoro@gmail.com";
-            string password = "qmik iohu gfyk bjno";
+            string fromEmail = _DotEnv.Get("fromEmail");
+            string password = _DotEnv.Get("password");
 
             // Creazione dell'oggetto MailMessage
             MailMessage message = new MailMessage(fromEmail, recipient, subject, body);

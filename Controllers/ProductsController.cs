@@ -15,21 +15,6 @@ namespace Stones.Controllers
     {
         private ModelDbContext db = new ModelDbContext();
 
-        //public List<SelectListItem> SubjectList {
-        //    get {
-        //        List<SelectListItem> list = new List<SelectListItem>();
-
-        //        List<ProductSubject> l = db.ProductSubject.ToList();
-
-        //        foreach (ProductSubject subject in l)
-        //        {
-        //            list.Add(new SelectListItem { Text=subject.name, Value=subject.id.ToString() });
-        //        }
-
-        //        return list;
-        //    }
-        //}
-
         // GET: Products
         public ActionResult Index()
         {
