@@ -55,6 +55,7 @@ namespace Stones.Models
                         _mailer.SendEmail(winner.email, "Ti sei aggiudicato l'asta",
                             $"Complimenti hai vinto l'asta per il prodotto {auction.Product.name}." +
                             $"<br>Ricordati di effettuare il pagamento di {price.ToString("C2")}." +
+                            $"<br><br>Puoi verificare le tue aste in attesa di pagamento del menù del tuo profilo nella sezione 'Le tue aste'." +
                             $"<br><br>Mail inviata automaticamente da LePieCreazioni, non rispondere a questa mail." +
                             $"<br><br>&#169; LePieCreazioni." +
                             $"<br><br>&#169; ADP."
