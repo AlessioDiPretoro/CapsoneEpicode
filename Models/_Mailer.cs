@@ -34,7 +34,6 @@ namespace Stones.Models
             catch (Exception ex)
             {
                 // Gestione degli errori o eccezioni
-                // Puoi loggare l'errore o gestirlo come preferisci
             }
             finally
             {
