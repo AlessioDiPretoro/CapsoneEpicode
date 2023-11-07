@@ -28,6 +28,9 @@ namespace Stones.Models
         public bool isActive { get; set; }
 
         public int? idWinner { get; set; }
+        public int? idAuctionWinner { get; set; }
+        public bool isPayed { get; set; }
+        public decimal? endPrice { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionsDetails> AuctionsDetails { get; set; }

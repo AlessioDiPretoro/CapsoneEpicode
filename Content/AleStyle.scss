@@ -229,6 +229,10 @@ th td {
     padding: 0;
 }
 
+td {
+    vertical-align: middle;
+}
+
 tr td:nth-child(n+2):not(:last-child) {
     max-width: 50px;
     white-space: nowrap;

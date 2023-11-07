@@ -58,6 +58,7 @@ namespace Stones.Controllers
             if (ModelState.IsValid)
             {
                 auctionsProducts.isActive = true;
+                auctionsProducts.isPayed = false;
                 db.AuctionsProducts.Add(auctionsProducts);
                 db.SaveChanges();
 

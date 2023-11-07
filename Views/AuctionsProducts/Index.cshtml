@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.isActive)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isPayed)
+        </th>
         <th></th>
     </tr>
 
@@ -53,9 +56,12 @@
             @Html.DisplayFor(modelItem => item.isActive)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.DisplayFor(modelItem => item.isPayed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
         </td>
     </tr>
 }

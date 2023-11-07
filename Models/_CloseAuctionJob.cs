@@ -43,18 +43,18 @@ namespace Stones.Models
                         {
                             price = d.price;
                             auction.idWinner = d.idUser;
+                            auction.idAuctionWinner = d.id;
                         }
                     }
-
-                    //db.Entry(auction).State = EntityState.Modified;
+                    auction.endPrice = price;
                     db.SaveChanges();
-
+                    //invia l'email al vincitore dell'asta
                     if (auction.idWinner != null)
                     {
                         Users winner = db.Users.FirstOrDefault(u => u.id == auction.idWinner);
                         _mailer.SendEmail(winner.email, "Ti sei aggiudicato l'asta",
                             $"Complimenti hai vinto l'asta per il prodotto {auction.Product.name}." +
-                            $"<br>Ricordati di effettuare il pagamento." +
+                            $"<br>Ricordati di effettuare il pagamento di {price.ToString("C2")}." +
                             $"<br><br>Mail inviata automaticamente da LePieCreazioni, non rispondere a questa mail." +
                             $"<br><br>&#169; LePieCreazioni." +
                             $"<br><br>&#169; ADP."
@@ -66,7 +66,7 @@ namespace Stones.Models
                 db.SaveChanges();
                 //mette come non disponibile il prodotto acquistato
                 Product p = db.Product.Find(auction.idProduct);
-                p.isAvaiable = false; 
+                p.isAvaiable = false;
                 db.SaveChanges();
             }
         }

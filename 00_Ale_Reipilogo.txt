@@ -2,12 +2,11 @@
 IN LAVORAZIONE RIPARTIRE DA:
 
 // -- da fare: --\\
-aste effettuate dall'utente, aggingere se vinta oppure no, aggiustare grafica fa cagare
 
 ordini e dettagli ordini con carrello - carrello IN COOKIE!!!
 
 90 gestione ruoli: Admin & User
-92 hash password?
+92 hash password? - bcrypt
 93 gestire le eliminazioni dei record...
 94 agguingere pagamento paypall
 95 input come password *****
@@ -58,3 +57,4 @@ dropdownFor in edit product non prende il valore dell'item  RISOLTO CON Ciclo fo
 aste - manca solo gestirne la chiusura...Windows Task Scheduler?? SEMBRA FUNZIONARE...
 aste schedulazione CRONE : tramite nuget Windows Task Scheduler nativo, vedere documentazione insieme a Quartz.NET
 file env per dati email
+aste effettuate dall'utente, agginto se vinta oppure no ed inserito pulsante per pagare

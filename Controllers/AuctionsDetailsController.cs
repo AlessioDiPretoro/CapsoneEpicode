@@ -142,11 +142,22 @@ namespace Stones.Controllers
             }
             base.Dispose(disposing);
         }
+
         //mostra le offerte alle aste relative all'utente
         public ActionResult UserAuctions()
         {
-            var auctionsDetails = db.AuctionsDetails.Where(x => x.idUser == db.Users.Where(y => y.username == User.Identity.Name).FirstOrDefault().id);
+            var auctionsDetails = db.AuctionsDetails.Where(x => x.idUser == db.Users
+            .Where(y => y.username == User.Identity.Name).FirstOrDefault().id);
             return View(auctionsDetails.ToList());
+        }
+
+        //paga l'asta corrente
+        public ActionResult Pay(int id)
+        {
+            AuctionsProducts auctionToPay = db.AuctionsProducts.Find(id);
+            auctionToPay.isPayed = true;
+            db.SaveChanges();
+            return RedirectToAction("UserAuctions");
         }
     }
 }

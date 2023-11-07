@@ -8,44 +8,54 @@
 
 <table class="table">
     <tr>
-        <th>
-           Codice asta
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuctionsProducts.Product.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
+        <th>Codice asta</th>
+        <th>Titolo prodotto</th>
+        <th>Data offerta</th>
+        <th>Prezzo vincente</th>
         <th>Aggiudicata</th>
+        <th>Offerta pagata</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAuction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuctionsProducts.Product.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            @if (item.AuctionsProducts.idWinner > 0)
+            {
+            <td>Asta vinta</td>
+                    if (item.AuctionsProducts.isPayed == true)
+                    {
+                    <td>Asta pagata</td>
+                    }else
+                    {
         <td>
-            @Html.DisplayFor(modelItem => item.idAuction)
+            @Html.ActionLink("Paga", "Pay", new { id = item.idAuction }, new { @class = "btn btn-success" })
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuctionsProducts.Product.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuctionsProducts.idWinner)
-        </td>
-        @*<td>
+                    }
+            }
+            else
+            {
+                <td>Non vinta</td>
+                <td></td>
+            }
+
+
+            @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>*@
-    </tr>
-}
-
+        </tr>
+    }
 </table>

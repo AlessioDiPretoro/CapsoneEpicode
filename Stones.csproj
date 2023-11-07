@@ -351,6 +351,22 @@
     <Compile Include="Migrations\202311031416367_CAP.designer.cs">
       <DependentUpon>202311031416367_CAP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202311071026091_AuctionProductADDIdAuctionWinner.cs" />
+    <Compile Include="Migrations\202311071026091_AuctionProductADDIdAuctionWinner.designer.cs">
+      <DependentUpon>202311071026091_AuctionProductADDIdAuctionWinner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311071027286_AuctionProductADDIsPayed.cs" />
+    <Compile Include="Migrations\202311071027286_AuctionProductADDIsPayed.designer.cs">
+      <DependentUpon>202311071027286_AuctionProductADDIsPayed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311071031132_AuctionProductADDendPrice.cs" />
+    <Compile Include="Migrations\202311071031132_AuctionProductADDendPrice.designer.cs">
+      <DependentUpon>202311071031132_AuctionProductADDendPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311071056123_isPayedNOTnull.cs" />
+    <Compile Include="Migrations\202311071056123_isPayedNOTnull.designer.cs">
+      <DependentUpon>202311071056123_isPayedNOTnull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuctionsDetails.cs" />
     <Compile Include="Models\AuctionsProducts.cs" />
@@ -547,6 +563,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311031416367_CAP.resx">
       <DependentUpon>202311031416367_CAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071026091_AuctionProductADDIdAuctionWinner.resx">
+      <DependentUpon>202311071026091_AuctionProductADDIdAuctionWinner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071027286_AuctionProductADDIsPayed.resx">
+      <DependentUpon>202311071027286_AuctionProductADDIsPayed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071031132_AuctionProductADDendPrice.resx">
+      <DependentUpon>202311071031132_AuctionProductADDendPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311071056123_isPayedNOTnull.resx">
+      <DependentUpon>202311071056123_isPayedNOTnull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
