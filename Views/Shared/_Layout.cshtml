@@ -15,7 +15,10 @@
 
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
         <div class="container">
-            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <a href="/">
+            <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" />
+            </a>
+            @*@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             @*@Html.ActionLink("mail", "SendEmail", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

@@ -64,6 +64,10 @@ namespace Stones.Models
 
                 auction.isActive = false;
                 db.SaveChanges();
+                //mette come non disponibile il prodotto acquistato
+                Product p = db.Product.Find(auction.idProduct);
+                p.isAvaiable = false; 
+                db.SaveChanges();
             }
         }
     }

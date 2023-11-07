@@ -10,6 +10,7 @@ ordini e dettagli ordini con carrello - carrello IN COOKIE!!!
 92 hash password?
 93 gestire le eliminazioni dei record...
 94 agguingere pagamento paypall
+95 input come password *****
 
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
 //
