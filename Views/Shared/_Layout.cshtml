@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
         <div class="container">
             <a href="/">
-            <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" />
+                <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" />
             </a>
             @*@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             @*@Html.ActionLink("mail", "SendEmail", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
@@ -83,6 +83,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Le tue aste", "UserAuctions", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                                <li>@Html.ActionLink("Carrello", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
                                 <li>@Html.ActionLink("Profilo", "Details", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                                 <li>@Html.ActionLink("LogOut", "Logout", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
                             </ul>

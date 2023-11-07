@@ -6,6 +6,11 @@
 
 <h4>Dettaglio galleria</h4>
 
+@if(TempData["AlreadyInCart"] != null)
+            {
+                <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
+            }
+
 <div>
     <hr />
     <div class="card mb-3 detailCard">
@@ -68,7 +73,7 @@
             <div class="d-flex gap-5">
                 @if (Model.Product.isAvaiable)
                 {
-                    @Html.ActionLink("Acquista", "AddCart", "Cart", new { area = "" }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-default" })
                 }
                     @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
                 </div>

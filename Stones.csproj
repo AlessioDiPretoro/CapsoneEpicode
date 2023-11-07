@@ -325,6 +325,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AuctionsDetailsController.cs" />
     <Compile Include="Controllers\AuctionsProductsController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomProceduresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
@@ -380,6 +381,7 @@
     <Compile Include="Models\ProductSubject.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Models\_AuctionScheduler.cs" />
+    <Compile Include="Models\_Cart.cs" />
     <Compile Include="Models\_CloseAuctionJob.cs" />
     <Compile Include="Models\_DotEnv.cs" />
     <Compile Include="Models\_Mailer.cs" />
@@ -526,6 +528,7 @@
     <Content Include="Views\AuctionsDetails\Edit.cshtml" />
     <Content Include="Views\AuctionsDetails\Index.cshtml" />
     <Content Include="Views\AuctionsDetails\UserAuctions.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
