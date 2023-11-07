@@ -66,10 +66,12 @@
             <p class="card-text">Soggetto: @Model.Product.ProductSubject.name</p>
             <p class="card-text"><small class="text-body-secondary">Visto 200 volte</small></p>
             <div class="d-flex gap-5">
-
-                @Html.ActionLink("Acquista", "AddCart", "Cart", new { area = "" }, new { @class = "btn btn-default" })
-                @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
-            </div>
+                @if (Model.Product.isAvaiable)
+                {
+                    @Html.ActionLink("Acquista", "AddCart", "Cart", new { area = "" }, new { @class = "btn btn-default" })
+                }
+                    @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
+                </div>
         </div>
     </div>
     @*commenti*@
