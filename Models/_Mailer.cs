@@ -7,13 +7,14 @@ using System.Net.Mail;
 
 namespace Stones.Models
 {
-    public static class _Mailer
+    public class _Mailer
     {
-        public static void SendEmail(string recipient, string subject, string body)
+        public void SendEmail(string recipient, string subject, string body)
         {
+            _DotEnv.Load();
             // Indirizzo email e password dell'account Gmail
-            string fromEmail = "";
-            string password = "";
+            string fromEmail = _DotEnv.Get("fromEmail");
+            string password = _DotEnv.Get("password");
 
             // Creazione dell'oggetto MailMessage
             MailMessage message = new MailMessage(fromEmail, recipient, subject, body);
@@ -33,7 +34,6 @@ namespace Stones.Models
             catch (Exception ex)
             {
                 // Gestione degli errori o eccezioni
-                // Puoi loggare l'errore o gestirlo come preferisci
             }
             finally
             {

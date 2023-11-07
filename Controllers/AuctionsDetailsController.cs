@@ -46,13 +46,10 @@ namespace Stones.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idAuction,data,price")] AuctionsDetails auctionsDetails)
-        //public ActionResult Create([Bind(Include = "id,idAuction,idUser,data,price")] AuctionsDetails auctionsDetails)
         {
             if (ModelState.IsValid)
             {
                 auctionsDetails.idAuction = Convert.ToInt16(RouteData.Values["id"]);
-                //decimal startPrice = db.AuctionsProducts.Where(x => x.id == auctionsDetails.idAuction).FirstOrDefault().startPrice;
-                //decimal maxOffert = db.AuctionsDetails.Where(x => x.idAuction == auctionsDetails.idAuction).OrderByDescending(x => x.price).FirstOrDefault().price;
                 if (auctionsDetails.price < db.AuctionsProducts
                     .Where(x => x.id == auctionsDetails.idAuction)
                     .FirstOrDefault().startPrice)
@@ -73,7 +70,7 @@ namespace Stones.Controllers
                 auctionsDetails.data = DateTime.Now;
                 db.AuctionsDetails.Add(auctionsDetails);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Auctions", "AuctionsProducts");
             }
             return View(auctionsDetails);
         }
@@ -96,8 +93,6 @@ namespace Stones.Controllers
         }
 
         // POST: AuctionsDetails/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,idAuction,idUser,data,price")] AuctionsDetails auctionsDetails)
@@ -147,7 +142,7 @@ namespace Stones.Controllers
             }
             base.Dispose(disposing);
         }
-
+        //mostra le offerte alle aste relative all'utente
         public ActionResult UserAuctions()
         {
             var auctionsDetails = db.AuctionsDetails.Where(x => x.idUser == db.Users.Where(y => y.username == User.Identity.Name).FirstOrDefault().id);

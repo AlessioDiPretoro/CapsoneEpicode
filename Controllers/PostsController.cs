@@ -47,6 +47,7 @@ namespace Stones.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
         {
+           // string route = (RouteData.Values["id"]).ToString();
             if (ModelState.IsValid)
             {
                 post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
@@ -55,7 +56,7 @@ namespace Stones.Controllers
                 post.date = DateTime.Now;
                 db.Post.Add(post);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction($"Details/{post.idProduct}", "Products");
             }
 
             return View(post);

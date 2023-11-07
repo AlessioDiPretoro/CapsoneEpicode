@@ -2,6 +2,7 @@
 IN LAVORAZIONE RIPARTIRE DA:
 
 // -- da fare: --\\
+aste effettuate dall'utente, aggingere se vinta oppure no, aggiustare grafica fa cagare
 
 ordini e dettagli ordini con carrello - carrello IN COOKIE!!!
 

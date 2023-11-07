@@ -38,22 +38,32 @@ namespace Stones.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "nome")]
         public string name { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "cognome")]
         public string surname { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "indirizzo")]
         public string address { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "città")]
         public string city { get; set; }
 
+        [StringLength(5)]
+        [Display(Name = "CAP")]
+        public string cap { get; set; }
+
         [StringLength(2)]
+        [Display(Name = "provincia")]
         public string prov { get; set; }
 
         [StringLength(20)]
+        [Display(Name = "telefono")]
         public string phone { get; set; }
 
         [StringLength(50)]
@@ -62,6 +72,7 @@ namespace Stones.Models
         [StringLength(50)]
         public string role { get; set; }
 
+        [Display(Name = "punti")]
         public int? points { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
