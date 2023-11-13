@@ -1,5 +1,5 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
-
+﻿//@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
 //colors Orange
 $orangeMain: cadetblue;
 $orangeDark: #d45b2d;
@@ -50,7 +50,8 @@ body {
     background: $silver;
 
     * {
-        font-family: 'Libre Baskerville', serif;
+        font-family: 'Montserrat', sans-serif;
+        //font-family: 'Libre Baskerville', serif;
         color: $blackTxt;
     }
 }
@@ -126,7 +127,8 @@ footer {
     background: lighten($blackBg, 20%);
     color: $btnColWhite;
     width: 100%;
-    margin-top: 0.3em;
+    border-radius: 250px !important;
+    //margin-top: 0.3em;
 }
 
 .btn-default:hover {
@@ -139,7 +141,7 @@ footer {
 }
 
 .btn-default + .btn-default:hover {
-    background: darken($btnDefBg, 10%);
+    background: lighten($btnDefBg, 20%) !important;
     color: $btnColWhite;
 }
 

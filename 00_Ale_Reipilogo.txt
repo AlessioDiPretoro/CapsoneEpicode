@@ -3,7 +3,7 @@ IN LAVORAZIONE RIPARTIRE DA:
 
 // -- da fare: --\\
 
-ordini e dettagli ordini con carrello - carrello IN COOKIE!!!
+ultimare conferma ordine da carrello
 
 90 gestione ruoli: Admin & User
 92 hash password? - bcrypt

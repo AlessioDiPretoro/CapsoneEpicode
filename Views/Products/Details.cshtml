@@ -6,10 +6,10 @@
 
 <h4>Dettaglio galleria</h4>
 
-@if(TempData["AlreadyInCart"] != null)
-            {
-                <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
-            }
+@if (TempData["AlreadyInCart"] != null)
+{
+    <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
+}
 
 <div>
     <hr />
@@ -70,13 +70,13 @@
             <p class="card-text">Categoria: @Model.Product.ProductCategory.name</p>
             <p class="card-text">Soggetto: @Model.Product.ProductSubject.name</p>
             <p class="card-text"><small class="text-body-secondary">Visto 200 volte</small></p>
-            <div class="d-flex gap-5">
+            <div class="flex-column flex-md-row d-flex gap-1 gap-md-5">
                 @if (Model.Product.isAvaiable)
                 {
                     @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-default" })
                 }
-                    @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
-                </div>
+                @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
+            </div>
         </div>
     </div>
     @*commenti*@
@@ -95,8 +95,8 @@
                 </div>
                 @if (User.Identity.Name == post.Users.username)
                 {
-                    <div class="nav-item dropdown btn btn-default w-auto">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="dropdown w-auto">
+                        <a class="btn btn-sm btn-outline-secondary px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             ...
                         </a>
                         <ul class="dropdown-menu">
@@ -108,7 +108,7 @@
             <p> @post.body  </p>
             <div class="d-flex justify-content-end">
 
-                @Html.ActionLink("Rispondi", "Create", "PostResponses", new { id = post.id }, new { @class = "btn btn-default w-auto" })
+                @Html.ActionLink("Rispondi", "Create", "PostResponses", new { id = post.id }, new { @class = "btn btn-sm btn-outline-secondary px-3" })
             </div>
             @*risposte ai commenti*@
 
@@ -130,8 +130,8 @@
                             </div>
                             @if (User.Identity.Name == res.Users.username)
                             {
-                                <div class="nav-item dropdown btn btn-default w-auto">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="nav-item dropdown w-auto">
+                                    <a class="btn btn-sm btn-outline-secondary px-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         ...
                                     </a>
                                     <ul class="dropdown-menu">
