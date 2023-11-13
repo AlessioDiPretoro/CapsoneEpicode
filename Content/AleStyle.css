@@ -195,3 +195,20 @@ tr td:nth-child(n+2):not(:last-child) {
   max-width: 40px;
   max-height: 40px;
 }
+
+.userInfo {
+  border: 1px solid #c5c5c5;
+  padding: 1.5em 1.5em 0 1.5em;
+  border-radius: 20px;
+}
+.userInfo div {
+  border-bottom: 1px solid #c5c5c5;
+  padding: 0.5em 0;
+}
+.userInfo p {
+  margin: 0;
+}
+
+.userInfo div:last-of-type {
+  border: 0;
+}

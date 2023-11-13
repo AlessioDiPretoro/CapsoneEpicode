@@ -23,10 +23,15 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td class="d-flex flex-column gap-3">
-            @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success" })
-            @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning" })
-            @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
+        <td>
+            <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ...
+            </a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success w-75 m-1" })</li>
+                <li>@Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning w-75 m-1" })</li>
+                <li>@Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger w-75 m-1" })</li>
+            </ul>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.name)

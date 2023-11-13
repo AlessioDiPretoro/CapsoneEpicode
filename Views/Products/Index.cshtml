@@ -29,19 +29,19 @@
                 Descrizione
             </th>
             <th>
-                Foto 1
+                Foto1
             </th>
             <th>
-                Foto 2
+                Foto2
             </th>
             <th>
-                Foto 3
+                Foto3
             </th>
             <th>
-                Foto 4
+                Foto4
             </th>
             <th>
-                Foto 5
+                Foto5
             </th>
 
         </tr>
@@ -49,10 +49,15 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td class="d-flex flex-column gap-3">
-                    @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success" })
-                    @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning" })
-                    @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
+                <td>
+                    <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ...
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success w-75 m-1" })</li>
+                        <li>@Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning w-75 m-1" })</li>
+                        <li>@Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger w-75 m-1" })</li>
+                    </ul>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductCategory.name)
@@ -69,22 +74,39 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.descripton)
                 </td>
-                <td>
-                    <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
-                </td>
-                <td>
-                    <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
-                </td>
-                <td>
-                    <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
-                </td>
-                <td>
-                    <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
-                </td>
-                <td>
-                    <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
-                </td>
-            </tr>
+
+                    <td>
+                @if (item.photo1 != null)
+                {
+                        <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
+                }
+                    </td>
+
+                    <td>
+                @if (item.photo2 != null)
+                {
+                        <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
+                }
+                    </td>
+                    <td>
+                @if (item.photo3 != null)
+                {
+                        <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
+                }
+                    </td>
+                    <td>
+                @if (item.photo4 != null)
+                {
+                        <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
+                }
+                    </td>
+                    <td>
+                @if (item.photo5 != null)
+                {
+                        <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
+                }
+                    </td>
+                </tr>
         }
     </table>
     </div>

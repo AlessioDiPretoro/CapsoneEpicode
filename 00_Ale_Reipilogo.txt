@@ -58,3 +58,4 @@ aste - manca solo gestirne la chiusura...Windows Task Scheduler?? SEMBRA FUNZION
 aste schedulazione CRONE : tramite nuget Windows Task Scheduler nativo, vedere documentazione insieme a Quartz.NET
 file env per dati email
 aste effettuate dall'utente, agginto se vinta oppure no ed inserito pulsante per pagare
+stili tabelle index prodotti, categorie, soggetti, aste... utenti...

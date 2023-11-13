@@ -4,48 +4,57 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Gestione di tutte le offerte</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crea nuova offerta", "Create", "", new { @class = "btn btn-default" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AuctionsProducts.id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Users.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.price)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuctionsProducts.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuctionsProducts.id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ...
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success w-75 m-1" })</li>
+                        <li>@Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning w-75 m-1" })</li>
+                        <li>@Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger w-75 m-1" })</li>
+                    </ul>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuctionsProducts.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Users.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

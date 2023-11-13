@@ -12,11 +12,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="position-sticky top-0 z-3">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+    <div class="position-sticky top-0 z-2">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark p-0">
             <div class="container">
                 <a href="/">
-                    <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" />
+                    <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" class="p-1" />
                 </a>
                 @*@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 @*@Html.ActionLink("mail", "SendEmail", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
@@ -28,7 +28,7 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li>@Html.ActionLink("🖼 Galleria", "Gallery", "Products", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Aste", "Auctions", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
-                   
+
                         @if (!User.Identity.IsAuthenticated)
                         {
 
@@ -59,10 +59,10 @@
                 </div>
             </div>
         </nav>
-
+    </div>
         @if (User.IsInRole("Admin"))
         {
-            <div class="navAdmin navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+            <div class="navAdmin sticky-top z-3 navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
                 <div class="container flex-row-reverse justify-content-between justify-content-md-center align-items-baseline">
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapseAdmin" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -100,11 +100,29 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Aste
+                                    Aste
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("➕ Aggiungi", "Create", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("🔎 Mostra tutte", "Index", "AuctionsProducts", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Offerte
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("➕ Aggiungi", "Create", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("🔎 Mostra tutte", "Index", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Utenti
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("➕ Aggiungi", "Create", "Users", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("🔎 Mostra tutti", "Index", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                                 </ul>
                             </li>
                         </ul>
@@ -112,7 +130,7 @@
                 </div>
             </div>
         }
-    </div>
+    
     <div class="container body-content">
         @RenderBody()
         <hr />
