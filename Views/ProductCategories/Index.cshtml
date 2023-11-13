@@ -4,29 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Gestisci i tuoi elementi di base dei capolavori</h2>
 
 <p>
     @Html.ActionLink("Crea nuovo materiale", "Create", "", new { @class = "btn btn-default" })
 </p>
 <table class="table">
     <tr>
+        <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
         <th>
-            @Html.DisplayNameFor(model => model.id)
+            Nome
         </th>
         <th>
-           Nome
+            Descrizione
         </th>
-        <th>
-           Descrizione
-        </th>
-        <th>Modifica</th>
+
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.id)
+        <td class="d-flex flex-column gap-3">
+            @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success" })
+            @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning" })
+            @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.name)
@@ -34,11 +34,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.description)
         </td>
-        <td>
-            @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-success" })
-            @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
-            @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
-        </td>
+
     </tr>
 }
 

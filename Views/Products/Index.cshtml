@@ -4,83 +4,87 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Gestisci le tue Creazioni</h2>
 
 <p>
     @Html.ActionLink("Crea nuovo capolavoro", "Create", "", new { @class = "btn btn-default" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Categoria
-        </th>
-        <th>
-            Soggetto
-        </th>
-        <th>
-            Nome
-        </th>
-        <th>
-            Prezzo
-        </th>
-        <th class="d-none d-md-table-cell">
-            Descrizione
-        </th>
-        <th class="d-none d-md-table-cell">
-            Foto 1
-        </th>
-        <th class="d-none d-md-table-cell">
-            Foto 2
-        </th>
-        <th class="d-none d-md-table-cell">
-            Foto 3
-        </th>
-        <th class="d-none d-md-table-cell">
-            Foto 4
-        </th>
-        <th class="d-none d-md-table-cell">
-            Foto 5
-        </th>
-        <th>Modifica</th>
-    </tr>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Soggetto
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Prezzo
+            </th>
+            <th>
+                Descrizione
+            </th>
+            <th>
+                Foto 1
+            </th>
+            <th>
+                Foto 2
+            </th>
+            <th>
+                Foto 3
+            </th>
+            <th>
+                Foto 4
+            </th>
+            <th>
+                Foto 5
+            </th>
 
-    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductCategory.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductSubject.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td class="d-none d-md-table-cell">
-            @Html.DisplayFor(modelItem => item.descripton)
-        </td>
-        <td class="d-none d-md-table-cell">
-            <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
-        </td>
-        <td class="d-none d-md-table-cell">
-            <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
-        </td>
-        <td class="d-none d-md-table-cell">
-            <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
-        </td>
-        <td class="d-none d-md-table-cell">
-            <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
-        </td>
-        <td class="d-none d-md-table-cell">
-            <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
-        </td>
-        <td>
-            @Html.ActionLink("🔍", "Details", new { id=item.id }, new { @class = "btn btn-success" })
-            @Html.ActionLink("✒", "Edit", new { id=item.id}, new { @class = "btn btn-warning" })
-            @Html.ActionLink("🗑", "Delete", new { id=item.id }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
-</table>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="d-flex flex-column gap-3">
+                    @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success" })
+                    @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning" })
+                    @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCategory.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductSubject.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripton)
+                </td>
+                <td>
+                    <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
+                </td>
+                <td>
+                    <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
+                </td>
+                <td>
+                    <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
+                </td>
+                <td>
+                    <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
+                </td>
+                <td>
+                    <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
+                </td>
+            </tr>
+        }
+    </table>
+    </div>

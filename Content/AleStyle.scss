@@ -112,7 +112,7 @@ nav {
 
 .navAdmin {
     background: lighten($blackBg, 20%);
-    position: absolute;
+    //position: absolute;
     width: 100%;
 
     .dropdown-menu {
@@ -247,6 +247,10 @@ th td {
 
 td {
     vertical-align: middle;
+}
+
+.w5{
+    width:5%;
 }
 
 tr td:nth-child(n+2):not(:last-child) {

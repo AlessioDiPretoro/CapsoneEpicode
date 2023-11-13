@@ -4,66 +4,76 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Gestisci le aste</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Aggiungi nuova asta", "Create", "", new { @class = "btn btn-default" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Product.name)
-        </th>
-        <th>
-            Aggiudicata da
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dataStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dataEnd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.startPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isPayed)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Vincitore
+            </th>
+            <th>
+                Inizio
+            </th>
+            <th>
+                Scadenza
+            </th>
+            <th>
+                €Iniz
+            </th>
+            <th>
+                Attiva
+            </th>
+            <th>
+                Pagata
+            </th>
+            <th>
+                €Chius
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dataStart)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dataEnd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isPayed)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.id })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="d-flex flex-column gap-3">
+                    @Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success" })
+                    @Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning" })
+                    @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Users.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dataEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.startPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isPayed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.endPrice)
+                </td>
 
-</table>
+            </tr>
+        }
+
+    </table>
+    </div>
