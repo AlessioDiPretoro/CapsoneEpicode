@@ -106,10 +106,24 @@ nav {
         .dropdown-item {
             color: white;
         }
-        //.dropdown-item:hover {
-        //    color: $orangeDark;
-        //    border-radius: 50px;
-        //}
+    }
+}
+
+
+.navAdmin {
+    background: lighten($blackBg, 20%);
+    position: absolute;
+    width: 100%;
+
+    .dropdown-menu {
+        background: lighten($blackBg, 20%);
+        margin: 0;
+        padding: 0;
+        border: 0;
+
+        .dropdown-item {
+            color: white;
+        }
     }
 }
 

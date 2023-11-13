@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crea nuovo capolavoro", "Create", "", new { @class = "btn btn-default" })
 </p>
 <table class="table">
     <tr>
@@ -23,23 +23,23 @@
         <th>
             Prezzo
         </th>
-        <th>
+        <th class="d-none d-md-table-cell">
             Descrizione
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo1)
+        <th class="d-none d-md-table-cell">
+            Foto 1
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo2)
+        <th class="d-none d-md-table-cell">
+            Foto 2
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo3)
+        <th class="d-none d-md-table-cell">
+            Foto 3
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo4)
+        <th class="d-none d-md-table-cell">
+            Foto 4
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.photo5)
+        <th class="d-none d-md-table-cell">
+            Foto 5
         </th>
         <th>Modifica</th>
     </tr>
@@ -58,22 +58,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.price)
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             @Html.DisplayFor(modelItem => item.descripton)
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
         </td>
-        <td>
+        <td class="d-none d-md-table-cell">
             <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
         </td>
         <td>

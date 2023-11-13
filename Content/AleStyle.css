@@ -53,6 +53,21 @@ nav .dropdown-menu .dropdown-item {
   color: white;
 }
 
+.navAdmin {
+  background: #454545;
+  position: absolute;
+  width: 100%;
+}
+.navAdmin .dropdown-menu {
+  background: #454545;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.navAdmin .dropdown-menu .dropdown-item {
+  color: white;
+}
+
 footer {
   background: #121212;
   color: #ffffff;

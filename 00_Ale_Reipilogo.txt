@@ -1,9 +1,9 @@
 \SQLEXPRESS
+
 IN LAVORAZIONE RIPARTIRE DA:
+ultimare conferma ordine da carrello
 
 // -- da fare: --\\
-
-ultimare conferma ordine da carrello
 
 90 gestione ruoli: Admin & User
 92 hash password? - bcrypt
