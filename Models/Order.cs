@@ -35,7 +35,6 @@ namespace Stones.Models
         [StringLength(50)]
         public string phone { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string state { get; set; }
 

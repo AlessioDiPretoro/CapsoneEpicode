@@ -29,6 +29,9 @@
                 Descrizione
             </th>
             <th>
+                Disponibile
+            </th>
+            <th>
                 Foto1
             </th>
             <th>
@@ -74,39 +77,42 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.descripton)
                 </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isAvaiable)
+                </td>
 
-                    <td>
-                @if (item.photo1 != null)
-                {
+                <td>
+                    @if (item.photo1 != null)
+                    {
                         <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
-                }
-                    </td>
+                    }
+                </td>
 
-                    <td>
-                @if (item.photo2 != null)
-                {
+                <td>
+                    @if (item.photo2 != null)
+                    {
                         <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
-                }
-                    </td>
-                    <td>
-                @if (item.photo3 != null)
-                {
+                    }
+                </td>
+                <td>
+                    @if (item.photo3 != null)
+                    {
                         <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
-                }
-                    </td>
-                    <td>
-                @if (item.photo4 != null)
-                {
+                    }
+                </td>
+                <td>
+                    @if (item.photo4 != null)
+                    {
                         <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
-                }
-                    </td>
-                    <td>
-                @if (item.photo5 != null)
-                {
+                    }
+                </td>
+                <td>
+                    @if (item.photo5 != null)
+                    {
                         <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
-                }
-                    </td>
-                </tr>
+                    }
+                </td>
+            </tr>
         }
     </table>
     </div>

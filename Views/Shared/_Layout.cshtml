@@ -18,8 +18,6 @@
                 <a href="/">
                     <img src="~/Content/imgDefault/LogoStone.png" style="max-width:150px" class="p-1" />
                 </a>
-                @*@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                @*@Html.ActionLink("mail", "SendEmail", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,7 +38,11 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <div class="navbar-nav">
-                            @Html.ActionLink("🛒", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link px-0 d-none d-md-block" })
+                            <div class="iconContainer">
+
+                            <a href="~/Cart/ShowCart" class="label nav-link">Carrello</a>
+                            @Html.ActionLink("🛒", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link px-0 d-none d-md-block icon" })
+                            </div>
                             @Html.ActionLink("🛒Carrello", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link px-0 d-md-none" })
                         </div>
                         <ul class="navbar-nav">
@@ -50,6 +52,8 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Le tue aste", "UserAuctions", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Carrello", "ShowCart", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("I tuoi ordini", "UserOrders", "Orders", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("Profilo", "Details", "Users", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("LogOut", "Logout", "LoginUser", new { area = "" }, new { @class = "nav-link" })</li>
                                 </ul>
@@ -114,6 +118,15 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("➕ Aggiungi", "Create", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
                                     <li>@Html.ActionLink("🔎 Mostra tutte", "Index", "AuctionsDetails", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Ordini
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("➕ Aggiungi", "Create", "Orders", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("🔎 Mostra tutti", "Index", "Orders", new { area = "" }, new { @class = "nav-link" })</li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">

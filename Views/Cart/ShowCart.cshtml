@@ -36,7 +36,7 @@
         <p>Ordine: @tot.ToString("C2")</p>
         <p>Spese spedizione: @ship.ToString("C2")</p>
         <p><b>Totale ordine: @totAmmount.ToString("C2")</b></p>
-        @Html.ActionLink("Conferma ordine", "CreateOrder","Order", new { }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Conferma ordine", "Create","Orders", new { }, new { @class = "btn btn-default" })
     </div>
 }
 else

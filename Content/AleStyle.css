@@ -3,6 +3,27 @@ html, body {
   height: 100%;
 }
 
+.iconContainer {
+  display: flex;
+}
+.iconContainer .label {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+.iconContainer:hover .label {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
+.field-validation-error span {
+  color: red;
+  margin: 2em;
+}
+
 body {
   display: flex;
   flex-direction: column;

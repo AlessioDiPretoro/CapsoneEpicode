@@ -327,8 +327,10 @@
     <Compile Include="Controllers\AuctionsProductsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CustomProceduresController.cs" />
+    <Compile Include="Controllers\DetailOrdersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginUserController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\PostResponsesController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\ProductCategoriesController.cs" />
@@ -367,6 +369,10 @@
     <Compile Include="Migrations\202311071056123_isPayedNOTnull.cs" />
     <Compile Include="Migrations\202311071056123_isPayedNOTnull.designer.cs">
       <DependentUpon>202311071056123_isPayedNOTnull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202311141516537_OrderStateNotRequired.cs" />
+    <Compile Include="Migrations\202311141516537_OrderStateNotRequired.designer.cs">
+      <DependentUpon>202311141516537_OrderStateNotRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuctionsDetails.cs" />
@@ -529,6 +535,17 @@
     <Content Include="Views\AuctionsDetails\Index.cshtml" />
     <Content Include="Views\AuctionsDetails\UserAuctions.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\DetailOrders\Create.cshtml" />
+    <Content Include="Views\DetailOrders\Delete.cshtml" />
+    <Content Include="Views\DetailOrders\Details.cshtml" />
+    <Content Include="Views\DetailOrders\Edit.cshtml" />
+    <Content Include="Views\DetailOrders\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\UserOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -578,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202311071056123_isPayedNOTnull.resx">
       <DependentUpon>202311071056123_isPayedNOTnull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202311141516537_OrderStateNotRequired.resx">
+      <DependentUpon>202311141516537_OrderStateNotRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

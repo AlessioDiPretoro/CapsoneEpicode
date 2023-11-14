@@ -33,7 +33,7 @@ namespace Stones.Models
         public string password { get; set; }
 
         [NotMapped]
-        [Compare("password")] // Confronta il valore con il campo 'Password'
+        [Compare("password", ErrorMessage = "Le password non coincidono.")]
         public string confirmPassword { get; set; }
 
         [Required]

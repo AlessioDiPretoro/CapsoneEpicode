@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Stones.Models.Order>
+
+@{
+    ViewBag.Title = "UserOrders";
+}
+
+<h2>I tuoi ordini</h2>
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                Indirizzo
+            </th>
+            <th>
+                Città
+            </th>
+            <th>
+               Prov
+            </th>
+            <th>
+                Cap
+            </th>
+            <th>
+                Stato
+            </th>
+            <th>
+               Data
+            </th>
+            <th>
+                Note
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.prov)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.state)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.notes)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
