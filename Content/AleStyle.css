@@ -17,10 +17,6 @@ body * {
   flex: 1;
 }
 
-main img {
-  border-radius: 20px;
-}
-
 h1 {
   margin: 0em;
 }
