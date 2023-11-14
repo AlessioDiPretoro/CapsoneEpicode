@@ -5,34 +5,43 @@
 }
 
 <div>
-    <h2>Galleria</h2>
-    <div class="row mb-3">
-        <div class="col-12 col-md-2 mb-3">
-            @using (Html.BeginForm())
-            {
-                <p>Filtra per materiali</p>
+    <div>
+        <div class="nav-item dropdown position-absolute">
+            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="btn btn-sm btn-outline-secondary">Filtri</span>
+            </a>
+            <div class="dropdown-menu p-3" id="filterDropdown">
+                @using (Html.BeginForm())
+                {
+                    <p>Filtra per materiali</p>
 
-                foreach (SelectListItem i in ViewBag.idCategory)
-                {
-                    <div>
-                        <input type="checkbox" name="category" value="@i.Value" /> @i.Text
-                    </div>
+                    foreach (SelectListItem i in ViewBag.idCategory)
+                    {
+                        <div>
+                            <input type="checkbox" id="category-@i.Value" name="category" value="@i.Value" />
+                            <label for="category-@i.Value">@i.Text</label>
+                        </div>
+
+                    }
+                    <hr />
+                    <p>Filtra per soggetti</p>
+                    foreach (SelectListItem i in ViewBag.idSubject)
+                    {
+                        <div>
+                            <input type="checkbox" id="subject-@i.Value" name="subject" value="@i.Value" />
+                            <label for="subject-@i.Value">@i.Text</label>
+                        </div>
+                    }
+                    <hr />
+                    <input type="submit" value="Applica filtri" class="btn btn-sm btn-outline-secondary rounded-2" />
                 }
-                <hr />
-                <p>Filtra per soggetti</p>
-                foreach (SelectListItem i in ViewBag.idSubject)
-                {
-                    <div>
-                        <input type="checkbox" name="subject" value="@i.Value" /> @i.Text
-                    </div>
-                }
-                <hr />
-                <input type="submit" value="Applica filtri" class="btn btn-default" />
-            }
+            </div>
         </div>
-        <div class="col-12 col-md-10">
-
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 gap-4 justify-content-center galleryCont">
+        <h2>Galleria</h2>
+    </div>
+    <div class="row mb-3">
+        <div class="col-12 col-md-12">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 gap-4 justify-content-center galleryCont">
 
                 @foreach (Stones.Models.Product p in Model)
                 {
@@ -47,26 +56,32 @@
                                 @if (p.isAvaiable)
                                 {
 
-                                <h5 class="card-title text-nowrap">@p.price.ToString("C2")</h5>
+                                    <h5 class="card-title text-nowrap">@p.price.ToString("C2")</h5>
                                 }
                                 else
                                 {
-                                <h5 class="card-title text-nowrap text-decoration-line-through">@p.price.ToString("C2")</h5>
+                                    <h5 class="card-title text-nowrap text-decoration-line-through">@p.price.ToString("C2")</h5>
 
                                 }
                             </div>
                             <p class="card-text card-text-cutter flex-grow-1">@p.descripton</p>
-                            @*@Html.ActionLink("Dettagli", "Details", "Products", new { id = p.id }, new { @class = "btn btn-default" })*@
-                            @*@Html.ActionLink("Commenta", "Create", "Posts", new { id = p.id }, new { @class = "btn btn-default" })*@
-                        </div>
+                           </div>
                     </div>
                 }
             </div>
 
-        @if (ViewBag.NoResults != null)
-        {
-            <div><p class="text-center">@ViewBag.NoResults</p></div>
-        }
+            @if (ViewBag.NoResults != null)
+            {
+                <div><p class="text-center">@ViewBag.NoResults</p></div>
+            }
         </div>
     </div>
 </div>
+<script>
+    document.getElementById("filterDropdown").addEventListener("click", function (event) {
+        stopPropagation(event);
+    });
+    function stopPropagation(event) {
+        event.stopPropagation();
+    }
+</script>

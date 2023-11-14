@@ -3,48 +3,50 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="row">
+    <h2>Dettagli profilo</h2>
 
-<h2>Dettagli profilo</h2>
+    <div class="form-horizontal col-12 col-md-6 m-auto">
+        <div class="userInfo">
+            <h3>Informazioni base</h3>
+            <div class="d-flex justify-content-between align-items-center">
+                <p><b>Immagine profilo</b></p>
+                <img src="~/Content/imgProfiles/@Model.imgProfile" alt="Alternate Text" style="height:50px" class="rounded-circle" />
+            </div>
+            <div>
+                <p><b>Username: </b><span> @Html.DisplayFor(model => model.username)</span></p>
+            </div>
+            <div>
+                <p><b>Email: </b><span> @Html.DisplayFor(model => model.email)</span></p>
+            </div>
+            <div>
+                <p><b>Nome: </b><span> @Html.DisplayFor(model => model.name)</span></p>
+            </div>
+            <div>
+                <p><b>Cognome: </b><span> @Html.DisplayFor(model => model.surname)</span></p>
+            </div>
+        </div>
 
-<div>
-    <div class="userInfo">
-        <h3>Informazioni base</h3>
-        <div class="d-flex justify-content-between align-items-center">
-            <p><b>Immagine profilo</b></p>
-            <img src="~/Content/imgProfiles/@Model.imgProfile" alt="Alternate Text" style="height:50px" class="rounded-circle" />
+        <div class="userInfo my-3">
+            <h3>Recapito</h3>
+            <div>
+                <p><b>Indirizzo: </b><span> @Html.DisplayFor(model => model.address)</span></p>
+            </div>
+            <div>
+                <p><b>Città: </b><span> @Html.DisplayFor(model => model.city)</span></p>
+            </div>
+            <div>
+                <p><b>Provincia: </b><span> @Html.DisplayFor(model => model.prov)</span></p>
+            </div>
+            <div>
+                <p><b>Telefono: </b><span> @Html.DisplayFor(model => model.phone)</span></p>
+            </div>
         </div>
-        <div>
-            <p><b>Username: </b><span> @Html.DisplayFor(model => model.username)</span></p>
+
+        <div class="d-flex justify-content-center">
+            @Html.ActionLink("Modifica", "Edit", new { id = Model.id }, new { @class = "btn btn-outline-secondary" })
         </div>
-        <div>
-            <p><b>Email: </b><span> @Html.DisplayFor(model => model.email)</span></p>
-        </div>
-        <div>
-            <p><b>Nome: </b><span> @Html.DisplayFor(model => model.name)</span></p>
-        </div>
-        <div>
-            <p><b>Cognome: </b><span> @Html.DisplayFor(model => model.surname)</span></p>
-        </div>
+
+
     </div>
-
-    <div class="userInfo my-3">
-        <h3>Recapito</h3>
-        <div>
-            <p><b>Indirizzo: </b><span> @Html.DisplayFor(model => model.address)</span></p>
-        </div>
-        <div>
-            <p><b>Città: </b><span> @Html.DisplayFor(model => model.city)</span></p>
-        </div>
-        <div>
-            <p><b>Provincia: </b><span> @Html.DisplayFor(model => model.prov)</span></p>
-        </div>
-        <div>
-            <p><b>Telefono: </b><span> @Html.DisplayFor(model => model.phone)</span></p>
-        </div>
-    </div>
-
-    
 </div>
-<p>
-    @Html.ActionLink("Modifica", "Edit", new { id = Model.id } , new { @class = "btn btn-default" })
-</p>

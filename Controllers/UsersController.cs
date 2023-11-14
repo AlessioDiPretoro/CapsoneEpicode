@@ -139,34 +139,52 @@ namespace Stones.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "password,confirmPassword,name,surname,address,cap,city,prov,phone,imgProfile")] Users users, HttpPostedFileBase imgProfile)
+        public ActionResult Edit(Users users, HttpPostedFileBase imgProfile)
         {
             if (ModelState.IsValid)
             {
-                string folder = Server.MapPath("~/Content/imgProfiles");
-                if (imgProfile != null)
+                bool verified = false;
+                if (users.username.Contains("@"))
                 {
-                    string nomeFile = imgProfile.FileName;
-                    users.imgProfile = nomeFile;
-                    _ProcedureResponse resp = CustomProceduresController.SavePhoto(imgProfile, folder);
-                    if (resp.ErrorMessage != null)
-                    {
-                        ViewBag.ErrorMessage = resp.ErrorMessage;
-                        return View(users);
-                    }
-                    else
-                    {
-                        users.imgProfile = resp.SuccessMessage;
-                    }
+                verified = db.Users.Any(x => x.email == users.username && x.password == users.password);
                 }
                 else
                 {
-                    users.imgProfile = TempData["profileImg"].ToString();
+                    verified = db.Users.Any(x => x.username == users.username && x.password == users.password);
                 }
 
-                db.Entry(users).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (verified)
+                {
+                    string folder = Server.MapPath("~/Content/imgProfiles");
+                    if (imgProfile != null)
+                    {
+                        string nomeFile = imgProfile.FileName;
+                        users.imgProfile = nomeFile;
+                        _ProcedureResponse resp = CustomProceduresController.SavePhoto(imgProfile, folder);
+                        if (resp.ErrorMessage != null)
+                        {
+                            ViewBag.ErrorMessage = resp.ErrorMessage;
+                            return View(users);
+                        }
+                        else
+                        {
+                            users.imgProfile = resp.SuccessMessage;
+                        }
+                    }
+                    else
+                    {
+                        users.imgProfile = TempData["profileImg"].ToString();
+                    }
+
+                    db.Entry(users).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Password errata";
+                    return View(users);
+                }   
             }
             return View(users);
         }

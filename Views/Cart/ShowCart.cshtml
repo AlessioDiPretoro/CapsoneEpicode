@@ -3,43 +3,54 @@
 @{
     ViewBag.Title = "ShowCart";
 }
-
-<h2>Il tuo carrello</h2>
-@if (Model != null && Model.Count() > 0)
-{
-    <table class="table">
-        <tr>
-            <th>
-                Titolo
-            </th>
-            <th>
-                Prezzo
-            </th>
-            <th>Elimina</th>
-        </tr>
-        @{decimal tot = 0; decimal ship = 3; decimal totAmmount = 0; } 
-        @foreach (var item in Model)
-        {
+<div class="container">
+    <h2>Il tuo carrello</h2>
+    @if (Model != null && Model.Count() > 0)
+    {
+        <table class="table">
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.name)</td>
-                <td>@Html.DisplayFor(modelItem => item.price)</td>
-                <td>
-                    @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
-                </td>
+                <th>
+                    Titolo
+                </th>
+                <th>
+                    Foto
+                </th>
+                <th>
+                    Prezzo
+                </th>
+                <th>Elimina</th>
             </tr>
-            tot += item.price;
-            ship += 1.5m;
-        }
-    </table>
-    <div>
-        @{ totAmmount = ship + tot;}
-        <p>Ordine: @tot.ToString("C2")</p>
-        <p>Spese spedizione: @ship.ToString("C2")</p>
-        <p><b>Totale ordine: @totAmmount.ToString("C2")</b></p>
-        @Html.ActionLink("Conferma ordine", "Create","Orders", new { }, new { @class = "btn btn-default" })
-    </div>
-}
-else
-{
-    <p class="text-center">Non ci sono articoli nel tuo carrello</p>
-}
+            @{decimal tot = 0; decimal ship = 3; decimal totAmmount = 0; }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.name)</td>
+                    <td>
+                        @if (item.photo1 != null)
+                        {
+                            <img src="~/Content/imgProducts/@item.photo1" class="w-75" />
+
+                        }
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.price)</td>
+                    <td>
+                        @Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+                tot += item.price;
+                ship += 1.5m;
+            }
+        </table>
+        <div>
+            @{ totAmmount = ship + tot;}
+            <p>Ordine: @tot.ToString("C2")</p>
+            <p>Spese spedizione: @ship.ToString("C2")</p>
+            <p><b>Totale ordine: @totAmmount.ToString("C2")</b></p>
+            @Html.ActionLink("Conferma ordine", "Create", "Orders", new { }, new { @class = "btn btn-default" })
+        </div>
+    }
+    else
+    {
+        <p class="text-center">Non ci sono articoli nel tuo carrello</p>
+    }
+</div>

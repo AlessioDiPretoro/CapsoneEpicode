@@ -3,94 +3,95 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Gestione degli utenti</h2>
 
-<h2>Gestione degli utenti</h2>
-
-<p>
-    @Html.ActionLink("Crea nuovo Utente", "Create", "", new { @class = "btn btn-default" })
-</p>
-<div class="table-responsive">
-    <table class="table">
-        <tr>
-            <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
-            <th>
-                @Html.DisplayNameFor(model => model.username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.city)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.prov)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.phone)
-            </th>
-            <th>
-               Immagine del profilo
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <p>
+        @Html.ActionLink("Crea nuovo Utente", "Create", "", new { @class = "btn btn-default" })
+    </p>
+    <div class="table-responsive">
+        <table class="table">
             <tr>
-                <td>
-                    <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ...
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success w-75 m-1" })</li>
-                        <li>@Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning w-75 m-1" })</li>
-                        <li>@Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger w-75 m-1" })</li>
-                    </ul>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.city)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.prov)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.imgProfile)
-                </td>
-
+                <th class="text-center w5"><i class="fa-solid fa-gear"></i></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.city)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prov)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th>
+                    Immagine del profilo
+                </th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a class="nav-link text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("🔍", "Details", new { id = item.id }, new { @class = "btn btn-sm btn-success w-75 m-1" })</li>
+                            <li>@Html.ActionLink("✒", "Edit", new { id = item.id }, new { @class = "btn btn-sm btn-warning w-75 m-1" })</li>
+                            <li>@Html.ActionLink("🗑", "Delete", new { id = item.id }, new { @class = "btn btn-sm btn-danger w-75 m-1" })</li>
+                        </ul>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.surname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.city)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prov)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imgProfile)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
 </div>
