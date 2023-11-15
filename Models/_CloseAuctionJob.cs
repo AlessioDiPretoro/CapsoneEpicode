@@ -55,8 +55,7 @@ namespace Stones.Models
                         _mailer.SendEmail(winner.email, "Ti sei aggiudicato l'asta",
                             $"Complimenti hai vinto l'asta per il prodotto {auction.Product.name}." +
                             $"<br>Ricordati di effettuare il pagamento di {price.ToString("C2")}." +
-                            $"<br>Clicca su questo link per accedere al pagamento" +
-                            $"https://localhost:44302/Orders/Create/{auction.idAuctionWinner}." +
+                            $"<br>Clicca su questo link per accedere al pagamento: <a href=\"https://localhost:44302/Orders/Create/{auction.idAuctionWinner}\">Crea ordine</a>" +
                             $"<br><br>Puoi verificare le tue aste in attesa di pagamento del menù del tuo profilo nella sezione 'Le tue aste'." +
                             $"<br><br>Mail inviata automaticamente da LePieCreazioni, non rispondere a questa mail." +
                             $"<br><br>&#169; LePieCreazioni." +
