@@ -26,7 +26,7 @@
 
                     }
                     <div class="text-center p-2 border-bottom">
-                    <p class="text-nowrap m-0">Filtra per soggetti</p>
+                        <p class="text-nowrap m-0">Filtra per soggetti</p>
                     </div>
                     foreach (SelectListItem i in ViewBag.idSubject)
                     {
@@ -67,7 +67,7 @@
                                 }
                             </div>
                             <p class="card-text card-text-cutter flex-grow-1">@p.descripton</p>
-                           </div>
+                        </div>
                     </div>
                 }
             </div>
@@ -79,11 +79,35 @@
         </div>
     </div>
 </div>
-<script>
-    document.getElementById("filterDropdown").addEventListener("click", function (event) {
-        stopPropagation(event);
-    });
-    function stopPropagation(event) {
-        event.stopPropagation();
-    }
-</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        document.getElementById("filterDropdown").addEventListener("click", function (event) {
+            stopPropagation(event);
+        });
+        function stopPropagation(event) {
+            event.stopPropagation();
+        }
+
+        $(document).ready(function () {
+            $(window).on('scroll', function () {
+                var windowHeight = $(window).height();
+                var scrollPosition = $(this).scrollTop();
+
+                $('.galleryCard').each(function () {
+                    var elementOffset = $(this).offset().top;
+                    var elementHeight = $(this).outerHeight();
+
+                    var elementCenter = elementOffset + elementHeight / 2;
+                    if (elementCenter > scrollPosition && elementCenter < scrollPosition + windowHeight) {
+                        $(this).addClass('large');
+                    console.log("Add" + elementCenter)
+                        console.log("scrollPosition" + scrollPosition + " - windowHeight" + windowHeight)
+                    } else {
+                        $(this).removeClass('large');
+                    }
+                });
+            });
+        });
+    </script>
+}

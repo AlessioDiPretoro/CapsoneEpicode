@@ -3,9 +3,6 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h4>Dettaglio galleria</h4>
-
 @if (TempData["AlreadyInCart"] != null)
 {
     <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
@@ -68,7 +65,6 @@
             }
             <p class="card-text">Categoria: @Model.Product.ProductCategory.name</p>
             <p class="card-text">Soggetto: @Model.Product.ProductSubject.name</p>
-            <p class="card-text"><small class="text-body-secondary">Visto 200 volte</small></p>
             <div class="flex-column flex-md-row d-flex gap-1 gap-md-5">
                 @if (Model.Product.isAvaiable)
                 {
@@ -84,7 +80,7 @@
 
         <div class="post">
             <div class="d-flex justify-content-between align-items-center mb-2">
-                <div class="d-flex">
+                <div class="d-flex align-items-center">
                     <img src="~/Content//imgProfiles/@post.Users.imgProfile" alt="Immagine profilo" class="rounded-circle" />
                     <div>
 
@@ -123,9 +119,10 @@
                             <div class="d-flex">
                                 <img src="~/Content//imgProfiles/@res.Users.imgProfile" alt="Immagine profilo" class="rounded-circle" />
                                 <div>
-                                    <p><b>@res.Users.username</b> - @res.date </p>
-                                    <p>@res.body</p>
+                                    <p><b>@res.Users.username</b></p>
+                                    <p>@res.date </p>
                                 </div>
+
                             </div>
                             @if (User.Identity.Name == res.Users.username)
                             {
@@ -139,6 +136,7 @@
                                 </div>
                             }
                         </div>
+                            <p>@res.body</p>
                     }
                 }
             }
@@ -157,5 +155,6 @@
 
             })
         })
+
     </script>
 }

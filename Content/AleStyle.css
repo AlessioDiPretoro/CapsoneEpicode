@@ -162,24 +162,17 @@ footer a, footer p {
 .galleryCard {
   border-radius: 30px;
   text-transform: capitalize;
+  transition: width 0.3s ease;
+}
+.galleryCard.large {
+  background-color: black;
+}
+.galleryCard.large h5, .galleryCard.large p {
+  color: white;
 }
 
 .galleryCard:hover {
   transform: scale(1.03);
-}
-
-.galleryCard:nth-child(odd) {
-  background-color: black;
-}
-.galleryCard:nth-child(odd) h5, .galleryCard:nth-child(odd) p {
-  color: white;
-}
-
-.galleryCard:nth-child(even) {
-  background-color: white;
-}
-.galleryCard:nth-child(even) h5, .galleryCard:nth-child(even) p {
-  color: black;
 }
 
 .detailCard {
@@ -191,10 +184,11 @@ footer a, footer p {
   border-radius: 20px;
   padding: 1.1em;
   margin-bottom: 1em;
+  border: 1px solid #c5c5c5;
 }
 .post img {
   width: 50px;
-  height: fit-content;
+  height: 50px;
   margin-right: 0.5em;
 }
 .post p {

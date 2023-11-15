@@ -1,6 +1,13 @@
 # Capstone Epicode Project
 
-Welcome to the Capstone Epicode repository! This project, developed as the final end-of-course project, utilizes ASP.NET Core and Entity Framework to manage an online auction application with a primary focus on showcasing and selling artwork. The project is enhanced with Sass, allowing for extensive customization throughout the entire site.
+Welcome to LePieCreazioni!!! 
+My gallery and e-commerce project for show and sell your artworks!!!
+
+It's simple to manage the admin side and the client side it's nice and easy.
+It's all responsive.
+
+This project si build with ASP.NET Entity Framework and is enhanced with Sass, allowing for extensive customization throughout the entire site.
+
 
 ## Key Features
 
@@ -26,14 +33,12 @@ Make sure you have the following installed:
 1. Clone the repository: `git clone https://github.com/AlessioDiPretoro/CapsoneEpicode.git`
 2. Navigate to the project directory: `cd CapsoneEpicode`
 3. Open the project in Visual Studio.
-4. Configure the connection string in the `appsettings.json` file.
+4. Configure the connection string in the `Web.config` file 
+5. Create your firt migration and update database for create the database.
+6. Configure you email provider info in the `_Mailer.cs` file.
+7. On the database manual create the user with roles Admin and SuperAdmin.
+8. Enyoi it. 
 
-## Running the Application
-
-1. Ensure the startup project is set to `CapstoneEpicode.Web`.
-2. Press F5 or start the application from Visual Studio.
-
-The application should be accessible at [https://localhost:5001](https://localhost:5001).
 
 ## Controller Functions
 
@@ -90,7 +95,7 @@ The application should be accessible at [https://localhost:5001](https://localho
 
 ## Contributing
 
-We are happy to accept contributions! Feel free to open a new issue or submit a pull request.
+I'm happy to accept contributions! Feel free to open a new issue or submit a pull request.
 
 ## License
 
