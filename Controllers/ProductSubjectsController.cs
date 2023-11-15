@@ -10,6 +10,7 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class ProductSubjectsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -42,7 +43,7 @@ namespace Stones.Controllers
         }
 
         // POST: ProductSubjects/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
+        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,7 +75,7 @@ namespace Stones.Controllers
         }
 
         // POST: ProductSubjects/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
+        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
         // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

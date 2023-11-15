@@ -71,6 +71,7 @@ namespace Stones.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PostResponse postResponse = db.PostResponse.Find(id);
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano editare altri post)
             int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
             if (postResponse.idUser != idUser)
             {
@@ -107,6 +108,12 @@ namespace Stones.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PostResponse postResponse = db.PostResponse.Find(id);
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano eliminare altri post)
+            int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            if (postResponse.idUser != idUser)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (postResponse == null)
             {
                 return HttpNotFound();
@@ -120,6 +127,12 @@ namespace Stones.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             PostResponse postResponse = db.PostResponse.Find(id);
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano eliminare altri post)
+            int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            if (postResponse.idUser != idUser)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             db.PostResponse.Remove(postResponse);
             db.SaveChanges();
             return RedirectToAction("Index");

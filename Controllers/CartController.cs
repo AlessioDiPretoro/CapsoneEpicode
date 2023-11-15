@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Stones.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private ModelDbContext db = new ModelDbContext();

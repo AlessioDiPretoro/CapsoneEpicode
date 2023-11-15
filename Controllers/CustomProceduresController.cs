@@ -11,7 +11,6 @@ namespace Stones.Controllers
     //procedure che uso in più zone del codice
     public class CustomProceduresController : Controller
     {
-
         //lista formati di file supportati per il caricamento delle foto prodotto e profilo
         public static List<string> acceptedFile
         {
@@ -27,6 +26,7 @@ namespace Stones.Controllers
                 return strings;
             }
         }
+
         //funzione di caricamento foto, con verifica del formato e diversa cartella di salvataggio
         public static _ProcedureResponse SavePhoto(HttpPostedFileBase f, string folder)
         {

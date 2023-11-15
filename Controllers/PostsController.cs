@@ -15,6 +15,7 @@ namespace Stones.Controllers
         private ModelDbContext db = new ModelDbContext();
 
         // GET: Posts
+        [Authorize(Roles = "SuperAdmin, Admin")]
         public ActionResult Index()
         {
             var post = db.Post.Include(p => p.Users);
@@ -37,6 +38,7 @@ namespace Stones.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -44,10 +46,11 @@ namespace Stones.Controllers
 
         // POST: Posts/Create
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
         {
-           // string route = (RouteData.Values["id"]).ToString();
+            // string route = (RouteData.Values["id"]).ToString();
             if (ModelState.IsValid)
             {
                 post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
@@ -111,6 +114,12 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano eliminare altri post)
+            int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            if (post.idUser != idUser)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View(post);
         }
 
@@ -120,6 +129,12 @@ namespace Stones.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Post.Find(id);
+            //verifica la proprietà dell'user sul post da editare (evita che tramite modifica al link si possano eliminare altri post)
+            int idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            if (post.idUser != idUser)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             db.Post.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");

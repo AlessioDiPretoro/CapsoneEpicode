@@ -178,7 +178,7 @@ namespace Stones.Controllers
                 {
                     if (users.id != idUser && !User.IsInRole("SuperAdmin"))
                     {
-                        return View($"Edit/{idUser}");
+                        return RedirectToAction("Edit", new { id = idUser });
                     }
 
                     string folder = Server.MapPath("~/Content/imgProfiles");

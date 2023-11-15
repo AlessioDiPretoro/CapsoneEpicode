@@ -10,9 +10,23 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize]
     public class AuctionsDetailsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
+        private int idUser
+        {
+            get
+            {
+                int id = 0;
+                if (User.Identity.Name != null)
+                {
+                    string username = User.Identity.Name;
+                    id = db.Users.Where(x => x.username == username).FirstOrDefault().id;
+                }
+                return id;
+            }
+        }
 
         // GET: AuctionsDetails
         public ActionResult Index()
@@ -32,6 +46,10 @@ namespace Stones.Controllers
             if (auctionsDetails == null)
             {
                 return HttpNotFound();
+            }
+            if (auctionsDetails.idUser != idUser && !User.IsInRole("SuperAdmin"))
+            {
+                return RedirectToAction("Index", "Home");
             }
             return View(auctionsDetails);
         }
@@ -86,6 +104,10 @@ namespace Stones.Controllers
             if (auctionsDetails == null)
             {
                 return HttpNotFound();
+            }
+            if (auctionsDetails.idUser != idUser && !User.IsInRole("SuperAdmin"))
+            {
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.idAuction = new SelectList(db.AuctionsProducts, "id", "id", auctionsDetails.idAuction);
             ViewBag.idUser = new SelectList(db.Users, "id", "username", auctionsDetails.idUser);

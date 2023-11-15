@@ -11,6 +11,7 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize(Roles = "Admin, SuperAdmin")]
     public class AuctionsProductsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -135,6 +136,7 @@ namespace Stones.Controllers
         }
 
         //mostra le aste attive e le filtra per le categorie
+        [AllowAnonymous]
         public ActionResult Auctions(FormCollection categories, FormCollection subjects)
         {
             List<string> selCat = categories.GetValues("category")?.ToList();

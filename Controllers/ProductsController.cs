@@ -11,6 +11,7 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class ProductsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
@@ -23,6 +24,7 @@ namespace Stones.Controllers
         }
 
         // GET: Products/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -234,6 +236,7 @@ namespace Stones.Controllers
         }
 
         //visualizza la galleria dei prodotti disponibili ed effettua eventuali filtri
+        [AllowAnonymous]
         public ActionResult Gallery(FormCollection categories, FormCollection subjects)
         {
             List<string> selCat = categories.GetValues("category")?.ToList();
@@ -259,19 +262,5 @@ namespace Stones.Controllers
             return View(product);
         }
 
-        //restituiva la lista di subCategorie dopo aver seleziona la categoria principale, modificata la logica
-        //public JsonResult GetSubCatByCat(int IdCategoria)
-        //{
-        //    ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-        //    ViewBag.Subject = new List<SelectListItem> { new SelectListItem { Text = "--Seleziona Categoria--", Value = "0" } };
-
-        //    //   List<ProductCategory> listRead = db.ProductCategory.Where(x => x.idSubCategory == IdCategoria).ToList();
-        //    List<ProductCategory> list = new List<ProductCategory>();
-        //    //foreach (ProductCategory item in listRead)
-        //    //{
-        //    //    list.Add(new ProductCategory { id = item.id, name = item.name, description = item.description });
-        //    //}
-        //    return Json(list, JsonRequestBehavior.AllowGet);
-        //}
     }
 }

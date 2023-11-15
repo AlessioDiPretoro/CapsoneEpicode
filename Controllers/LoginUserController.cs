@@ -38,9 +38,6 @@ namespace Stones.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(u.UserName, true);
-                    //cookie per id user? troppo facile modificarlo
-                    //HttpCookie idCookie = new HttpCookie(user.id.ToString());
-                    //Response.Cookies.Add(idCookie);
                     return RedirectToAction("Index", "Home");
                 }
                 else

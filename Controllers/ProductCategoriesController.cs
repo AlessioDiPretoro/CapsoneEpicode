@@ -10,6 +10,7 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize(Roles = "SuperAdmin, Admin")]
     public class ProductCategoriesController : Controller
     {
         public List<SelectListItem> ProductCategories

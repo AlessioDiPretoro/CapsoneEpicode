@@ -10,11 +10,27 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
+        private int idUser
+        {
+            get
+            {
+                int id = 0;
+                if (User.Identity.Name != null)
+                {
+                    string username = User.Identity.Name;
+                    id = db.Users.Where(x => x.username == username).FirstOrDefault().id;
+                }
+                return id;
+            }
+        }
+
         private ModelDbContext db = new ModelDbContext();
 
         // GET: Orders
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Index()
         {
             var order = db.Order.Include(o => o.Users);
@@ -28,24 +44,28 @@ namespace Stones.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Order order = db.Order.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
             }
+
+            if (order.idBuyer != idUser && !User.IsInRole("SuperAdmin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(order);
         }
 
         // GET: Orders/Create
         public ActionResult Create()
         {
-            //ViewBag.idBuyer = new SelectList(db.Users, "id", "username");
             return View();
         }
 
         // POST: Orders/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Order order)
@@ -85,12 +105,11 @@ namespace Stones.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
-
-            //ViewBag.idBuyer = new SelectList(db.Users, "id", "username", order.idBuyer);
             return View(order);
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -107,8 +126,6 @@ namespace Stones.Controllers
         }
 
         // POST: Orders/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding.
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,idBuyer,address,city,prov,cap,phone,state,date,notes")] Order order)
@@ -124,6 +141,7 @@ namespace Stones.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -140,6 +158,7 @@ namespace Stones.Controllers
 
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

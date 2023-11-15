@@ -10,11 +10,13 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
+    [Authorize]
     public class DetailOrdersController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
 
         // GET: DetailOrders
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Index()
         {
             var detailOrder = db.DetailOrder.Include(d => d.Order).Include(d => d.Product);
@@ -45,8 +47,6 @@ namespace Stones.Controllers
         }
 
         // POST: DetailOrders/Create
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,idOrder,idProduct,name,quanty,priceCad,state")] DetailOrder detailOrder)
@@ -64,6 +64,7 @@ namespace Stones.Controllers
         }
 
         // GET: DetailOrders/Edit/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,9 +82,8 @@ namespace Stones.Controllers
         }
 
         // POST: DetailOrders/Edit/5
-        // Per la protezione da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
-        // Per altri dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,idOrder,idProduct,name,quanty,priceCad,state")] DetailOrder detailOrder)
         {
@@ -99,6 +99,7 @@ namespace Stones.Controllers
         }
 
         // GET: DetailOrders/Delete/5
+        [Authorize(Roles = "Admin, SuperAdmin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,6 +116,7 @@ namespace Stones.Controllers
 
         // POST: DetailOrders/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin, SuperAdmin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
