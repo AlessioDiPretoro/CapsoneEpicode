@@ -11,26 +11,28 @@
             <div class="dropdown-menu p-3" id="filterDropdown">
                 @using (Html.BeginForm())
                 {
-                    <p>Filtra per materiali</p>
+                    <div class="text-center p-2 border-bottom">
+                        <p class="text-nowrap m-0">Filtra per materiali</p>
+                    </div>
 
                     foreach (SelectListItem i in ViewBag.idCategory)
                     {
-                        <div>
+                        <div class="py-2">
                             <input type="checkbox" id="category-@i.Value" name="category" value="@i.Value" />
                             <label for="category-@i.Value">@i.Text</label>
                         </div>
 
                     }
-                    <hr />
-                    <p>Filtra per soggetti</p>
+                    <div class="text-center p-2 border-bottom">
+                        <p class="text-nowrap m-0">Filtra per soggetti</p>
+                    </div>
                     foreach (SelectListItem i in ViewBag.idSubject)
                     {
-                        <div>
+                        <div class="py-2">
                             <input type="checkbox" id="subject-@i.Value" name="subject" value="@i.Value" />
                             <label for="subject-@i.Value">@i.Text</label>
                         </div>
                     }
-                    <hr />
                     <input type="submit" value="Applica filtri" class="btn btn-sm btn-outline-secondary rounded-2" />
                 }
             </div>

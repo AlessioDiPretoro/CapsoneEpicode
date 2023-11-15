@@ -14,7 +14,7 @@ namespace Stones.Controllers
     public class AuctionsDetailsController : Controller
     {
         private ModelDbContext db = new ModelDbContext();
-        private int idUser
+        private int IdUser
         {
             get
             {
@@ -47,7 +47,7 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            if (auctionsDetails.idUser != idUser && !User.IsInRole("SuperAdmin"))
+            if (auctionsDetails.idUser != IdUser && !User.IsInRole("SuperAdmin"))
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -105,7 +105,7 @@ namespace Stones.Controllers
             {
                 return HttpNotFound();
             }
-            if (auctionsDetails.idUser != idUser && !User.IsInRole("SuperAdmin"))
+            if (auctionsDetails.idUser != IdUser && !User.IsInRole("SuperAdmin"))
             {
                 return RedirectToAction("Index", "Home");
             }

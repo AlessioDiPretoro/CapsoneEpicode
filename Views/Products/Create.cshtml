@@ -3,117 +3,117 @@
 @{
     ViewBag.Title = "Create";
 }
+<div class="row">
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { name = "registerForm", @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm("Create", "Products", FormMethod.Post, new { name = "registerForm", @enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Aggiungi articolo</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-10">
-                <span class="input-icon"><i class="fa-solid fa-user"></i></span>
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        <div class="form-horizontal col-12 col-md-6 m-auto">
+            <h4>Aggiungi articolo</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-user"></i></span>
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <span class="input-icon"><i class="fa-solid fa-euro-sign"></i></span>
-                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", placeholder = "Prezzo" } })
-                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-euro-sign"></i></span>
+                    @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control", placeholder = "Prezzo" } })
+                    @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <span class="input-icon"><i class="fa-solid fa-rectangle-list"></i></span>
-                @Html.TextAreaFor(model => model.descripton, new { @class = "form-control", placeholder = "Descrizione", @rows = 8 })
-                @Html.ValidationMessageFor(model => model.descripton, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="d-flex">
+                    <span class="input-icon"><i class="fa-solid fa-rectangle-list mt-2"></i></span>
+                    @Html.TextAreaFor(model => model.descripton, new { @class = "form-control", placeholder = "Descrizione", @rows = 8 })
+                    @Html.ValidationMessageFor(model => model.descripton, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <span class="input-icon"><i class="fa-solid fa-list"></i></span>
-                @Html.DropDownListFor(model => model.idCategory, (SelectList)ViewBag.idCategory, "-- Seleziona un materiale --", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idCategory, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-list"></i></span>
+                    @Html.DropDownListFor(model => model.idCategory, (SelectList)ViewBag.idCategory, "-- Seleziona un materiale --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.idCategory, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <span class="input-icon"><i class="fa-solid fa-list"></i></span>
-                @Html.DropDownListFor(model => model.idSubject, (SelectList)ViewBag.idSubject, "-- Seleziona una categoria --", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.idSubject, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-list"></i></span>
+                    @Html.DropDownListFor(model => model.idSubject, (SelectList)ViewBag.idSubject, "-- Seleziona una categoria --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.idSubject, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-            <p class="m-0 d-inline p-2">Carica immagine principale</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
                 <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-                @Html.EditorFor(model => model.photo1, new { htmlAttributes = new { @class = "form-control", type = "file" } })
-                @Html.ValidationMessageFor(model => model.photo1, "", new { @class = "text-danger" })
+                <p class="m-0 d-inline p-2">Carica immagine principale</p>
             </div>
-        </div>
-        <div class="form-group">
-            <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-            <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-image"></i></span>
+                    @Html.EditorFor(model => model.photo1, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.photo1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
                 <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-                @Html.EditorFor(model => model.photo2, new { htmlAttributes = new { @class = "form-control", type = "file" } })
-                @Html.ValidationMessageFor(model => model.photo2, "", new { @class = "text-danger" })
+                <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
             </div>
-        </div>
-        <div class="form-group">
-            <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-            <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-image"></i></span>
+                    @Html.EditorFor(model => model.photo2, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.photo2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
                 <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-                @Html.EditorFor(model => model.photo3, new { htmlAttributes = new { @class = "form-control", type = "file" } })
-                @Html.ValidationMessageFor(model => model.photo3, "", new { @class = "text-danger" })
+                <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
             </div>
-        </div>
-        <div class="form-group">
-            <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-            <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-image"></i></span>
+                    @Html.EditorFor(model => model.photo3, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.photo3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
                 <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-                @Html.EditorFor(model => model.photo4, new { htmlAttributes = new { @class = "form-control", type = "file" } })
-                @Html.ValidationMessageFor(model => model.photo4, "", new { @class = "text-danger" })
+                <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
             </div>
-        </div>
-        <div class="form-group">
-            <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-            <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-image"></i></span>
+                    @Html.EditorFor(model => model.photo4, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.photo4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
                 <span class="input-icon"><i class="fa-solid fa-image"></i></span>
-                @Html.EditorFor(model => model.photo5, new { htmlAttributes = new { @class = "form-control", type = "file" } })
-                @Html.ValidationMessageFor(model => model.photo5, "", new { @class = "text-danger" })
+                <p class="m-0 d-inline p-2">Carica immagine aggiuntiva</p>
             </div>
-        </div>
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-image"></i></span>
+                    @Html.EditorFor(model => model.photo5, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.photo5, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Aggiungi" class="btn btn-default" />
+            <div class="form-group">
+                <div class="d-flex justify-content-center">
+                    <input type="submit" value="Aggiungi" class="btn btn-outline-secondary rounded-2" />
+                </div>
             </div>
         </div>
-    </div>
-}
-
+    }
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 

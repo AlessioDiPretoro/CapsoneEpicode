@@ -13,7 +13,7 @@ namespace Stones.Controllers
     [Authorize]
     public class OrdersController : Controller
     {
-        private int idUser
+        private int IdUser
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Stones.Controllers
                 return HttpNotFound();
             }
 
-            if (order.idBuyer != idUser && !User.IsInRole("SuperAdmin"))
+            if (order.idBuyer != IdUser && !User.IsInRole("SuperAdmin"))
             {
                 return RedirectToAction("Index", "Home");
             }

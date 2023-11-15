@@ -12,7 +12,7 @@ namespace Stones.Controllers
     public class CustomProceduresController : Controller
     {
         //lista formati di file supportati per il caricamento delle foto prodotto e profilo
-        public static List<string> acceptedFile
+        public static List<string> AcceptedFile
         {
             get
             {
@@ -35,7 +35,7 @@ namespace Stones.Controllers
             string ext = Path.GetExtension(f.FileName);
             fileName = fileName.Replace(ext, "").Replace("(", "").Replace(")", "").Replace(" ", "").Replace(".", "").Replace("-", "") + DateTime.Now.ToString().Replace("/", "").Replace("-", "").Replace(" ", "").Replace(":", "") + ext;
 
-            if (acceptedFile.Contains(ext))
+            if (AcceptedFile.Contains(ext))
             {
                 string pathToSave = Path.Combine(folder, fileName);
                 f.SaveAs(pathToSave);
