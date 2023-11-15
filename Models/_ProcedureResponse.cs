@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Stones.Models
 {
+    //risposta alle Custom procedure
     public class _ProcedureResponse
     {
         public string ErrorMessage { get; set; }

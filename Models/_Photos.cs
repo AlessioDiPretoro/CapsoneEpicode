@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Stones.Models
 {
+    //per oggetto temp data delle foto prodotto
     public class _Photos
     {
         public string photo1 { get; set; }

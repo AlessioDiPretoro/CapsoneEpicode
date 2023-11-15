@@ -6,6 +6,7 @@ using System.IO;
 
 namespace Stones.Models
 {
+    //legge ed interpreta il file .env
     public class _DotEnv
     {
         public static Dictionary<string, string> Variables { get; private set; }
