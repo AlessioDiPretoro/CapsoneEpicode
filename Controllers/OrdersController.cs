@@ -60,8 +60,18 @@ namespace Stones.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (id != null)//si attiva quando si accede tramite link mail vincita asta
+            {
+                AuctionsDetails a = db.AuctionsDetails.Find(id);
+                if (a.idUser != IdUser)
+                {
+
+                return RedirectToAction("Index", "Home");
+                }
+            }
+
             return View();
         }
 
