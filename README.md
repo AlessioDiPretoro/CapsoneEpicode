@@ -2,6 +2,9 @@
 
 Welcome to the Capstone Epicode repository! This project, developed as the final end-of-course project, utilizes ASP.NET Core and Entity Framework to manage an online auction application with a primary focus on showcasing and selling artwork. The project is enhanced with Sass, allowing for extensive customization throughout the entire site.
 
+![Immagine di Esempio 1](Content/imgDefault/LogoStone.png)
+Formato: ![Alt Text](url)
+
 ## Key Features
 
 - **Auctions:** Users can participate in online auctions, place bids, and win unique pieces of artwork.
@@ -34,7 +37,7 @@ The application should be accessible at [https://localhost:5001](https://localho
 
 ## Contributing
 
-We are happy to accept contributions! Feel free to open a new issue or submit a pull request.
+I'm happy to accept contributions! Feel free to open a new issue or submit a pull request.
 
 ## License
 
