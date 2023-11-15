@@ -2,8 +2,6 @@
 
 Welcome to the Capstone Epicode repository! This project, developed as the final end-of-course project, utilizes ASP.NET Core and Entity Framework to manage an online auction application with a primary focus on showcasing and selling artwork. The project is enhanced with Sass, allowing for extensive customization throughout the entire site.
 
-![Immagine di Esempio 1](Content/imgDefault/LogoStone.png)
-
 ## Key Features
 
 - **Auctions:** Users can participate in online auctions, place bids, and win unique pieces of artwork.
@@ -11,6 +9,9 @@ Welcome to the Capstone Epicode repository! This project, developed as the final
 - **Artwork Management:** Adding, editing, and viewing artwork up for auction.
 - **Commenting System:** Users can leave comments on artwork and engage in discussions. The system supports re-commenting on other users' comments.
 - **Admin Dashboard:** Advanced features for administrators, including product and user management.
+- **Auction Scheduler:** Automatic scheduling of auctions using the `_AuctionScheduler` component.
+- **Close Auction Job:** Automated closing of auctions and determining winners using the `_CloseAuctionJob`.
+- **Mailer Integration:** Email notifications and communication facilitated by the `_Mailer` component.
 
 ## Prerequisites
 
@@ -32,7 +33,7 @@ Make sure you have the following installed:
 1. Ensure the startup project is set to `CapstoneEpicode.Web`.
 2. Press F5 or start the application from Visual Studio.
 
-The application should be accessible at [https://localhost:"YourPortNumber"](https://localhost:"YourPortNumber").
+The application should be accessible at [https://localhost:5001](https://localhost:5001).
 
 ## Controller Functions
 
@@ -70,6 +71,22 @@ The application should be accessible at [https://localhost:"YourPortNumber"](htt
 - **Dashboard:** Display an admin dashboard with advanced management features.
 - **ManageUsers:** View and manage registered users.
 - **ManageArtwork:** View and manage artwork listings.
+
+## Scheduler and Jobs
+
+### `_AuctionScheduler`
+
+- **ScheduleAuction:** Automatically schedules upcoming auctions.
+
+### `_CloseAuctionJob`
+
+- **CloseAuction:** Automated job to close auctions and determine winners.
+
+## Mailer
+
+### `_Mailer`
+
+- **SendEmail:** Handles the sending of emails for notifications and communication.
 
 ## Contributing
 
