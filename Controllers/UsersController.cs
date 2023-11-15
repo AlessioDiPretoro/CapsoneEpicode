@@ -34,13 +34,28 @@ namespace Stones.Controllers
 
         private ModelDbContext db = new ModelDbContext();
 
+        private int idUser
+        {
+            get
+            {
+                int id = 0;
+                if (User.Identity.Name != null)
+                {
+                    string username = User.Identity.Name;
+                    id = db.Users.Where(x => x.username == username).FirstOrDefault().id;
+                }
+                return id;
+            }
+        }
+
         // GET: Users
+        [Authorize(Roles = "SuperAdmin")]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
 
-        // GET: Users/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -121,11 +136,16 @@ namespace Stones.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 id = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            }
+            if (id != idUser && !User.IsInRole("SuperAdmin"))
+            {
+                return RedirectToAction("Edit", new { id = idUser });
             }
             Users users = db.Users.Find(id);
             if (users == null)
@@ -137,6 +157,7 @@ namespace Stones.Controllers
         }
 
         // POST: Users/Edit/5
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Users users, HttpPostedFileBase imgProfile)
@@ -146,7 +167,7 @@ namespace Stones.Controllers
                 bool verified = false;
                 if (users.username.Contains("@"))
                 {
-                verified = db.Users.Any(x => x.email == users.username && x.password == users.password);
+                    verified = db.Users.Any(x => x.email == users.username && x.password == users.password);
                 }
                 else
                 {
@@ -155,6 +176,11 @@ namespace Stones.Controllers
 
                 if (verified)
                 {
+                    if (users.id != idUser && !User.IsInRole("SuperAdmin"))
+                    {
+                        return View($"Edit/{idUser}");
+                    }
+
                     string folder = Server.MapPath("~/Content/imgProfiles");
                     if (imgProfile != null)
                     {
@@ -184,12 +210,13 @@ namespace Stones.Controllers
                 {
                     ViewBag.ErrorMessage = "Password errata";
                     return View(users);
-                }   
+                }
             }
             return View(users);
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "SuperAdmin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -205,6 +232,7 @@ namespace Stones.Controllers
         }
 
         // POST: Users/Delete/5
+        [Authorize(Roles = "SuperAdmin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
