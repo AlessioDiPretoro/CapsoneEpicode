@@ -3,96 +3,71 @@
 @{
     ViewBag.Title = "Create";
 }
+<div class="row">
+    <h2>Conferma ordine</h2>
 
-<h2>Conferma ordine</h2>
+    @if (TempData["EmptyCart"] != null)
+    {
+        <div class="alert alert-danger">@TempData["EmptyCart"]</div>
+    }
 
-@if (TempData["EmptyCart"] != null)
-{
-    <div class="alert alert-danger">@TempData["EmptyCart"]</div>
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Inserisci i dati di spedizione</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*@Html.HiddenFor(model => model.idBuyer)*@
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.idBuyer, "idBuyer", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("idBuyer", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.idBuyer, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <div class="form-group">
-            <div class="d-flex align-items-center">
-                <span class="input-icon"><i class="fa-solid fa-building"></i></span>
-                @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", placeholder = "Indirizzo" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            <div class="d-flex align-items-center">
-                <span class="input-icon"><i class="fa-solid fa-building"></i></span>
-                @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control", placeholder = "Città" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            <div class="d-flex align-items-center">
-                <span class="input-icon"><i class="fa-solid fa-building"></i></span>
-                @Html.EditorFor(model => model.prov, new { htmlAttributes = new { @class = "form-control", placeholder = "Provincia" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.prov, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            <div class="d-flex align-items-center">
-                <span class="input-icon"><i class="fa-solid fa-building"></i></span>
-                @Html.EditorFor(model => model.cap, new { htmlAttributes = new { @class = "form-control", placeholder = "Cap" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.cap, "", new { @class = "text-danger" })
-        </div>
-        <div class="form-group ">
-            <div class="d-flex align-items-center">
-                <span class="input-icon"><i class="fa-solid fa-phone"></i></span>
-                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefono" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
-        </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-horizontal col-12 col-md-6 m-auto">
+            <h4>Inserisci i dati di spedizione</h4>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
                 <div class="d-flex align-items-center">
-                    @Html.EditorFor(model => model.state, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                    <span class="input-icon"><i class="fa-solid fa-building"></i></span>
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", placeholder = "Indirizzo" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-building"></i></span>
+                    @Html.EditorFor(model => model.city, new { htmlAttributes = new { @class = "form-control", placeholder = "Città" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-building"></i></span>
+                    @Html.EditorFor(model => model.prov, new { htmlAttributes = new { @class = "form-control", placeholder = "Provincia" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.prov, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-building"></i></span>
+                    @Html.EditorFor(model => model.cap, new { htmlAttributes = new { @class = "form-control", placeholder = "Cap" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.cap, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group ">
+                <div class="d-flex align-items-center">
+                    <span class="input-icon"><i class="fa-solid fa-phone"></i></span>
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefono" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="d-flex align-items-start">
+                    <span class="input-icon"><i class="fa-regular fa-newspaper pt-2"></i></span>
+                    @Html.TextAreaFor(model => model.notes, new { @class = "form-control", placeholder = "Note", @rows = 8 })
+                    @Html.ValidationMessageFor(model => model.notes, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="d-flex align-items-center">
-                    @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                <div class="d-flex justify-content-center">
+                    <input type="submit" value="Conferma ordine" class="btn btn-outline-secondary rounded-2" />
                 </div>
-            </div>*@
-
-        <div class="form-group">
-            <div class="d-flex align-items-start">
-                <span class="input-icon"><i class="fa-regular fa-newspaper pt-2"></i></span>
-                @Html.TextAreaFor(model => model.notes, new { @class = "form-control", placeholder = "Note", @rows = 8 })
-                @Html.ValidationMessageFor(model => model.notes, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 d-flex align-items-center">
-                <input type="submit" value="Conferma ordine" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
+    }
+</div>

@@ -1,15 +1,11 @@
 \SQLEXPRESS
 
 IN LAVORAZIONE RIPARTIRE DA:
-ultimare conferma ordine da carrello
-
-state in DetailOrder serve a gestire lo stato dei singoli prodotti nell'ordine,
-se qualcosa non si invia insieme ...dopo aver finito fare dropdown... tabella??
 
 // -- da fare: --\\
-60 verificare accessibilità pagina DETAILS post, risposta, asta, offerta...
-60 verificare accessibilità pagina EDIT post, risposta, asta, offerta...
-90 gestione ruoli: Admin & User
+
+email link API completa ordine
+
 92 hash password? - bcrypt
 93 gestire le eliminazioni dei record...
 94 agguingere pagamento paypall
@@ -63,3 +59,7 @@ aste schedulazione CRONE : tramite nuget Windows Task Scheduler nativo, vedere d
 file env per dati email
 aste effettuate dall'utente, agginto se vinta oppure no ed inserito pulsante per pagare
 stili tabelle index prodotti, categorie, soggetti, aste... utenti...
+conferma ordine da carrello
+accessibilità pagina DETAILS post, risposta, asta, offerta...
+accessibilità pagina EDIT post, risposta, asta, offerta...
+gestione ruoli: Admin & User

@@ -1,14 +1,27 @@
-﻿using System;
+﻿using Stones.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Stones.Controllers
 {
     public class ValuesController : ApiController
     {
+        private ModelDbContext db = new ModelDbContext();
+        //crea ordine tramite API
+
+        //[HttpPost]
+        //[Route("api/auctionWin/{i}")]
+        //public ActionResult AddOrderWinner(int i)
+        //{
+        //    return RedirectToAction("Create", "Orders", new { order = order });
+
+        //}
+
         // GET api/values
         public IEnumerable<string> Get()
         {

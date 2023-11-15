@@ -13,6 +13,8 @@ namespace Stones.Controllers
     [Authorize]
     public class OrdersController : Controller
     {
+        private ModelDbContext db = new ModelDbContext();
+
         private int IdUser
         {
             get
@@ -26,8 +28,6 @@ namespace Stones.Controllers
                 return id;
             }
         }
-
-        private ModelDbContext db = new ModelDbContext();
 
         // GET: Orders
         [Authorize(Roles = "Admin, SuperAdmin")]
@@ -68,7 +68,7 @@ namespace Stones.Controllers
         // POST: Orders/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Order order)
+        public ActionResult Create(Order order, int? id)
         {
             order.idBuyer = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
             order.date = DateTime.Now;
@@ -76,6 +76,24 @@ namespace Stones.Controllers
 
             if (ModelState.IsValid)
             {
+                if (id != null)//si attiva quando si accede tramite link mail vincita asta
+                {
+                    db.Order.Add(order);
+                    AuctionsDetails a = db.AuctionsDetails.Find(id);
+                    Product p = db.Product.Find(a.AuctionsProducts.idProduct);
+                    order.DetailOrder.Add(new DetailOrder
+                    {
+                        idProduct = p.id,
+                        name = p.name,
+                        quanty = 1,
+                        priceCad = a.price,
+                        state = "in elaborazione"
+                    });
+                    p.isAvaiable = false;
+                    db.Entry(p).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
+                }
                 List<_Cart> cart = (List<_Cart>)Session["cart"];
 
                 if (cart.Count() == 0)
