@@ -136,7 +136,7 @@ namespace Stones.Controllers
         }
 
         //mostra le aste attive e le filtra per le categorie
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Auctions(FormCollection categories, FormCollection subjects)
         {
             List<string> selCat = categories.GetValues("category")?.ToList();

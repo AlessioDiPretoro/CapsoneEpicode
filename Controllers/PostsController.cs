@@ -65,6 +65,48 @@ namespace Stones.Controllers
             return View(post);
         }
 
+        // GET: Posts/Create
+        [Authorize]
+        public ActionResult _Create()
+        {
+            return View("_Create");
+        }
+
+        // POST: Posts/Create
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult _Create([Bind(Include = "id,idUser,idProduct,idUserResponse,isActive,body,date,dateEdit")] Post post)
+        {
+            // string route = (RouteData.Values["id"]).ToString();
+            if (ModelState.IsValid)
+            {
+                post.idProduct = Convert.ToInt16(RouteData.Values["id"]);
+                post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+                post.isActive = true;
+                post.date = DateTime.Now;
+                db.Post.Add(post);
+                db.SaveChanges();
+                //return PartialView();
+                return View($"Details/{post.idProduct}", "Products");
+                //RedirectToAction($"Details/{post.idProduct}", "Products");
+                //return RedirectToAction($"Details/{post.idProduct}", "Products");
+            }
+
+            return PartialView(post);
+        }
+
+        [HttpPost]
+        public JsonResult CreatePost(Post post)
+        {
+            post.idUser = db.Users.Where(x => x.username == User.Identity.Name).FirstOrDefault().id;
+            post.isActive = true;
+            post.date = DateTime.Now;
+            db.Post.Add(post);
+            db.SaveChanges();
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Posts/Edit/5
         public ActionResult Edit(int? id)
         {

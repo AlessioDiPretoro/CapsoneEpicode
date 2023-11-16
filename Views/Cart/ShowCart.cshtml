@@ -4,9 +4,9 @@
     ViewBag.Title = "ShowCart";
 }
     <h2>Il tuo carrello</h2>
-<div class="container d-flex flex-row p-0">
+<div class="row justify-content-evenly">
     @{decimal tot = 0; decimal ship = 0; decimal totAmmount = 0; }
-    <div class="container">
+    <div class="col col-8">
         @if (Model != null && Model.Count() > 0)
         {
             ship = 3;
@@ -24,7 +24,7 @@
                             </div>
                             <div class="col col-8">
                                 <p>@Html.DisplayFor(modelItem => item.name)</p>
-                                <p>@Html.DisplayFor(modelItem => item.descripton)</p>
+                                <p class="d-none d-md-block">@Html.DisplayFor(modelItem => item.descripton)</p>
                                 <p><b>@item.price.ToString("C2")</b></p>
                                 <div>
                                     @Html.ActionLink("Rimuovi", "Delete", new { id = item.id }, new { @class = "btn btn-outline-secondary" })
@@ -42,8 +42,8 @@
             <p class="text-center">Non ci sono articoli nel tuo carrello</p>
         }
     </div>
-    <div>
-        <div class="p-2 mx-2 bg-white text-end">
+
+        <div class="col col-3 p-4 bg-white">
             <p>Ordine: @tot.ToString("C2")</p>
             <p class="m-0">Spese spedizione:</p>
             <p>@ship.ToString("C2")</p>
@@ -51,5 +51,5 @@
             <p><b>@totAmmount.ToString("C2")</b></p>
             @Html.ActionLink("Conferma ordine", "Create", "Orders", new { }, new { @class = "btn btn-outline-secondary btn-sm" })
         </div>
-    </div>
+
 </div>

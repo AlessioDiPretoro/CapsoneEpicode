@@ -39,73 +39,65 @@
         </div>
         <h2>Aste attive</h2>
     </div>
-                <div class="row row-cols-1 row-cols-md-2 justify-content-center galleryCont">
+    <div class="row row-cols-1 row-cols-md-3 justify-content-center align-items-stretch galleryCont">
 
-                    @foreach (Stones.Models.AuctionsProducts p in Model)
-                    {
-                        <div class="col p-1">
-                            <div class="card galleryCard">
-                                <a href="@Url.Action("Details", "Products", new { id = p.Product.id })">
-                                    <img src="~/Content/imgProducts/@p.Product.photo1" class="card-img-top" alt="@p.Product.name">
-                                </a>
-                                <div class="card-body d-flex flex-column card-abs">
-                                    <div class="d-flex justify-content-between">
+        @foreach (Stones.Models.AuctionsProducts p in Model)
+        {
+            <div class="col p-1 ">
+                <div class="card galleryCard h-100">
+                    <div class="card-body d-flex flex-column">
+                        <a href="@Url.Action("Details", "Products", new { id = p.Product.id })">
+                            <img src="~/Content/imgProducts/@p.Product.photo1" class="card-img-top" alt="@p.Product.name">
+                        </a>
+                        <h5 class="card-title mt-4">@p.Product.name</h5>
+                        <p class="card-text card-text-cutter">@p.Product.descripton</p>
+                        @if (p.isActive)
+                        {
+                            <h5 class="card-title text-nowrap">Prezzo iniziale: @p.startPrice.ToString("C2")</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-title text-nowrap text-decoration-line-through">@p.startPrice.ToString("C2")</h5>
+                        }
+                        <p class="card-text flex-grow-1">Valida fino al: @p.dataEnd</p>
+                        @if (p.AuctionsDetails.Count > 0)
+                        {
+                            decimal price = 0;
+                            string usernameOffert = "";
+                            foreach (Stones.Models.AuctionsDetails a in p.AuctionsDetails)
+                            {
+                                if (a.price > price)
+                                {
+                                    price = a.price;
+                                    usernameOffert = a.Users.username;
+                                }
+                            }
+                            <div><p>Prezzo Massimo offerto: @price.ToString("C2")</p></div>
 
-                                        <h5 class="card-title card-text-cutter">@p.Product.name</h5>
-                                        @if (p.isActive)
-                                        {
+                            if (usernameOffert == User.Identity.Name)
+                            {
 
-                                            <h5 class="card-title text-nowrap">@p.startPrice.ToString("C2")</h5>
-                                        }
-                                        else
-                                        {
-                                            <h5 class="card-title text-nowrap text-decoration-line-through">@p.startPrice.ToString("C2")</h5>
+                                <div><b class="btn btn-success">La tua offerta è quella vincente!!!</b></div>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-outline-secondary" })
 
-                                        }
-                                    </div>
-                                </div>
-                                <div class="p-3">
-                                    <p class="card-text flex-grow-1">Valida fino al: @p.dataEnd</p>
-                                    @if (p.AuctionsDetails.Count > 0)
-                                    {
-                                        decimal price = 0;
-                                        string usernameOffert = "";
-                                        foreach (Stones.Models.AuctionsDetails a in p.AuctionsDetails)
-                                        {
-                                            if (a.price > price)
-                                            {
-                                                price = a.price;
-                                                usernameOffert = a.Users.username;
-                                            }
-                                        }
-                                        <div><p>Prezzo Massimo offerto: @price.ToString("C2")</p></div>
+                            }
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-outline-secondary" })
 
-                                        if (usernameOffert == User.Identity.Name)
-                                        {
-
-
-                                            <div><b class="btn btn-success">La tua offerta è quella vincente!!!</b></div>
-                                        }
-                                        else
-                                        {
-                                            @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
-
-                                        }
-                                    }
-                                    else
-                                    {
-                                        @Html.ActionLink("Fai un'offerta", "Create", "AuctionsDetails", new { id = p.id }, new { @class = "btn btn-default" })
-
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
-
-                @if (ViewBag.NoResults != null)
-                {
-                    <div><p class="text-center">@ViewBag.NoResults</p></div>
-                }
             </div>
+    }
+    </div>
 
+    @if (ViewBag.NoResults != null)
+    {
+        <div><p class="text-center">@ViewBag.NoResults</p></div>
+    }
+    </div>

@@ -7,7 +7,7 @@
 {
     <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
 }
-<div id="fullscreen" class="text-center">
+<div id="fullscreen" class="text-center z-3">
     <img src="" alt="Immagine a schermo intero">
 </div>
 <div>
@@ -15,7 +15,7 @@
         <div class="col col-12 col-md-8">
             <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top img-click-big" alt="@Model.Product.name">
             <div class="w-75 m-auto">
-                <div class="row row-cols-5 m-0 mt-2 justify-content-center">
+                <div class="row row-cols-5 m-0 mt-2 justify-content-center align-items-center">
                     <div class="col p-1">
                         <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-small-bottom" alt="@Model.Product.photo2">
                     </div>
@@ -72,9 +72,18 @@
         </div>
     </div>
     <div class="col col-12 col-md-6 card m-auto mb-3 p-3">
-        @{
-            Html.RenderAction("Create", "Posts");
-        }
+        <div class="form-horizontal">
+            <h2>Commenta l'opera</h2>
+            <div class="form-group">
+                <textarea id="bodyPost" name="bodyPost" rows="4" class="form-control" , placeholder="Commento"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="text-end">
+                    <a class="btn btn-outline-secondary px-3" id="sendPost">Invia commento</a>
+                </div>
+            </div>
+        </div>
     </div>
     @*commenti*@
     @foreach (Stones.Models.Post post in Model.Posts)
@@ -147,7 +156,7 @@
 
 @section scripts{
     @*cliccando sull'immagine piccola viene visualizzata sulla card principale*@
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
 
             $('.card-small-bottom').click(function () {
@@ -165,6 +174,28 @@
             $("#fullscreen").click(function () {
                 $(this).fadeOut();
             });
+
+            $("#sendPost").click(function () {
+                var bodyPost = $("#bodyPost").val();
+                var currentUrl = window.location.href;
+                var urlParts = currentUrl.split('/');
+                var idProd = urlParts[urlParts.length - 1];
+                console.log("idProd= " + idProd);
+                console.log("currentUrl= " + currentUrl);
+
+                $.ajax({
+                    method: 'POST',
+                    url: '@Url.Action("CreatePost", "Posts")',
+                    data: { post: { body: bodyPost, idProduct: idProd } },
+                    success: function (data) {
+                        console.log("data resp= " + data);
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Errore durante la richiesta Ajax:", status, error);
+                    }
+                });
+            });
         })
-    </script>
+</script>
 }
