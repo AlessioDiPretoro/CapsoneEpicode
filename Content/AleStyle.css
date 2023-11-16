@@ -127,7 +127,7 @@ footer a, footer p {
 }
 
 .card-img-top {
-  object-fit: cover;
+  object-fit: contain;
   margin-top: 0.5em;
   border-radius: 15px;
   height: 60vh;
@@ -160,19 +160,17 @@ footer a, footer p {
 }
 
 .galleryCard {
-  border-radius: 30px;
+  border-radius: 0;
   text-transform: capitalize;
   transition: width 0.3s ease;
-}
-.galleryCard.large {
   background-color: black;
 }
-.galleryCard.large h5, .galleryCard.large p {
+.galleryCard h5, .galleryCard p {
   color: white;
 }
 
 .galleryCard:hover {
-  transform: scale(1.03);
+  opacity: 0.95;
 }
 
 .detailCard {

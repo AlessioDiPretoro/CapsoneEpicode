@@ -48,7 +48,7 @@ $btnColWhite: #ffffff;
 html, body {
     height: 100%;
 }
-
+//
 .iconContainer {
     display: flex;
 
@@ -69,10 +69,10 @@ html, body {
     }
 }
 
-.field-validation-error{
-    span{
-    color: red;
-    margin: 2em;
+.field-validation-error {
+    span {
+        color: red;
+        margin: 2em;
     }
 }
 
@@ -91,12 +91,6 @@ body {
 
 .mainContainer {
     flex: 1;
-}
-
-main {
-    img {
-        //border-radius: 35px;
-    }
 }
 
 h1 {
@@ -153,7 +147,6 @@ nav {
     }
 }
 
-
 .navAdmin {
     background: lighten($blackBg, 20%);
     //position: absolute;
@@ -205,7 +198,7 @@ footer {
 }
 
 .card-img-top {
-    object-fit: cover;
+    object-fit: contain;
     margin-top: 0.5em;
     border-radius: 15px;
     height: 60vh;
@@ -239,23 +232,18 @@ footer {
 }
 
 .galleryCard {
-    //background-image: linear-gradient(to bottom, white,white, $blueLigther);
-    //border: 5px solid $blueMain;
-    border-radius: 30px;
+    border-radius: 0;
     text-transform: capitalize;
     transition: width 0.3s ease;
+    background-color: black;
 
-    &.large {
-        background-color: black;
-
-        h5, p {
-            color: white;
-        }
+    h5, p {
+        color: white;
     }
 }
 
 .galleryCard:hover {
-    transform: scale(1.03)
+    opacity: 0.95;
 }
 
 //.galleryCard:nth-child(odd) {
@@ -284,7 +272,6 @@ footer {
     padding: 1.1em;
     margin-bottom: 1em;
     border: 1px solid lighten($blackBg, 70%);
-
 
     img {
         width: 50px;
