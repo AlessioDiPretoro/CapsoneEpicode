@@ -7,51 +7,61 @@
 {
     <p class="alert alert-danger">@TempData["AlreadyInCart"]</p>
 }
-
+<div id="fullscreen" class="text-center">
+    <img src="" alt="Immagine a schermo intero">
+</div>
 <div>
-    <div class="card mb-3 detailCard">
-        <h2 class="card-title text-center m-3">@Model.Product.name.ToUpper()</h2>
+    <div class="d-flex flex-column flex-md-row mb-3">
+        <div>
+            <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top img-click-big" alt="@Model.Product.name">
+            <div class="w-75 m-auto">
+                <div class="row row-cols-5 m-0 mt-2 justify-content-center">
+                    <div class="col p-1">
+                        <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-small-bottom" alt="@Model.Product.photo2">
+                    </div>
+                    @if (Model.Product.photo2 != null)
+                    {
+                        <div class="col p-1">
 
-        <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top" alt="@Model.Product.name">
-
-        <div class="row row-cols-5 m-0 mt-2 justify-content-center">
-            <div class="col p-1">
-                <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-small-bottom" alt="@Model.Product.photo2">
+                            <img src="~/Content/imgProducts/@Model.Product.photo2" class="card-small-bottom" alt="@Model.Product.photo2">
+                        </div>
+                    }
+                    @if (Model.Product.photo3 != null)
+                    {
+                        <div class="col p-1">
+                            <img src="~/Content/imgProducts/@Model.Product.photo3" class="card-small-bottom" alt="@Model.Product.photo3">
+                        </div>
+                    }
+                    @if (Model.Product.photo4 != null)
+                    {
+                        <div class="col p-1">
+                            <img src="~/Content/imgProducts/@Model.Product.photo4" class="card-small-bottom" alt="@Model.Product.photo4">
+                        </div>
+                    }
+                    @if (Model.Product.photo5 != null)
+                    {
+                        <div class="col p-1">
+                            <img src="~/Content/imgProducts/@Model.Product.photo5" class="card-small-bottom" alt="@Model.Product.photo5">
+                        </div>
+                    }
+                </div>
             </div>
-            @if (Model.Product.photo2 != null)
-            {
-                <div class="col p-1">
-
-                    <img src="~/Content/imgProducts/@Model.Product.photo2" class="card-small-bottom" alt="@Model.Product.photo2">
-                </div>
-            }
-            @if (Model.Product.photo3 != null)
-            {
-                <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.Product.photo3" class="card-small-bottom" alt="@Model.Product.photo3">
-                </div>
-            }
-            @if (Model.Product.photo4 != null)
-            {
-                <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.Product.photo4" class="card-small-bottom" alt="@Model.Product.photo4">
-                </div>
-            }
-            @if (Model.Product.photo5 != null)
-            {
-                <div class="col p-1">
-                    <img src="~/Content/imgProducts/@Model.Product.photo5" class="card-small-bottom" alt="@Model.Product.photo5">
-                </div>
-            }
         </div>
         <div class="card-body">
-            <div class="d-flex justify-content-between">
-                <h3 class="card-title">Titolo: @Model.Product.name</h3>
-
+            <div class="">
+                <h3 class="card-title pb-3">@Model.Product.name</h3>
+                @if (@Model.Product.descripton != null)
+                {
+                    <p class="card-text">@Html.Encode(Model.Product.descripton)</p>
+                }
+                <p class="card-text m-0">Categoria: @Model.Product.ProductCategory.name</p>
+                <p class="card-text m-0">Soggetto: @Model.Product.ProductSubject.name</p>
+            </div>
+            <div class="d-flex align-items-center justify-content-between justify-content-md-evenly my-3 ">
                 @if (Model.Product.isAvaiable)
                 {
-
-                    <h5 class="card-title text-nowrap">@Model.Product.price.ToString("C2")</h5>
+                    <h5 class="card-title">@Model.Product.price.ToString("C2")</h5>
+                    @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-outline-secondary" })
                 }
                 else
                 {
@@ -59,20 +69,13 @@
 
                 }
             </div>
-            @if (@Model.Product.descripton != null)
-            {
-                <p class="card-text">Descrizione: @Html.Encode(Model.Product.descripton)</p>
-            }
-            <p class="card-text">Categoria: @Model.Product.ProductCategory.name</p>
-            <p class="card-text">Soggetto: @Model.Product.ProductSubject.name</p>
-            <div class="flex-column flex-md-row d-flex gap-1 gap-md-5">
-                @if (Model.Product.isAvaiable)
-                {
-                    @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-default" })
-                }
-                @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
-            </div>
+            @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
         </div>
+    </div>
+    <div>
+        @{
+            //Html.RenderAction("")
+        }
     </div>
     @*commenti*@
     @foreach (Stones.Models.Post post in Model.Posts)
@@ -122,7 +125,6 @@
                                     <p><b>@res.Users.username</b></p>
                                     <p>@res.date </p>
                                 </div>
-
                             </div>
                             @if (User.Identity.Name == res.Users.username)
                             {
@@ -136,7 +138,7 @@
                                 </div>
                             }
                         </div>
-                            <p>@res.body</p>
+                        <p>@res.body</p>
                     }
                 }
             }
@@ -154,7 +156,16 @@
                 $(".card-big-top").attr("src", src1);
 
             })
-        })
 
+            $(".img-click-big").click(function () {
+                var imgSrc = $(this).attr("src");
+                $("#fullscreen img").attr("src", imgSrc);
+                $("#fullscreen").fadeIn();
+            });
+
+            $("#fullscreen").click(function () {
+                $(this).fadeOut();
+            });
+        })
     </script>
 }
