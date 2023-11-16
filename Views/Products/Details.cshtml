@@ -11,8 +11,8 @@
     <img src="" alt="Immagine a schermo intero">
 </div>
 <div>
-    <div class="d-flex flex-column flex-md-row mb-3">
-        <div>
+    <div class="card d-flex flex-column flex-md-row mb-3">
+        <div class="col col-12 col-md-8">
             <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top img-click-big" alt="@Model.Product.name">
             <div class="w-75 m-auto">
                 <div class="row row-cols-5 m-0 mt-2 justify-content-center">
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body col col-12 col-md-4">
             <div class="">
                 <h3 class="card-title pb-3">@Model.Product.name</h3>
                 @if (@Model.Product.descripton != null)
@@ -69,12 +69,11 @@
 
                 }
             </div>
-            @Html.ActionLink("Commenta", "Create", "Posts", new { id = Model.Product.id }, new { @class = "btn btn-default" })
         </div>
     </div>
-    <div>
+    <div class="col col-12 col-md-6 card m-auto mb-3 p-3">
         @{
-            //Html.RenderAction("")
+            Html.RenderAction("Create", "Posts");
         }
     </div>
     @*commenti*@

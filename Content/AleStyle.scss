@@ -242,9 +242,8 @@ footer {
 
 .card-big-top {
     border-radius: 20px;
-    height: 65vh;
+    max-height: 65vh;
     width: -webkit-fill-available;
-    //max-height: 80vh;
     object-fit: contain;
 }
 

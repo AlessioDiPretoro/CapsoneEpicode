@@ -13,7 +13,7 @@
     <div class="form-horizontal">
         <div class="form-group">
             <div class="">
-                @Html.TextAreaFor(model => model.body, new { @class = "form-control", placeholder = "Commento", @rows = 8 })
+                @Html.TextAreaFor(model => model.body, new { @class = "form-control", placeholder = "Commento", @rows = 4 })
                 @Html.ValidationMessageFor(model => model.body, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -41,7 +41,7 @@ namespace Stones.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Posts/Create

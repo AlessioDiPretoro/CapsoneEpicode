@@ -167,7 +167,7 @@ footer a, footer p {
 
 .card-big-top {
   border-radius: 20px;
-  height: 65vh;
+  max-height: 65vh;
   width: -webkit-fill-available;
   object-fit: contain;
 }
