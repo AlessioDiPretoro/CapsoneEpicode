@@ -1,13 +1,12 @@
 # Capstone Epicode Project
 
-Welcome to LePieCreazioni!!! 
+Welcome to LePieCreazioni!!!
 My gallery and e-commerce project for show and sell your artworks!!!
 
 It's simple to manage the admin side and the client side it's nice and easy.
 It's all responsive.
 
 This project si build with ASP.NET Entity Framework and is enhanced with Sass, allowing for extensive customization throughout the entire site.
-
 
 ## Key Features
 
@@ -33,12 +32,13 @@ Make sure you have the following installed:
 1. Clone the repository: `git clone https://github.com/AlessioDiPretoro/CapsoneEpicode.git`
 2. Navigate to the project directory: `cd CapsoneEpicode`
 3. Open the project in Visual Studio.
-4. Configure the connection string in the `Web.config` file 
-5. Create your firt migration and update database for create the database.
+4. `Database`
+4.1 You can use the `database backup` called 231013Stones.bak that you can find in the main folder
+4.2 OR you can use create your firt migration and update database for `create the database`.
+5. Configure the connection string in the `Web.config` file.
 6. Configure you email provider info in the `_Mailer.cs` file.
 7. On the database manual create the user with roles Admin and SuperAdmin.
-8. Enyoi it. 
-
+8. Enjoy it.
 
 ## Controller Functions
 
