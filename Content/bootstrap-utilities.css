@@ -2312,7 +2312,7 @@
   border-radius: var(--bs-border-radius-sm) !important;
 }
 
-.rounded-2 {
+. {
   border-radius: var(--bs-border-radius) !important;
 }
 

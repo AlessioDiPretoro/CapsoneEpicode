@@ -175,6 +175,10 @@ footer {
     }
 }
 
+.btn {
+    border-radius: 250px !important;
+}
+
 .btn-default {
     background: lighten($blackBg, 20%);
     color: $btnColWhite;
@@ -199,11 +203,12 @@ footer {
 
 .card-img-top {
     object-fit: contain;
-    margin-top: 0.5em;
-    border-radius: 15px;
-    height: 60vh;
+    display: block;
+    //margin-top: 0.5em;
+    //border-radius: 15px;
+    height: 200px;
     max-height: -webkit-fill-available;
-    padding-top: 5em;
+    //padding-top: 5em;
 }
 
 .card-text-cutter {
@@ -235,11 +240,11 @@ footer {
     border-radius: 0;
     text-transform: capitalize;
     transition: width 0.3s ease;
-    background-color: black;
+    //background-color: black;
 
-    h5, p {
-        color: white;
-    }
+    //h5, p {
+    //    color: white;
+    //}
 }
 
 .galleryCard:hover {

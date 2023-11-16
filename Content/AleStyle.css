@@ -105,6 +105,10 @@ footer a, footer p {
   color: #ffffff;
 }
 
+.btn {
+  border-radius: 250px !important;
+}
+
 .btn-default {
   background: #454545;
   color: #ffffff;
@@ -128,11 +132,9 @@ footer a, footer p {
 
 .card-img-top {
   object-fit: contain;
-  margin-top: 0.5em;
-  border-radius: 15px;
-  height: 60vh;
+  display: block;
+  height: 200px;
   max-height: -webkit-fill-available;
-  padding-top: 5em;
 }
 
 .card-text-cutter {
@@ -163,10 +165,6 @@ footer a, footer p {
   border-radius: 0;
   text-transform: capitalize;
   transition: width 0.3s ease;
-  background-color: black;
-}
-.galleryCard h5, .galleryCard p {
-  color: white;
 }
 
 .galleryCard:hover {

@@ -35,39 +35,39 @@
                             <label for="subject-@i.Value">@i.Text</label>
                         </div>
                     }
-                    <input type="submit" value="Applica filtri" class="btn btn-sm btn-outline-secondary rounded-2" />
+                    <input type="submit" value="Applica filtri" class="btn btn-sm btn-outline-secondary" />
                 }
             </div>
         </div>
         <h2>Galleria</h2>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center">
+    <div class="row row-cols-1 row-cols-md-3 d-flex justify-content-center">
 
         @foreach (Stones.Models.Product p in Model)
         {
             <div class="col p-1">
                 <div class="card galleryCard">
+                    <div class="card-body">
                     <a href="@Url.Action("Details", "Products", new { id = p.id })">
                         <img src="~/Content/imgProducts/@p.photo1" class="card-img-top" alt="@p.name">
                     </a>
-                    <div class="card-body d-flex flex-column card-abs">
-                        <div class="d-flex justify-content-between">
 
-                            <h5 class="card-title card-text-cutter">@p.name</h5>
+                            <h5 class="card-title mt-4">@p.name</h5>
+                        <p class="card-text card-text-cutter flex-grow-1">@p.descripton</p>
+                        <div class="d-flex justify-content-between align-items-center">
                             @if (p.isAvaiable)
                             {
-
-                                <h5 class="card-title text-nowrap">@p.price.ToString("C2")</h5>
+                                @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = p.id }, new { @class = "btn btn-outline-secondary" })
+                               <h5 class="card-title text-nowrap text-end">@p.price.ToString("C2")</h5>
                             }
                             else
                             {
-                                <h5 class="card-title text-nowrap text-decoration-line-through">@p.price.ToString("C2")</h5>
+                                <h5 class="card-title text-nowrap text-end text-decoration-line-through">@p.price.ToString("C2")</h5>
 
                             }
                         </div>
-                        <p class="card-text card-text-cutter flex-grow-1">@p.descripton</p>
-                    </div>
+                        </div>
                 </div>
             </div>
                 }
