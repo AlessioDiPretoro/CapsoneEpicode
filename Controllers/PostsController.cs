@@ -88,7 +88,7 @@ namespace Stones.Controllers
                 db.Post.Add(post);
                 db.SaveChanges();
                 //return PartialView();
-                return View($"Details/{post.idProduct}", "Products");
+                return RedirectToAction($"Details/{post.idProduct}", "Products");
                 //RedirectToAction($"Details/{post.idProduct}", "Products");
                 //return RedirectToAction($"Details/{post.idProduct}", "Products");
             }
@@ -96,6 +96,7 @@ namespace Stones.Controllers
             return PartialView(post);
         }
 
+        //crea post da chiamata ajax in jquery dalla text area nella pagina dettaglio prodotti
         [HttpPost]
         public JsonResult CreatePost(Post post)
         {

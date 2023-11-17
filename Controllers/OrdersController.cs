@@ -72,7 +72,17 @@ namespace Stones.Controllers
                 }
             }
 
-            return View();
+            Users user = db.Users.Find(IdUser);
+            Order order = new Order
+            {
+                address = user.address,
+                cap = user.cap,
+                city = user.city,
+                prov = user.prov,
+                phone = user.phone,
+            };
+
+            return View(order);
         }
 
         // POST: Orders/Create

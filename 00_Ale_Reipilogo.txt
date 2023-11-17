@@ -4,12 +4,11 @@ IN LAVORAZIONE RIPARTIRE DA:
 
 // -- da fare: --\\
 
-email link API completa ordine
-
+90 admin carosello immagini
+91 rispondi commento in box o modale
 92 hash password? - bcrypt
 93 gestire le eliminazioni dei record...
 94 agguingere pagamento paypall
-95 input come password *****
 
 100 post - gestione amici per fare la visibilità, per ora lasciare visibile a tutti non usando il parametro -
 //
@@ -63,5 +62,7 @@ conferma ordine da carrello
 accessibilità pagina DETAILS post, risposta, asta, offerta...
 accessibilità pagina EDIT post, risposta, asta, offerta...
 gestione ruoli: Admin & User
+input come password *****
 readme
 newDB
+email link per completare ordine

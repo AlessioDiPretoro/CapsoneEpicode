@@ -31,22 +31,9 @@
             <th>
                 Disp
             </th>
-            <th>
-                Foto1
+            <th class="d-none d-md-block">
+                Foto
             </th>
-            <th>
-                Foto2
-            </th>
-            <th>
-                Foto3
-            </th>
-            <th>
-                Foto4
-            </th>
-            <th>
-                Foto5
-            </th>
-
         </tr>
 
         @foreach (var item in Model)
@@ -81,37 +68,49 @@
                     @Html.DisplayFor(modelItem => item.isAvaiable)
                 </td>
 
-                <td>
-                    @if (item.photo1 != null)
-                    {
-                        <img class="img-table" src="~/Content//imgProducts/@item.photo1" />
-                    }
+                <td class="d-none d-md-block">
+                    <div id="carouselIndex_@item.id" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item text-center active">
+                                        <img src="~/Content/imgProducts/@item.photo1" class="img-table carImg" alt="Immagine carosello">
+                            </div>
+                            @if (item.photo2 != null)
+                            {
+                                <div class="carousel-item text-center">
+                                            <img src="~/Content/imgProducts/@item.photo2" class="img-table carImg" alt="Immagine carosello">
+                                </div>
+                            }
+                            @if (item.photo3 != null)
+                            {
+                                <div class="carousel-item text-center">
+                                            <img src="~/Content/imgProducts/@item.photo3" class="img-table carImg" alt="Immagine carosello">
+                                </div>
+                            }
+                            @if (item.photo4 != null)
+                            {
+                                <div class="carousel-item text-center">
+                                            <img src="~/Content/imgProducts/@item.photo4" class="img-table carImg" alt="Immagine carosello">
+                                </div>
+                            }
+                            @if (item.photo5 != null)
+                            {
+                                <div class="carousel-item text-center">
+                                            <img src="~/Content/imgProducts/@item.photo5" class="img-table carImg" alt="Immagine carosello">
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex_@item.id" data-bs-slide="prev">
+                            <span><i class="fa-solid fa-chevron-left"></i></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex_@item.id" data-bs-slide="next">
+                            <span><i class="fa-solid fa-chevron-right"></i></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
                 </td>
 
-                <td>
-                    @if (item.photo2 != null)
-                    {
-                        <img class="img-table" src="~/Content//imgProducts/@item.photo2" />
-                    }
-                </td>
-                <td>
-                    @if (item.photo3 != null)
-                    {
-                        <img class="img-table" src="~/Content//imgProducts/@item.photo3" />
-                    }
-                </td>
-                <td>
-                    @if (item.photo4 != null)
-                    {
-                        <img class="img-table" src="~/Content//imgProducts/@item.photo4" />
-                    }
-                </td>
-                <td>
-                    @if (item.photo5 != null)
-                    {
-                        <img class="img-table" src="~/Content//imgProducts/@item.photo5" />
-                    }
-                </td>
             </tr>
         }
     </table>
