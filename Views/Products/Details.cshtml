@@ -13,7 +13,10 @@
 <div>
     <div class="card d-flex flex-column flex-md-row mb-3">
         <div class="col col-12 col-md-8">
+            <div class="d-flex justify-content-center">
+
             <img src="~/Content/imgProducts/@Model.Product.photo1" class="card-big-top img-click-big" alt="@Model.Product.name">
+            </div>
             <div class="w-75 m-auto">
                 <div class="row row-cols-5 m-0 mt-2 justify-content-center align-items-center">
                     <div class="col p-1">
@@ -61,7 +64,7 @@
                 @if (Model.Product.isAvaiable)
                 {
                     <h5 class="card-title">@Model.Product.price.ToString("C2")</h5>
-                    @Html.ActionLink("Acquista", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-outline-secondary" })
+                    @Html.ActionLink("Aggiugni al carrello", "AddToCart", "Cart", new { id = Model.Product.id }, new { @class = "btn btn-outline-secondary" })
                 }
                 else
                 {
