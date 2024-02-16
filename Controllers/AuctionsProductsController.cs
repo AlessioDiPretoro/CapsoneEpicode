@@ -11,155 +11,155 @@ using Stones.Models;
 
 namespace Stones.Controllers
 {
-    [Authorize(Roles = "Admin, SuperAdmin")]
-    public class AuctionsProductsController : Controller
-    {
-        private ModelDbContext db = new ModelDbContext();
-        private readonly _AuctionScheduler _auctionScheduler;
+	[Authorize(Roles = "Admin, SuperAdmin")]
+	public class AuctionsProductsController : Controller
+	{
+		private ModelDbContext db = new ModelDbContext();
+		private readonly _AuctionScheduler _auctionScheduler;
 
-        public AuctionsProductsController()
-        {
-            _auctionScheduler = new _AuctionScheduler(); // Inizializzazione di AuctionScheduler
-        }
+		public AuctionsProductsController()
+		{
+			_auctionScheduler = new _AuctionScheduler(); // Initializing AuctionScheduler
+		}
 
-        // GET: AuctionsProducts
-        public ActionResult Index()
-        {
-            var auctionsProducts = db.AuctionsProducts.Include(a => a.Product).Include(a => a.Users);
-            return View(auctionsProducts.ToList());
-        }
+		// GET: AuctionsProducts
+		public ActionResult Index()
+		{
+			var auctionsProducts = db.AuctionsProducts.Include(a => a.Product).Include(a => a.Users);
+			return View(auctionsProducts.ToList());
+		}
 
-        // GET: AuctionsProducts/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
-            if (auctionsProducts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(auctionsProducts);
-        }
+		// GET: AuctionsProducts/Details/5
+		public ActionResult Details(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
+			if (auctionsProducts == null)
+			{
+				return HttpNotFound();
+			}
+			return View(auctionsProducts);
+		}
 
-        // GET: AuctionsProducts/Create
-        public ActionResult Create()
-        {
-            ViewBag.idProduct = new SelectList(db.Product, "id", "name");
-            return View();
-        }
+		// GET: AuctionsProducts/Create
+		public ActionResult Create()
+		{
+			ViewBag.idProduct = new SelectList(db.Product, "id", "name");
+			return View();
+		}
 
-        // POST: AuctionsProducts/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,idProduct,dataStart,dataEnd,startPrice,isActive")] AuctionsProducts auctionsProducts)
-        {
-            if (ModelState.IsValid)
-            {
-                auctionsProducts.isActive = true;
-                auctionsProducts.isPayed = false;
-                db.AuctionsProducts.Add(auctionsProducts);
-                db.SaveChanges();
+		// POST: AuctionsProducts/Create
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create([Bind(Include = "id,idProduct,dataStart,dataEnd,startPrice,isActive")] AuctionsProducts auctionsProducts)
+		{
+			if (ModelState.IsValid)
+			{
+				auctionsProducts.isActive = true;
+				auctionsProducts.isPayed = false;
+				db.AuctionsProducts.Add(auctionsProducts);
+				db.SaveChanges();
 
-                _auctionScheduler.PianificaChiusuraAsta(auctionsProducts.dataEnd, auctionsProducts.id);
-                return RedirectToAction("Index");
-            }
+				_auctionScheduler.PlanAuctionClosing(auctionsProducts.dataEnd, auctionsProducts.id);
+				return RedirectToAction("Index");
+			}
 
-            ViewBag.idProduct = new SelectList(db.Product, "id", "name", auctionsProducts.idProduct);
-            return View(auctionsProducts);
-        }
+			ViewBag.idProduct = new SelectList(db.Product, "id", "name", auctionsProducts.idProduct);
+			return View(auctionsProducts);
+		}
 
-        // GET: AuctionsProducts/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
-            if (auctionsProducts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(auctionsProducts);
-        }
+		// GET: AuctionsProducts/Edit/5
+		public ActionResult Edit(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
+			if (auctionsProducts == null)
+			{
+				return HttpNotFound();
+			}
+			return View(auctionsProducts);
+		}
 
-        // POST: AuctionsProducts/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,idProduct,dataStart,dataEnd,startPrice,isActive")] AuctionsProducts auctionsProducts)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(auctionsProducts).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(auctionsProducts);
-        }
+		// POST: AuctionsProducts/Edit/5
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit([Bind(Include = "id,idProduct,dataStart,dataEnd,startPrice,isActive")] AuctionsProducts auctionsProducts)
+		{
+			if (ModelState.IsValid)
+			{
+				db.Entry(auctionsProducts).State = EntityState.Modified;
+				db.SaveChanges();
+				return RedirectToAction("Index");
+			}
+			return View(auctionsProducts);
+		}
 
-        // GET: AuctionsProducts/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
-            if (auctionsProducts == null)
-            {
-                return HttpNotFound();
-            }
-            return View(auctionsProducts);
-        }
+		// GET: AuctionsProducts/Delete/5
+		public ActionResult Delete(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
+			if (auctionsProducts == null)
+			{
+				return HttpNotFound();
+			}
+			return View(auctionsProducts);
+		}
 
-        // POST: AuctionsProducts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
-            db.AuctionsProducts.Remove(auctionsProducts);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+		// POST: AuctionsProducts/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(int id)
+		{
+			AuctionsProducts auctionsProducts = db.AuctionsProducts.Find(id);
+			db.AuctionsProducts.Remove(auctionsProducts);
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				db.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        //mostra le aste attive e le filtra per le categorie
-        [AllowAnonymous]
-        public ActionResult Auctions(FormCollection categories, FormCollection subjects)
-        {
-            List<string> selCat = categories.GetValues("category")?.ToList();
-            List<string> selSub = subjects.GetValues("subject")?.ToList();
-            List<AuctionsProducts> product = db.AuctionsProducts.Where(x => x.isActive == true).Include(p => p.Product.ProductCategory).ToList();
+		//shows active auctions and filters them by categories
+		[AllowAnonymous]
+		public ActionResult Auctions(FormCollection categories, FormCollection subjects)
+		{
+			List<string> selCat = categories.GetValues("category")?.ToList();
+			List<string> selSub = subjects.GetValues("subject")?.ToList();
+			List<AuctionsProducts> product = db.AuctionsProducts.Where(x => x.isActive == true).Include(p => p.Product.ProductCategory).ToList();
 
-            if (selCat != null && selCat.Count > 0)
-            {
-                product = product.Where(x => selCat.Contains(x.Product.idCategory.ToString())).ToList();
-            }
-            if (selSub != null && selSub.Count > 0)
-            {
-                product = product.Where(x => selSub.Contains(x.Product.idSubject.ToString())).ToList();
-            }
+			if (selCat != null && selCat.Count > 0)
+			{
+				product = product.Where(x => selCat.Contains(x.Product.idCategory.ToString())).ToList();
+			}
+			if (selSub != null && selSub.Count > 0)
+			{
+				product = product.Where(x => selSub.Contains(x.Product.idSubject.ToString())).ToList();
+			}
 
-            if (product.Count == 0)
-            {
-                ViewBag.NoResults = "Spiacente ma non esistono prodotti con le caratteristiche ricercate";
-            }
+			if (product.Count == 0)
+			{
+				ViewBag.NoResults = "Spiacente ma non esistono prodotti con le caratteristiche ricercate";
+			}
 
-            ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
-            ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
-            return View(product);
-        }
-    }
+			ViewBag.idCategory = new SelectList(db.ProductCategory, "id", "name");
+			ViewBag.idSubject = new SelectList(db.ProductSubject, "id", "name");
+			return View(product);
+		}
+	}
 }
